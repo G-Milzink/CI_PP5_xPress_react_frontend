@@ -3,3 +3,11 @@
     border: 2px solid black;
     font-weight: bold;
 }
+
+.NavLink {
+    padding: 5px;
+}
+
+.Active {
+    color: #FB8122;
+}

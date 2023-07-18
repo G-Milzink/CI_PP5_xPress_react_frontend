@@ -2,6 +2,11 @@
     font-family: 'Shippori Antique B1', sans-serif;
     background-color: #1D2228;
     min-height: 100vh;
+    color: #FB8122;
+}
+
+.Main {
+    padding-top: 80px;
 }
 
 * {
@@ -14,6 +19,7 @@ a {
 }
 
 a:hover {
+    color: #FB8122;
     text-decoration: none;
 }
 
@@ -32,5 +38,5 @@ i {
 i:hover {
     cursor: pointer;
     transition: color ease-in-out 0.3s;
-    color: #2142b2;
+    color: #FB8122;
 }
