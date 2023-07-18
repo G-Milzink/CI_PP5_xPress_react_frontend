@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
-import styles from "../../styles/SignInUpForm.module.css";
+import styles from "../../styles/SignUpLogInForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import SignUpImage from '../../assets/SignUpImage.png';
@@ -19,7 +19,7 @@ const SignUpForm = () => {
     })
     const { username, password1, password2 } = signUpData;
 
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState({});
 
     const history = useHistory();
 
@@ -34,7 +34,7 @@ const SignUpForm = () => {
         e.preventDefault();
         try {
             await axios.post('/dj-rest-auth/registration/', signUpData);
-            history.push('/signin');
+            history.push('/login');
         } catch (err) {
             setErrors(err.response?.data);
         }
@@ -47,7 +47,7 @@ const SignUpForm = () => {
                 className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}
             >
                 <Image
-                    className={`${appStyles.SignUpImage}`}
+                    className={`${appStyles.FormImage}`}
                     src={SignUpImage}
                 />
             </Col>
@@ -107,7 +107,10 @@ const SignUpForm = () => {
                             </Alert>
                         ))}
 
-                        <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`} type="submit">
+                        <Button
+                            type="submit"
+                            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
+                        >
                             Sign Up!
                         </Button>
                         {errors.non_field_errors?.map((message, idx) => (

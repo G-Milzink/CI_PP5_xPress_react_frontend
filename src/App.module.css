@@ -16,7 +16,7 @@
     border: 1px solid black;
 }
 
-.SignUpImage {
+.FormImage {
     object-fit: cover;
     height: 100%;
     width: 100%;
