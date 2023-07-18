@@ -7,12 +7,13 @@ const NavBar = () => {
     return (
         <Container>
             <Navbar expand="md" fixed='top'>
-                <Navbar.Brand href="#home"><img src={logo} alt='logo' height={45} /></Navbar.Brand>
+                <Navbar.Brand><img src={logo} alt='logo' height={45} /></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#link">Link</Nav.Link>
+                    <Nav className="ml-auto text-left">
+                        <Nav.Link href="#home"><i class="fa-sharp fa-solid fa-house"></i>Home</Nav.Link>
+                        <Nav.Link href="#link"><i class="fa-solid fa-right-to-bracket"></i>LogIn</Nav.Link>
+                        <Nav.Link href="#link"><i class="fa-solid fa-user-plus"></i>SignUp</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
