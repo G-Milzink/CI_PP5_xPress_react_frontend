@@ -60,15 +60,27 @@ function PostCreateForm() {
                 ...postData,
                 image: URL.createObjectURL(e.target.files[0]),
             });
+        } else {
+            URL.revokeObjectURL(image);
+            setPostData({
+                ...postData,
+                image: "",
+            });
         }
     };
 
     const handleChangeAudio = (e) => {
         if (e.target.files.length) {
-            URL.revokeObjectURL(image);
+            URL.revokeObjectURL(audio);
             setPostData({
                 ...postData,
                 audio: URL.createObjectURL(e.target.files[0]),
+            });
+        } else {
+            URL.revokeObjectURL(audio);
+            setPostData({
+                ...postData,
+                audio: null,
             });
         }
     };
@@ -77,28 +89,37 @@ function PostCreateForm() {
         e.preventDefault();
         const formData = new FormData();
 
-        formData.append("title", title)
-        formData.append("include_text", include_text)
-        formData.append("text", text)
-        formData.append("excerpt", excerpt)
-        formData.append("include_image", include_image)
-        formData.append("image", imageInput.current.files[0])
-        formData.append("image_description", image_description)
-        formData.append("include_audio", include_audio)
-        formData.append("audio", audioInput.current.files[0])
-        formData.append("audio_description", audio_description)
-        formData.append("publish", publish)
+        formData.append("title", title);
+        formData.append("include_text", include_text);
+        formData.append("text", text);
+        formData.append("excerpt", excerpt);
+        formData.append("include_image", include_image);
+
+        if (imageInput.current.files.length) {
+            formData.append("image", imageInput.current.files[0]);
+            formData.append("image_description", image_description);
+        }
+
+        formData.append("include_audio", include_audio);
+
+        if (audio) {
+            formData.append("audio", audioInput.current.files[0]);
+            formData.append("audio_description", audio_description);
+        }
+
+        formData.append("publish", publish);
 
         try {
-            const { data } = await axiosReq.post('/posts/', formData)
-            history.push(`/posts/${data.id}`)
+            const { data } = await axiosReq.post('/posts/', formData);
+            history.push(`/posts/${data.id}`);
         } catch (err) {
-            console.log(err)
+            console.log(err);
             if (err.response?.status !== 401) {
-                setErrors(err.response?.data)
+                setErrors(err.response?.data);
             }
         }
-    }
+    };
+
 
     const textFields = (
         <div className="text-center">
