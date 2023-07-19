@@ -13,7 +13,7 @@ import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
-import { Image } from "react-bootstrap";
+import { Alert, Image } from "react-bootstrap";
 import AudioComponent from "../../components/AudioComponent";
 import { useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -90,11 +90,11 @@ function PostCreateForm() {
         formData.append("publish", publish)
 
         try {
-            const {data} = await axiosReq.post('/posts/', formData)
+            const { data } = await axiosReq.post('/posts/', formData)
             history.push(`/posts/${data.id}`)
         } catch (err) {
             console.log(err)
-            if (err.response?.status !== 401){
+            if (err.response?.status !== 401) {
                 setErrors(err.response?.data)
             }
         }
@@ -110,7 +110,13 @@ function PostCreateForm() {
                     value={title}
                     onChange={handleChange}
                 />
+                {errors.title?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                        {message}
+                    </Alert>
+                ))}
             </Form.Group>
+
             <Form.Group>
                 <Form.Label>Text:</Form.Label>
                 <Form.Control
@@ -120,6 +126,11 @@ function PostCreateForm() {
                     value={text}
                     onChange={handleChange}
                 />
+                {errors.text?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                        {message}
+                    </Alert>
+                ))}
                 <Form.Label>Excerpt:</Form.Label>
                 <Form.Control
                     as="textarea"
@@ -128,39 +139,64 @@ function PostCreateForm() {
                     value={excerpt}
                     onChange={handleChange}
                 />
+                {errors.excerpt?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                        {message}
+                    </Alert>
+                ))}
                 <div className="text-left">
-                <Form.Check
-                    type="checkbox"
-                    defaultChecked="true"
-                    label="Include Text/Excerpt"
-                    name="include_text"
-                    value={include_text}
-                    onChange={handleChange}
-                />
-                <Form.Check
-                    type="checkbox"
-                    defaultChecked="true"
-                    label="Include Image"
-                    name="include_image"
-                    value={include_image}
-                    onChange={handleChange}
-                />
-                <Form.Check
-                    type="checkbox"
-                    defaultChecked="true"
-                    label="Include Audio"
-                    name="include_audio"
-                    value={include_audio}
-                    onChange={handleChange}
-                />
-                <Form.Check
-                    type="checkbox"
-                    defaultChecked="true"
-                    label="Publish Post"
-                    name="publish"
-                    value={publish}
-                    onChange={handleChange}
-                />
+                    <Form.Check
+                        type="checkbox"
+                        defaultChecked="true"
+                        label="Include Text/Excerpt"
+                        name="include_text"
+                        value={include_text}
+                        onChange={handleChange}
+                    />
+                    {errors.include_text?.map((message, idx) => (
+                        <Alert variant="warning" key={idx}>
+                            {message}
+                        </Alert>
+                    ))}
+                    <Form.Check
+                        type="checkbox"
+                        defaultChecked="true"
+                        label="Include Image"
+                        name="include_image"
+                        value={include_image}
+                        onChange={handleChange}
+                    />
+                    {errors.include_image?.map((message, idx) => (
+                        <Alert variant="warning" key={idx}>
+                            {message}
+                        </Alert>
+                    ))}
+                    <Form.Check
+                        type="checkbox"
+                        defaultChecked="true"
+                        label="Include Audio"
+                        name="include_audio"
+                        value={include_audio}
+                        onChange={handleChange}
+                    />
+                    {errors.include_audio?.map((message, idx) => (
+                        <Alert variant="warning" key={idx}>
+                            {message}
+                        </Alert>
+                    ))}
+                    <Form.Check
+                        type="checkbox"
+                        defaultChecked="true"
+                        label="Publish Post"
+                        name="publish"
+                        value={publish}
+                        onChange={handleChange}
+                    />
+                    {errors.publish?.map((message, idx) => (
+                        <Alert variant="warning" key={idx}>
+                            {message}
+                        </Alert>
+                    ))}
                 </div>
             </Form.Group>
 
@@ -226,7 +262,17 @@ function PostCreateForm() {
                                 value={image_description}
                                 onChange={handleChange}
                             />
+                            {errors.image_description?.map((message, idx) => (
+                                <Alert variant="warning" key={idx}>
+                                    {message}
+                                </Alert>
+                            ))}
                         </Form.Group>
+                        {errors.image?.map((message, idx) => (
+                            <Alert variant="warning" key={idx}>
+                                {message}
+                            </Alert>
+                        ))}
 
                         {/* Form Group dealing with audio */}
                         <Form.Group className="text-center">
@@ -269,7 +315,17 @@ function PostCreateForm() {
                                 value={audio_description}
                                 onChange={handleChange}
                             />
+                            {errors.audio_description?.map((message, idx) => (
+                                <Alert variant="warning" key={idx}>
+                                    {message}
+                                </Alert>
+                            ))}
                         </Form.Group>
+                        {errors.audio?.map((message, idx) => (
+                            <Alert variant="warning" key={idx}>
+                                {message}
+                            </Alert>
+                        ))}
 
                         <div className="d-md-none">{textFields}</div>
                     </Container>
