@@ -4,27 +4,69 @@ import logo from '../assets/logo.png';
 import styles from '../styles/NavBar.module.css';
 import { NavLink } from 'react-router-dom';
 import { useCurrentUser } from '../contexts/CurrentUserContext';
+import Avatar from './Avatar';
+
 
 const NavBar = () => {
 
     const currentUser = useCurrentUser();
-    
-    const loggedInIcons = <>{currentUser?.username}</>;
 
+    const addPostIcon = (
+        <NavLink
+            to="/posts/create"
+            className={styles.NavLink}
+            activeClassName={styles.Active}>
+            <i className="fa-solid fa-square-plus"></i>
+            New xPression
+        </NavLink>
+    )
+    const loggedInIcons = <>
+        <NavLink
+            to="/feed"
+            className={styles.NavLink}
+            activeClassName={styles.Active}>
+            <i className="fa-solid fa-bars-staggered"></i>
+            Feed
+        </NavLink>
+        <NavLink
+            to="/liked"
+            className={styles.NavLink}
+            activeClassName={styles.Active}>
+            <i className="fa-solid fa-heart"></i>
+            Liked
+        </NavLink>
+        <NavLink
+            to="/"
+            className={styles.NavLink}
+            onClick={() => { }}>
+            <i className="fa-solid fa-right-from-bracket"></i>
+            Log Out
+        </NavLink>
+        <NavLink
+            to={`/profiles/${currentUser?.profile_id}`}
+            className={styles.NavLink}
+            onClick={() => { }}>
+            <Avatar
+                src={currentUser?.profile_avatar}
+                text='Profile'
+                height={35}
+            />
+        </NavLink>
+    </>;
     const loggedOutIcons = (
         <>
             <NavLink
                 to="/login"
                 className={styles.NavLink}
                 activeClassName={styles.Active}>
-                <i class="fa-solid fa-right-to-bracket"></i>
+                <i className="fa-solid fa-right-to-bracket"></i>
                 Log In
             </NavLink>
             <NavLink
                 to="/signup"
                 className={styles.NavLink}
                 activeClassName={styles.Active}>
-                <i class="fa-solid fa-user-plus"></i>
+                <i className="fa-solid fa-user-plus"></i>
                 Sign Up
             </NavLink>
         </>
@@ -38,6 +80,7 @@ const NavBar = () => {
                 <NavLink to='/'>
                     <Navbar.Brand><img src={logo} alt='logo' height={40} /></Navbar.Brand>
                 </NavLink>
+                {currentUser && addPostIcon}
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto text-left">
