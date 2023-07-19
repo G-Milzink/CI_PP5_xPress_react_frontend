@@ -3,8 +3,33 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import logo from '../assets/logo.png';
 import styles from '../styles/NavBar.module.css';
 import { NavLink } from 'react-router-dom';
+import { useCurrentUser } from '../contexts/CurrentUserContext';
 
 const NavBar = () => {
+
+    const currentUser = useCurrentUser();
+    
+    const loggedInIcons = <>{currentUser?.username}</>;
+
+    const loggedOutIcons = (
+        <>
+            <NavLink
+                to="/login"
+                className={styles.NavLink}
+                activeClassName={styles.Active}>
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Log In
+            </NavLink>
+            <NavLink
+                to="/signup"
+                className={styles.NavLink}
+                activeClassName={styles.Active}>
+                <i class="fa-solid fa-user-plus"></i>
+                Sign Up
+            </NavLink>
+        </>
+    );
+
     //React-bootstrap Navbar code snippet.
     return (
 
@@ -21,23 +46,10 @@ const NavBar = () => {
                             to="/"
                             className={styles.NavLink}
                             activeClassName={styles.Active}>
-                            <i class="fa-sharp fa-solid fa-house"></i>
+                            <i className="fa-sharp fa-solid fa-house"></i>
                             Home
                         </NavLink>
-                        <NavLink
-                            to="/login"
-                            className={styles.NavLink}
-                            activeClassName={styles.Active}>
-                            <i class="fa-solid fa-right-to-bracket"></i>
-                            LogIn
-                        </NavLink>
-                        <NavLink
-                            to="/signup"
-                            className={styles.NavLink}
-                            activeClassName={styles.Active}>
-                            <i class="fa-solid fa-user-plus"></i>
-                            SignUp
-                        </NavLink>
+                        {currentUser ? loggedInIcons : loggedOutIcons}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
