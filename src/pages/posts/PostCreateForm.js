@@ -14,6 +14,9 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
 import { Image } from "react-bootstrap";
+import AudioComponent from "../../components/AudioComponent";
+
+
 
 function PostCreateForm() {
 
@@ -21,11 +24,23 @@ function PostCreateForm() {
 
     const [postData, setPostData] = useState({
         title: "",
+        include_text: true,
         text: "",
-        include_text: false,
+        excerpt: "",
+        include_image: true,
         image: "",
+        image_description: "",
+        include_audio: true,
+        audio: "",
+        audio_description: "",
+        publish: "",
     });
-    const { title, text, include_text, image } = postData;
+    const { title,
+        include_text, text, excerpt,
+        include_image, image, image_description,
+        include_audio, audio, audio_description,
+        publish,
+    } = postData;
 
     const handleChange = (e) => {
         setPostData({
@@ -34,12 +49,22 @@ function PostCreateForm() {
         });
     };
 
-    const handleChangeImage = (event) => {
-        if (event.target.files.length) {
+    const handleChangeImage = (e) => {
+        if (e.target.files.length) {
             URL.revokeObjectURL(image);
             setPostData({
                 ...postData,
-                image: URL.createObjectURL(event.target.files[0]),
+                image: URL.createObjectURL(e.target.files[0]),
+            });
+        }
+    };
+
+    const handleChangeAudio = (e) => {
+        if (e.target.files.length) {
+            URL.revokeObjectURL(image);
+            setPostData({
+                ...postData,
+                audio: URL.createObjectURL(e.target.files[0]),
             });
         }
     };
@@ -64,12 +89,48 @@ function PostCreateForm() {
                     value={text}
                     onChange={handleChange}
                 />
+                <Form.Label>Excerpt:</Form.Label>
+                <Form.Control
+                    as="textarea"
+                    name="excerpt"
+                    rows={3}
+                    value={excerpt}
+                    onChange={handleChange}
+                />
+                <div className="text-left">
                 <Form.Check
                     type="checkbox"
-                    label="Include Text"
+                    defaultChecked="true"
+                    label="Include Text/Excerpt"
+                    name="include_text"
                     value={include_text}
                     onChange={handleChange}
                 />
+                <Form.Check
+                    type="checkbox"
+                    defaultChecked="true"
+                    label="Include Image"
+                    name="include_image"
+                    value={include_image}
+                    onChange={handleChange}
+                />
+                <Form.Check
+                    type="checkbox"
+                    defaultChecked="true"
+                    label="Include Audio"
+                    name="include_audio"
+                    value={include_audio}
+                    onChange={handleChange}
+                />
+                <Form.Check
+                    type="checkbox"
+                    defaultChecked="true"
+                    label="Publish Post"
+                    name="publish"
+                    value={publish}
+                    onChange={handleChange}
+                />
+                </div>
             </Form.Group>
 
 
@@ -93,6 +154,7 @@ function PostCreateForm() {
                     <Container
                         className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
                     >
+                        {/* Form Group dealing with images */}
                         <Form.Group className="text-center">
                             {image ? (
                                 <>
@@ -125,24 +187,57 @@ function PostCreateForm() {
                                 onChange={handleChangeImage}
                                 hidden
                             />
+                            <Form.Label>Image Description:</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="image_description"
+                                value={image_description}
+                                onChange={handleChange}
+                            />
                         </Form.Group>
 
+                        {/* Form Group dealing with audio */}
                         <Form.Group className="text-center">
-                            <Form.Label
-                                className="d-flex justify-content-center"
-                                htmlFor="audio-upload"
-                            >
-                                <Asset
-                                    src={UploadAudio}
-                                    message="Click to upload an audio file."
-                                />
-                            </Form.Label>
-                            {/* <Form.Control
-                                type="file"
+                            {audio ? (
+                                <>
+                                    <figure>
+                                        <AudioComponent src={audio} />
+                                    </figure>
+                                    <div>
+                                        <Form.Label
+                                            className={`${btnStyles.Button} ${btnStyles.Orange} btn`}
+                                            htmlFor="audio-upload"
+                                        >
+                                            Change the audio
+                                        </Form.Label>
+                                    </div>
+                                </>
+                            ) : (
+                                <Form.Label
+                                    className="d-flex justify-content-center"
+                                    htmlFor="audio-upload"
+                                >
+                                    <Asset
+                                        src={UploadAudio}
+                                        message="Click or tap to upload an audio file"
+                                    />
+                                </Form.Label>
+                            )}
+                            <Form.File
                                 id="audio-upload"
                                 accept="audio/*"
-                            /> */}
+                                onChange={handleChangeAudio}
+                                hidden
+                            />
+                            <Form.Label>Audio Description:</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="audio_description "
+                                value={audio_description}
+                                onChange={handleChange}
+                            />
                         </Form.Group>
+
                         <div className="d-md-none">{textFields}</div>
                     </Container>
                 </Col>
