@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -15,11 +15,12 @@ import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
 import { Image } from "react-bootstrap";
 import AudioComponent from "../../components/AudioComponent";
-
-
+import { useHistory } from "react-router-dom";
+import { axiosReq } from "../../api/axiosDefaults";
 
 function PostCreateForm() {
 
+    const history = useHistory();
     const [errors, setErrors] = useState({});
 
     const [postData, setPostData] = useState({
@@ -41,6 +42,9 @@ function PostCreateForm() {
         include_audio, audio, audio_description,
         publish,
     } = postData;
+
+    const imageInput = useRef(null)
+    const audioInput = useRef(null)
 
     const handleChange = (e) => {
         setPostData({
@@ -68,6 +72,33 @@ function PostCreateForm() {
             });
         }
     };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+
+        formData.append("title", title)
+        formData.append("include_text", include_text)
+        formData.append("text", text)
+        formData.append("excerpt", excerpt)
+        formData.append("include_image", include_image)
+        formData.append("image", imageInput.current.files[0])
+        formData.append("image_description", image_description)
+        formData.append("include_audio", include_audio)
+        formData.append("audio", audioInput.current.files[0])
+        formData.append("audio_description", audio_description)
+        formData.append("publish", publish)
+
+        try {
+            const {data} = await axiosReq.post('/posts/', formData)
+            history.push(`/posts/${data.id}`)
+        } catch (err) {
+            console.log(err)
+            if (err.response?.status !== 401){
+                setErrors(err.response?.data)
+            }
+        }
+    }
 
     const textFields = (
         <div className="text-center">
@@ -137,18 +168,18 @@ function PostCreateForm() {
 
             <Button
                 className={`${btnStyles.Button} ${btnStyles.Blue}`}
-                onClick={() => { }}
+                onClick={() => history.goBack()}
             >
-                cancel
+                Cancel
             </Button>
             <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-                create
+                Save
             </Button>
         </div>
     );
 
     return (
-        <Form>
+        <Form onSubmit={handleSubmit}>
             <Row>
                 <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
                     <Container
@@ -185,6 +216,7 @@ function PostCreateForm() {
                                 id="image-upload"
                                 accept="image/*"
                                 onChange={handleChangeImage}
+                                ref={imageInput}
                                 hidden
                             />
                             <Form.Label>Image Description:</Form.Label>
@@ -227,12 +259,13 @@ function PostCreateForm() {
                                 id="audio-upload"
                                 accept="audio/*"
                                 onChange={handleChangeAudio}
+                                ref={audioInput}
                                 hidden
                             />
                             <Form.Label>Audio Description:</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="audio_description "
+                                name="audio_description"
                                 value={audio_description}
                                 onChange={handleChange}
                             />
