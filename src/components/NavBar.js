@@ -54,7 +54,7 @@ const NavBar = () => {
             className={styles.NavLink}
             onClick={handleLogout}>
             <i className="fa-solid fa-right-from-bracket"></i>
-            Log Out
+            LogOut
         </NavLink>
         <NavLink
             to={`/profiles/${currentUser?.profile_id}`}
