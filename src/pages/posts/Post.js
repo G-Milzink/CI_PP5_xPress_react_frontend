@@ -7,6 +7,7 @@ import Avatar from '../../components/Avatar';
 import AudioComponent from '../../components/AudioComponent';
 import { axiosRes } from '../../api/axiosDefaults';
 import { MoreDropDown } from '../../components/MoreDropDown';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Post = (props) => {
 
@@ -24,6 +25,8 @@ const Post = (props) => {
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner
+
+    const history = useHistory();
 
     const handleLike = async () => {
         try {
@@ -57,7 +60,18 @@ const Post = (props) => {
         }
     };
 
+    const handleEdit = async () => {
+        history.push(`/posts/${id}/edit`)
+    }
 
+    const handleDelete = async () => {
+        try {
+            await axiosRes.delete(`/posts/${id}`);
+            history.goBack();
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     // Check if publish is false, return null (nothing will be rendered)
     // if (!publish) {
@@ -74,11 +88,13 @@ const Post = (props) => {
                     </Link>
                     <div className='d-flex align-items-center'>
                         <span>{updated_on}</span>
-                        {is_owner && postPage && <MoreDropDown />}
+                        {is_owner && postPage && <MoreDropDown handleEdit={handleEdit} handleDelete={handleDelete} />}
                     </div>
                 </Media>
             </Card.Body>
-            {title && <Card.Title className='text-center' >{title}</Card.Title>}
+            <Link to={`/posts/${id}`}>
+                {title && <Card.Title className='text-center' >{title}</Card.Title>}
+            </Link>
             {include_image &&
                 <Card.Body>
                     <Link to={`/posts/${id}`}>
