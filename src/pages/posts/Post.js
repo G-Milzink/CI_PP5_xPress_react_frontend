@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom/cjs/react-router-dom';
 import Avatar from '../../components/Avatar';
 import AudioComponent from '../../components/AudioComponent';
 import { axiosRes } from '../../api/axiosDefaults';
+import { MoreDropDown } from '../../components/MoreDropDown';
 
 const Post = (props) => {
 
@@ -13,7 +14,7 @@ const Post = (props) => {
         id, owner, profile_id, profile_image,
         comments_count, likes_count, like_id,
         title,
-        include_text, excerpt,
+        include_text, excerpt, text,
         include_image, image, image_description,
         include_audio, audio, audio_description,
         publish, updated_on,
@@ -73,7 +74,7 @@ const Post = (props) => {
                     </Link>
                     <div className='d-flex align-items-center'>
                         <span>{updated_on}</span>
-                        {is_owner && postPage && '...'}
+                        {is_owner && postPage && <MoreDropDown />}
                     </div>
                 </Media>
             </Card.Body>
@@ -94,14 +95,15 @@ const Post = (props) => {
                 </Card.Body>
             }
             <Card.Body>
-                {include_text && excerpt && <Card.Text>{excerpt}</Card.Text>}
+                {include_text && excerpt && !postPage && <Card.Text>{excerpt}</Card.Text>}
+                {include_text && text && postPage && <Card.Text>{text}</Card.Text>}
                 <div className={styles.PostBar}>
                     {is_owner ? (
                         <OverlayTrigger placement='top' overlay={<Tooltip>You can not like your own xPression!</Tooltip>}>
                             <i className="fa-regular fa-thumbs-up"></i>
                         </OverlayTrigger>
                     ) : like_id ? (
-                            <span onClick={handleUnLike}>
+                        <span onClick={handleUnLike}>
                             <i className={`fa-solid fa-thumbs-up ${styles.Thumb}`}></i>
                         </span>
                     ) : currentUser ? (
