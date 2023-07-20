@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -6,22 +6,43 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 
-import UploadImage from "../../assets/UploadImage.png";
-import UploadAudio from "../../assets/UploadAudio.png";
-
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import Asset from "../../components/Asset";
 import { Alert, Image } from "react-bootstrap";
 import AudioComponent from "../../components/AudioComponent";
 import { useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useParams } from "react-router-dom/cjs/react-router-dom";
 
 function PostEditForm() {
-
     const history = useHistory();
     const [errors, setErrors] = useState({});
+    const { id } = useParams();
+
+    useEffect(() => {
+        const handleMount = async () => {
+            try {
+                const { data } = await axiosReq(`/posts/${id}/`)
+                const { title,
+                    include_text, text, excerpt,
+                    include_image, image, image_description,
+                    include_audio, audio, audio_description,
+                    publish, is_owner,
+                } = data;
+                is_owner ? setPostData({
+                    title,
+                    include_text, text, excerpt,
+                    include_image, image, image_description,
+                    include_audio, audio, audio_description,
+                    publish,
+                }) : history.push('/')
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        handleMount();
+    }, [id, history])
 
     const [postData, setPostData] = useState({
         title: "",
@@ -34,7 +55,7 @@ function PostEditForm() {
         include_audio: true,
         audio: "",
         audio_description: "",
-        publish: "",
+        publish: true,
     });
     const { title,
         include_text, text, excerpt,
@@ -47,9 +68,12 @@ function PostEditForm() {
     const audioInput = useRef(null)
 
     const handleChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        // Check if the input is a checkbox and update the value accordingly
+        const newValue = type === "checkbox" ? checked : value;
         setPostData({
             ...postData,
-            [e.target.name]: e.target.value
+            [name]: newValue
         });
     };
 
@@ -95,14 +119,14 @@ function PostEditForm() {
         formData.append("excerpt", excerpt);
         formData.append("include_image", include_image);
 
-        if (imageInput.current.files.length) {
+        if (imageInput?.current?.files[0]) {
             formData.append("image", imageInput.current.files[0]);
             formData.append("image_description", image_description);
         }
 
         formData.append("include_audio", include_audio);
 
-        if (audio) {
+        if (audioInput?.current?.files[0]) {
             formData.append("audio", audioInput.current.files[0]);
             formData.append("audio_description", audio_description);
         }
@@ -110,8 +134,8 @@ function PostEditForm() {
         formData.append("publish", publish);
 
         try {
-            const { data } = await axiosReq.post('/posts/', formData);
-            history.push(`/posts/${data.id}`);
+            await axiosReq.put(`/posts/${id}/`, formData);
+            history.push(`/posts/${id}`);
         } catch (err) {
             console.log(err);
             if (err.response?.status !== 401) {
@@ -168,10 +192,9 @@ function PostEditForm() {
                 <div className="text-left">
                     <Form.Check
                         type="checkbox"
-                        defaultChecked="true"
                         label="Include Text/Excerpt"
                         name="include_text"
-                        value={include_text}
+                        checked={include_text}
                         onChange={handleChange}
                     />
                     {errors.include_text?.map((message, idx) => (
@@ -181,10 +204,9 @@ function PostEditForm() {
                     ))}
                     <Form.Check
                         type="checkbox"
-                        defaultChecked="true"
                         label="Include Image"
                         name="include_image"
-                        value={include_image}
+                        checked={include_image}
                         onChange={handleChange}
                     />
                     {errors.include_image?.map((message, idx) => (
@@ -194,10 +216,9 @@ function PostEditForm() {
                     ))}
                     <Form.Check
                         type="checkbox"
-                        defaultChecked="true"
                         label="Include Audio"
                         name="include_audio"
-                        value={include_audio}
+                        checked={include_audio}
                         onChange={handleChange}
                     />
                     {errors.include_audio?.map((message, idx) => (
@@ -207,10 +228,9 @@ function PostEditForm() {
                     ))}
                     <Form.Check
                         type="checkbox"
-                        defaultChecked="true"
                         label="Publish Post"
                         name="publish"
-                        value={publish}
+                        checked={publish}
                         onChange={handleChange}
                     />
                     {errors.publish?.map((message, idx) => (
@@ -227,10 +247,10 @@ function PostEditForm() {
                 className={`${btnStyles.Button} ${btnStyles.Blue}`}
                 onClick={() => history.goBack()}
             >
-                Cancel
+                cancel
             </Button>
             <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-                Save
+                save
             </Button>
         </div>
     );
@@ -244,31 +264,18 @@ function PostEditForm() {
                     >
                         {/* Form Group dealing with images */}
                         <Form.Group className="text-center">
-                            {image ? (
-                                <>
-                                    <figure>
-                                        <Image className={appStyles.Image} src={image} rounded />
-                                    </figure>
-                                    <div>
-                                        <Form.Label
-                                            className={`${btnStyles.Button} ${btnStyles.Orange} btn`}
-                                            htmlFor="image-upload"
-                                        >
-                                            Change the image
-                                        </Form.Label>
-                                    </div>
-                                </>
-                            ) : (
+                            <figure>
+                                <Image className={appStyles.Image} src={image} rounded />
+                            </figure>
+                            <div>
                                 <Form.Label
-                                    className="d-flex justify-content-center"
+                                    className={`${btnStyles.Button} ${btnStyles.Orange} btn`}
                                     htmlFor="image-upload"
                                 >
-                                    <Asset
-                                        src={UploadImage}
-                                        message="Click or tap to upload an image"
-                                    />
+                                    Change the image
                                 </Form.Label>
-                            )}
+                            </div>
+
                             <Form.File
                                 id="image-upload"
                                 accept="image/*"
@@ -297,31 +304,17 @@ function PostEditForm() {
 
                         {/* Form Group dealing with audio */}
                         <Form.Group className="text-center">
-                            {audio ? (
-                                <>
-                                    <figure>
-                                        <AudioComponent src={audio} />
-                                    </figure>
-                                    <div>
-                                        <Form.Label
-                                            className={`${btnStyles.Button} ${btnStyles.Orange} btn`}
-                                            htmlFor="audio-upload"
-                                        >
-                                            Change the audio
-                                        </Form.Label>
-                                    </div>
-                                </>
-                            ) : (
+                            <figure>
+                                <AudioComponent src={audio} />
+                            </figure>
+                            <div>
                                 <Form.Label
-                                    className="d-flex justify-content-center"
+                                    className={`${btnStyles.Button} ${btnStyles.Orange} btn`}
                                     htmlFor="audio-upload"
                                 >
-                                    <Asset
-                                        src={UploadAudio}
-                                        message="Click or tap to upload an audio file"
-                                    />
+                                    Change the audio
                                 </Form.Label>
-                            )}
+                            </div>
                             <Form.File
                                 id="audio-upload"
                                 accept="audio/*"

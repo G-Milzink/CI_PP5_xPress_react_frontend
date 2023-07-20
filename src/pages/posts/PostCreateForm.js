@@ -34,7 +34,7 @@ function PostCreateForm() {
         include_audio: true,
         audio: "",
         audio_description: "",
-        publish: "",
+        publish: true,
     });
     const { title,
         include_text, text, excerpt,
@@ -227,10 +227,10 @@ function PostCreateForm() {
                 className={`${btnStyles.Button} ${btnStyles.Blue}`}
                 onClick={() => history.goBack()}
             >
-                Cancel
+                cancel
             </Button>
             <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-                Save
+                create
             </Button>
         </div>
     );
