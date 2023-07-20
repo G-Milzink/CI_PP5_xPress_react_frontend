@@ -5,6 +5,7 @@ import { Card, Media, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import Avatar from '../../components/Avatar';
 import AudioComponent from '../../components/AudioComponent';
+import { axiosRes } from '../../api/axiosDefaults';
 
 const Post = (props) => {
 
@@ -17,10 +18,45 @@ const Post = (props) => {
         include_audio, audio, audio_description,
         publish, updated_on,
         postPage,
+        setPosts,
     } = props
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner
+
+    const handleLike = async () => {
+        try {
+            const { data } = await axiosRes.post('/likes/', { post: id });
+            setPosts((prevPosts) => ({
+                ...prevPosts,
+                results: prevPosts.results.map((post) => {
+                    return post.id === id
+                        ? { ...post, likes_count: post.likes_count + 1, like_id: data.id }
+                        : post;
+                })
+            }));
+        } catch (err) {
+            console.log(err)
+        }
+    };
+
+    const handleUnLike = async () => {
+        try {
+            const { data } = await axiosRes.delete(`/likes/${like_id}`);
+            setPosts((prevPosts) => ({
+                ...prevPosts,
+                results: prevPosts.results.map((post) => {
+                    return post.id === id
+                        ? { ...post, likes_count: post.likes_count - 1, like_id: null }
+                        : post;
+                })
+            }));
+        } catch (err) {
+            console.log(err)
+        }
+    };
+
+
 
     // Check if publish is false, return null (nothing will be rendered)
     // if (!publish) {
@@ -50,12 +86,12 @@ const Post = (props) => {
                     {image_description && <Card.Text className='text-center'>{image_description}</Card.Text>}
                 </Card.Body>
             }
-            
+
             {include_audio &&
                 <Card.Body>
-                <AudioComponent src={audio} />
-                {audio_description && <Card.Text className='text-center'>{audio_description}</Card.Text>}
-            </Card.Body>
+                    <AudioComponent src={audio} />
+                    {audio_description && <Card.Text className='text-center'>{audio_description}</Card.Text>}
+                </Card.Body>
             }
             <Card.Body>
                 {include_text && excerpt && <Card.Text>{excerpt}</Card.Text>}
@@ -65,11 +101,11 @@ const Post = (props) => {
                             <i className="fa-regular fa-thumbs-up"></i>
                         </OverlayTrigger>
                     ) : like_id ? (
-                        <span onClick={() => { }}>
+                            <span onClick={handleUnLike}>
                             <i className={`fa-solid fa-thumbs-up ${styles.Thumb}`}></i>
                         </span>
                     ) : currentUser ? (
-                        <span onClick={() => { }}>
+                        <span onClick={handleLike}>
                             <i className={`fa-regular fa-thumbs-up ${styles.Thumb}`}></i>
                         </span>
                     ) : (
