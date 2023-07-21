@@ -15,7 +15,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useProfileData, useSetProfileData } from "../../contexts/ProfileDataContext";
-import { Image } from "react-bootstrap";
+import { Button, Image } from "react-bootstrap";
 
 function ProfilePage() {
     const [hasLoaded, setHasLoaded] = useState(false);
@@ -24,6 +24,7 @@ function ProfilePage() {
     const setProfileData = useSetProfileData();
     const {pageProfile} = useProfileData();
     const [profile] = pageProfile.results;
+    const is_owner = currentUser?.username === profile?.owner
 
     useEffect(() => {
         const fetchData = async () => {
@@ -71,9 +72,23 @@ function ProfilePage() {
                     </Row>
                 </Col>
                 <Col lg={3} className="text-lg-right">
-                    <p>Follow button</p>
+                    {currentUser 
+                    && !is_owner 
+                    && (
+                        profile?.following_id ? (
+                            <Button
+                                className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
+                                onClick={() => { }}
+                            >unfollow</Button>
+                        ) : (
+                            <Button
+                                className={`${btnStyles.Button} ${btnStyles.Black}`}
+                                onClick={() => { }}
+                            >follow</Button>
+                        )
+                    )}
                 </Col>
-                <Col className="p-3">Profile content</Col>
+                { profile?.content && <Col className="p-3">{profile.content}</Col>}
             </Row>
         </>
     );
