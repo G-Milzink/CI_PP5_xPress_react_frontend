@@ -76,3 +76,7 @@ i:hover {
 *::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+p {
+    color: #1D2228;
+}

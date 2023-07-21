@@ -1,0 +1,15 @@
+.Owner {
+    font-weight: bold;
+    color: #d26008;
+    margin-right: 8px;
+}
+
+.Date {
+    font-weight: lighter;
+    color: #1D2228;
+}
+
+.CustomRuler {
+    border: 1px solid #566577;
+}
+
