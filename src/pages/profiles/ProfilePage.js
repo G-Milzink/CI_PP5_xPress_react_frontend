@@ -23,7 +23,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Post from "../posts/Post";
 import { fetchMoreData } from "../../utils/Utils";
 import NoResults from "../../assets/NoResults.png";
-import { ProfileEditDropdown } from "../../components/MoreDropdown";
+import { ProfileEditDropdown } from "../../components/MoreDropDown";
 
 function ProfilePage() {
     const [hasLoaded, setHasLoaded] = useState(false);
