@@ -3,6 +3,8 @@ import styles from '../../styles/Comment.module.css'
 import { Media } from 'react-bootstrap';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import Avatar from '../../components/Avatar';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { MoreDropDown } from '../../components/MoreDropDown';
 
 const Comment = (props) => {
 
@@ -13,6 +15,9 @@ const Comment = (props) => {
         updated_on,
         text,
     } = props;
+
+    const currentUser = useCurrentUser();
+    const is_owner = currentUser?.username === owner;
 
     return (
         <div>
@@ -26,6 +31,12 @@ const Comment = (props) => {
                     <span className={styles.Date}>{updated_on}</span>
                     <p>{text}</p>
                 </Media.Body>
+                {is_owner && 
+                    <MoreDropDown
+                        handleEdit={() => { }}
+                        handleDelete={() => { }}
+                    />
+                }
             </Media>
         </div>
     )

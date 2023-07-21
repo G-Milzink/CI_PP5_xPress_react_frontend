@@ -60,6 +60,10 @@ i:hover {
     color: #FB8122;
 }
 
+p {
+    color: #1D2228;
+}
+
 /* scrollbar */
 *::-webkit-scrollbar {
     width: 5px;
@@ -77,6 +81,3 @@ i:hover {
     background: #555;
 }
 
-p {
-    color: #1D2228;
-}
