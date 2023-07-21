@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import styles from '../../styles/Comment.module.css'
 import { Media } from 'react-bootstrap';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
@@ -6,6 +6,7 @@ import Avatar from '../../components/Avatar';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { MoreDropDown } from '../../components/MoreDropDown';
 import { axiosRes } from '../../api/axiosDefaults';
+import CommentEditForm from "./CommentEditForm";
 
 const Comment = (props) => {
 
@@ -22,6 +23,7 @@ const Comment = (props) => {
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;
+    const [showEditForm, setShowEditForm] = useState(false);
 
     const handleDelete = async () => {
         try {
@@ -40,26 +42,37 @@ const Comment = (props) => {
     }
 
     return (
-        <div>
-            <hr className={styles.CustomRuler} />
+        <>
+            <hr />
             <Media>
                 <Link to={`/profiles/${profile_id}`}>
                     <Avatar src={profile_image} />
                 </Link>
-                <Media.Body>
+                <Media.Body className="align-self-center ml-2">
                     <span className={styles.Owner}>{owner}</span>
                     <span className={styles.Date}>{updated_on}</span>
-                    <p>{text}</p>
+                    {showEditForm ? (
+                        <CommentEditForm
+                            id={id}
+                            profile_id={profile_id}
+                            text={text}
+                            profileImage={profile_image}
+                            setComments={setComments}
+                            setShowEditForm={setShowEditForm}
+                        />
+                    ) : (
+                        <p>{text}</p>
+                    )}
                 </Media.Body>
-                {is_owner &&
+                {is_owner && !showEditForm && (
                     <MoreDropDown
-                        handleEdit={() => { }}
+                        handleEdit={() => setShowEditForm(true)}
                         handleDelete={handleDelete}
                     />
-                }
+                )}
             </Media>
-        </div>
-    )
+        </>
+    );
 }
 
 export default Comment
