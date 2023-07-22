@@ -17,7 +17,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/Utils";
 import PopularProfiles from "../profiles/PopularProfiles";
 
-function PostsPage(message, filter = "") {
+function PostsPage({message, filter = ""}) {
 
     const [posts, setPosts] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
@@ -28,6 +28,8 @@ function PostsPage(message, filter = "") {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
+                console.log("debug:",{query})
+                console.log("debug:", {filter})
                 const { data } = await axiosReq.get(`/posts/?${filter}search=${query}`);
                 setPosts(data);
                 setHasLoaded(true);
@@ -42,7 +44,7 @@ function PostsPage(message, filter = "") {
         return () => {
             clearTimeout(timer);
         };
-    }, [pathname, filter, query])
+    }, [filter, pathname, query])
 
     return (
         <Row className="h-100">
