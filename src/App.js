@@ -44,7 +44,7 @@ function App() {
             path="/liked"
             render={() => <PostsPage
               message="No results...Try using a different keyword or like an xPression."
-              filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
+              filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_on&`}
             />}
           />
           <Route exact path="/login" render={() => <LogInForm />} />
