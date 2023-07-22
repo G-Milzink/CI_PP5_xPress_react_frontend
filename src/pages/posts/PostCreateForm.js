@@ -49,11 +49,15 @@ function PostCreateForm() {
     const audioInput = useRef(null)
 
     const handleChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        // If the input is a checkbox, handle the checked property
+        const newValue = type === "checkbox" ? checked : value;
         setPostData({
             ...postData,
-            [e.target.name]: e.target.value
+            [name]: newValue,
         });
     };
+
 
     const handleChangeImage = (e) => {
         if (e.target.files.length) {
@@ -172,10 +176,9 @@ function PostCreateForm() {
                     <Form.Label>Please select which components to include:</Form.Label>
                     <Form.Check
                         type="checkbox"
-                        // defaultChecked="true"
                         label="Include Text/Excerpt"
                         name="include_text"
-                        value={include_text}
+                        checked={include_text}
                         onChange={handleChange}
                     />
                     {errors.include_text?.map((message, idx) => (
@@ -185,10 +188,9 @@ function PostCreateForm() {
                     ))}
                     <Form.Check
                         type="checkbox"
-                        // defaultChecked="true"
                         label="Include Image"
                         name="include_image"
-                        value={include_image}
+                        checked={include_image}
                         onChange={handleChange}
                     />
                     {errors.include_image?.map((message, idx) => (
@@ -198,10 +200,9 @@ function PostCreateForm() {
                     ))}
                     <Form.Check
                         type="checkbox"
-                        // defaultChecked="true"
                         label="Include Audio"
                         name="include_audio"
-                        value={include_audio}
+                        checked={include_audio}
                         onChange={handleChange}
                     />
                     {errors.include_audio?.map((message, idx) => (
@@ -213,10 +214,9 @@ function PostCreateForm() {
                     <Form.Label>Don't forget to publish your post:</Form.Label>
                     <Form.Check
                         type="checkbox"
-                        // defaultChecked="true"
                         label="Publish Post"
                         name="publish"
-                        value={publish}
+                        checked={publish}
                         onChange={handleChange}
                     />
                     {errors.publish?.map((message, idx) => (
