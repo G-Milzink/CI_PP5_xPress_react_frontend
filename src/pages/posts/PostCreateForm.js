@@ -27,16 +27,16 @@ function PostCreateForm() {
 
     const [postData, setPostData] = useState({
         title: "",
-        include_text: true,
+        include_text: false,
         text: "",
         excerpt: "",
-        include_image: true,
+        include_image: false,
         image: "",
         image_description: "",
-        include_audio: true,
+        include_audio: false,
         audio: "",
         audio_description: "",
-        publish: true,
+        publish: false,
     });
     const { title,
         include_text, text, excerpt,
@@ -168,9 +168,11 @@ function PostCreateForm() {
                     </Alert>
                 ))}
                 <div className="text-left">
+                    {<hr />}
+                    <Form.Label>Please select which components to include:</Form.Label>
                     <Form.Check
                         type="checkbox"
-                        defaultChecked="true"
+                        // defaultChecked="true"
                         label="Include Text/Excerpt"
                         name="include_text"
                         value={include_text}
@@ -183,7 +185,7 @@ function PostCreateForm() {
                     ))}
                     <Form.Check
                         type="checkbox"
-                        defaultChecked="true"
+                        // defaultChecked="true"
                         label="Include Image"
                         name="include_image"
                         value={include_image}
@@ -196,7 +198,7 @@ function PostCreateForm() {
                     ))}
                     <Form.Check
                         type="checkbox"
-                        defaultChecked="true"
+                        // defaultChecked="true"
                         label="Include Audio"
                         name="include_audio"
                         value={include_audio}
@@ -207,9 +209,11 @@ function PostCreateForm() {
                             {message}
                         </Alert>
                     ))}
+                    {<hr/>}
+                    <Form.Label>Don't forget to publish your post:</Form.Label>
                     <Form.Check
                         type="checkbox"
-                        defaultChecked="true"
+                        // defaultChecked="true"
                         label="Publish Post"
                         name="publish"
                         value={publish}
