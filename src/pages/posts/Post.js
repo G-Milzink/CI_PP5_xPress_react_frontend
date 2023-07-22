@@ -120,7 +120,7 @@ const Post = (props) => {
                         </OverlayTrigger>
                     ) : like_id ? (
                         <span onClick={handleUnLike}>
-                            <i className={`fa-solid fa-thumbs-up ${styles.Thumb}`}></i>
+                            <i className={`fa-solid fa-thumbs-up ${styles.ThumbSolid}`}></i>
                         </span>
                     ) : currentUser ? (
                         <span onClick={handleLike}>

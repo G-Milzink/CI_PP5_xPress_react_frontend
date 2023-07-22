@@ -86,6 +86,14 @@ function ProfilePage() {
                             <div>following</div>
                         </Col>
                     </Row>
+                    <Row>
+                        <div>
+                            <hr />
+                            <p>
+                                {profile?.bio}
+                            </p>
+                        </div>
+                    </Row>
                 </Col>
                 <Col lg={3} className="text-lg-right">
                     {currentUser &&

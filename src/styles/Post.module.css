@@ -1,6 +1,6 @@
 .Post {
-    background-color: #ffffff;
-    border: 1px solid #dadadf;
+    background-color: #E1E2E2;
+    border: 1px solid #1D2228;
     border-radius: 2px;
     margin-bottom: 16px;
     text-align: center;
@@ -12,13 +12,17 @@ h5 {
 }
 
 .Thumb {
-    color: #f85032;
+    color: #1D2228;
+}
+
+.ThumbSolid {
+    color: #FB8122;
 }
 
 .Thumb:hover {
-    color: #2142b2;
+    color: #FB8122;
 }
 
 .ThumbOutline:hover {
-    color: #f85032;
+    color: #FB8122;
 }

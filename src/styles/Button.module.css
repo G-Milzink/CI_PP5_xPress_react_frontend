@@ -35,15 +35,17 @@
 .Orange,
 .OrangeOutline:hover,
 .Bright:hover {
-    background-color: #FB8122;
-    color: #ffffff;
+    /* border: 1px solid #FB8122; */
+    background-color: #1D2228;
+    color: #FB8122;
 }
 
 .OrangeOutline,
-.Blue:hover {
-    /* border: 1px solid #2142b2; */
-    background-color: #1D2228;
-    color: #FB8122;
+.Orange:hover {
+
+    /* border: 2px solid #1D2228; */
+    background-color: #FB8122;
+    color: #1D2228;
 }
 
 .Black,
@@ -51,7 +53,7 @@
     /* background-color: #242a3d;
   color: white; */
     background-color: #1D2228;
-    color: FB8122;
+    color: #FB8122;
 }
 
 .Black:hover,
