@@ -29,4 +29,15 @@ h5 {
 
 .UnPublished {
     color: red;
+    font-weight: bold;
+    font-size: large;
 }
+
+.SmallerFont {
+    font-size: smaller;
+}
+
+.ExtraMargin {
+    margin-right: 15px;
+}
+

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../../styles/Post.module.css';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { Button, Card, Media, OverlayTrigger, Tooltip } from 'react-bootstrap';
@@ -25,13 +25,17 @@ const Post = (props) => {
         postsPage,
         profilePage,
         setPosts,
+        created_on,
     } = props
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;
-    const [isPublished, setIsPublished] = useState(publish);
-
     const history = useHistory();
+    const [isPublished, setIsPublished] = useState(!!props.publish);
+
+    useEffect(() => {
+        setIsPublished(!!props.publish);
+    }, [props.publish]);
 
     const handleLike = async () => {
         try {
@@ -80,9 +84,12 @@ const Post = (props) => {
 
     const handlePublish = async () => {
         try {
-            await axiosRes.patch(`/posts/${id}`, { publish: true });
+            await axiosRes.patch(`/posts/${id}`,
+                {
+                    publish: true,
+                }
+            );
             setIsPublished(true);
-            console.log(isPublished)
         } catch (err) {
             console.log(err);
         }
@@ -95,12 +102,16 @@ const Post = (props) => {
 
     if (profilePage && !isPublished && !is_owner) {
         return null;
-    }    
+    }
 
     return (
-        <Card className={styles.Post}>
+        < Card className={styles.Post} >
             <Card.Body>
-                {(!isPublished && is_owner && (profilePage || postPage)) && (
+                {
+
+                    console.log(currentUser?.username, owner, is_owner, isPublished)
+                }
+                {(!isPublished && is_owner && profilePage) && (
                     <div>
                         <span>
                             <p className={styles.UnPublished}>Unpublished!</p>
@@ -113,13 +124,31 @@ const Post = (props) => {
                         </Button>
                     </div>
                 )}
+                {(!isPublished && is_owner && postPage) && (
+                    <div>
+                        <span>
+                            <p className={styles.UnPublished}>Unpublished!</p>
+                        </span>
+                        <Button
+                            className={`${btnStyles.Button} ${btnStyles.Publish}`}
+                            onClick={handlePublish}
+                        >
+                            publish
+                        </Button>
+                    </div>
+                )}
                 <Media className='align-items-center justify-content-between'>
                     <Link to={`/profiles/${profile_id}`}>
                         <Avatar src={profile_image} height={60} />
                         {owner}
                     </Link>
                     <div className='d-flex align-items-center'>
-                        <span>{updated_on}</span>
+                        <span className={styles.ExtraMargin}>
+                            created: {created_on}
+                            <p className={styles.SmallerFont}>
+                                updated: {updated_on}
+                            </p>
+                        </span>
                         {is_owner && postPage && <MoreDropDown handleEdit={handleEdit} handleDelete={handleDelete} />}
                     </div>
                 </Media>
@@ -127,7 +156,8 @@ const Post = (props) => {
             <Link to={`/posts/${id}`}>
                 {title && <Card.Title className='text-center' >{title}</Card.Title>}
             </Link>
-            {include_image &&
+            {
+                include_image &&
                 <Card.Body>
                     <Link to={`/posts/${id}`}>
                         <Card.Img src={image} alt={image_description} />
@@ -136,7 +166,8 @@ const Post = (props) => {
                 </Card.Body>
             }
 
-            {include_audio &&
+            {
+                include_audio &&
                 <Card.Body>
                     <AudioComponent className={audioStyles.Player} src={audio} />
                     {audio_description && <Card.Text className='text-center'>{audio_description}</Card.Text>}
@@ -170,7 +201,7 @@ const Post = (props) => {
                     {comments_count}
                 </div>
             </Card.Body>
-        </Card>
+        </Card >
     )
 }
 
