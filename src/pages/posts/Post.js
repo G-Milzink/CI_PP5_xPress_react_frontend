@@ -8,6 +8,7 @@ import AudioComponent from '../../components/AudioComponent';
 import { axiosRes } from '../../api/axiosDefaults';
 import { MoreDropDown } from '../../components/MoreDropDown';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import audioStyles from '../../styles/AudioComponent.module.css';
 
 const Post = (props) => {
 
@@ -106,7 +107,7 @@ const Post = (props) => {
 
             {include_audio &&
                 <Card.Body>
-                    <AudioComponent src={audio} />
+                    <AudioComponent className={audioStyles.Player} src={audio} />
                     {audio_description && <Card.Text className='text-center'>{audio_description}</Card.Text>}
                 </Card.Body>
             }

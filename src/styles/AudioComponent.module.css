@@ -1,0 +1,9 @@
+
+.Player {
+    width: 450px;
+    background-color: #1D2228;
+    border: 4px solid #1D2228;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
