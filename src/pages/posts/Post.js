@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '../../styles/Post.module.css';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import { Card, Media, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Button, Card, Media, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import Avatar from '../../components/Avatar';
 import AudioComponent from '../../components/AudioComponent';
@@ -9,6 +9,7 @@ import { axiosRes } from '../../api/axiosDefaults';
 import { MoreDropDown } from '../../components/MoreDropDown';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import audioStyles from '../../styles/AudioComponent.module.css';
+import btnStyles from "../../styles/Button.module.css";
 
 const Post = (props) => {
 
@@ -21,11 +22,14 @@ const Post = (props) => {
         include_audio, audio, audio_description,
         publish, updated_on,
         postPage,
+        postsPage,
+        profilePage,
         setPosts,
     } = props
 
     const currentUser = useCurrentUser();
-    const is_owner = currentUser?.username === owner
+    const is_owner = currentUser?.username === owner;
+    const [isPublished, setIsPublished] = useState(publish);
 
     const history = useHistory();
 
@@ -74,14 +78,41 @@ const Post = (props) => {
         }
     }
 
+    const handlePublish = async () => {
+        try {
+            await axiosRes.patch(`/posts/${id}`, { publish: true });
+            setIsPublished(true);
+            console.log(isPublished)
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
     // Check if publish is false, return null (nothing will be rendered)
-    // if (!publish) {
-    //     return null;
-    // }
+    if (postsPage && !isPublished) {
+        return null;
+    }
+
+    if (profilePage && !isPublished && !is_owner) {
+        return null;
+    }    
 
     return (
         <Card className={styles.Post}>
             <Card.Body>
+                {(!isPublished && is_owner && (profilePage || postPage)) && (
+                    <div>
+                        <span>
+                            <p className={styles.UnPublished}>Unpublished!</p>
+                        </span>
+                        <Button
+                            className={`${btnStyles.Button} ${btnStyles.Orange}`}
+                            onClick={handlePublish}
+                        >
+                            publish
+                        </Button>
+                    </div>
+                )}
                 <Media className='align-items-center justify-content-between'>
                     <Link to={`/profiles/${profile_id}`}>
                         <Avatar src={profile_image} height={60} />

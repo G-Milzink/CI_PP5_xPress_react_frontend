@@ -69,7 +69,7 @@ function PostsPage({message, filter = ""}) {
                             <InfiniteScroll
                                 children={
                                     posts.results.map((post) => (
-                                        <Post key={post.id} {...post} setPosts={setPosts} />
+                                        <Post key={post.id} {...post} setPosts={setPosts} postsPage="true" />
                                     ))
                                 }
                                 dataLength={posts.results.length}

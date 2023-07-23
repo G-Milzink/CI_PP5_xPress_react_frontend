@@ -69,11 +69,11 @@ function PostEditForm() {
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
-        // Check if the input is a checkbox and update the value accordingly
+        // If the input is a checkbox, handle the checked property
         const newValue = type === "checkbox" ? checked : value;
         setPostData({
             ...postData,
-            [name]: newValue
+            [name]: newValue,
         });
     };
 
