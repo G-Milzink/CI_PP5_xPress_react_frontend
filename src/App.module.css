@@ -49,7 +49,7 @@ a:hover i {
 
 i {
     color: #626262;
-    font-size: 1.6rem;
+    font-size: 2rem;
     padding: 7px;
     vertical-align: middle;
 }
@@ -66,7 +66,7 @@ p {
 
 /* scrollbar */
 *::-webkit-scrollbar {
-    width: 5px;
+    width: 15px;
 }
 
 *::-webkit-scrollbar-track {
@@ -74,10 +74,10 @@ p {
 }
 
 *::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #FB8122;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #FB8122;
 }
 

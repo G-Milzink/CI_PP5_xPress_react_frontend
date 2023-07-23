@@ -6,6 +6,11 @@
     text-align: center;
 }
 
+.Title {
+    font-size: x-large;
+    font-weight: bold;
+}
+
 .Post figure,
 h5 {
     margin: 0 0;

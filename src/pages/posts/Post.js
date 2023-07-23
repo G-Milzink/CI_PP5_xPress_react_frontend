@@ -154,8 +154,9 @@ const Post = (props) => {
                 </Media>
             </Card.Body>
             <Link to={`/posts/${id}`}>
-                {title && <Card.Title className='text-center' >{title}</Card.Title>}
+                {title && <Card.Title className={styles.Title} >{title}</Card.Title>}
             </Link>
+            <hr/>
             {
                 include_image &&
                 <Card.Body>
