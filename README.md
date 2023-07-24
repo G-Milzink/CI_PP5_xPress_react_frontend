@@ -91,4 +91,4 @@ Profile View:
 33. See unpublished: As a logged in user I can easily see wether a post is published or not so that know what content i have (not yet) shared with others.
 34. quick publish: As a logged in user I can easily publish a draft post so that easily manage my unpublished content.
 
-##### Back to [top](#xPress)
+##### Back to [table of contents](#about)
