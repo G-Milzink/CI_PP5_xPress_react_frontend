@@ -274,7 +274,7 @@ Various pages were created and used in this application
     - Profile.js - This file returns the profiles.
     - ProfileEditForm.js - This file handles the profile edit form.
     - ProfilePage.js - This file displays a profile, all it's details and a list of posts associated with the profile.
-    - PopularProfiles.js - Displays a list of the ten most popular profiles, ordred by number of followers in ascending order.
+    - PopularProfiles.js - Displays a list of the ten most popular profiles, orderd by number of followers in descending order.
     - ChangeUserPasswordForm.js - This file handles the change user-password form.
     - ChangeUsernameForm.js - This file handles the change username form.
 
