@@ -28,6 +28,7 @@ Developer: Gustaaf Milzink
     1.  [React](#react)
 7.  [Back-End API](#back-end-api)
     1.  [Django REST Framework](#django-rest-framework)
+8. [Features](#features)
 
 ## About
 
@@ -285,3 +286,80 @@ The repository with a README file for the DRF Back-End can be found <a href="htt
 
 
 ##### Back to [table of contents](#table-of-contents)
+
+## Features
+
+In its entirety the website consists of a variety of features across the many site pages as listed below.
+
+### Authentication
+
+Authentication is a feature of xPress, users will have to be authenticated whilst attempting to log in or else they will not be able to use any of the sites extended functionality beyond viewing posts on the homepage.
+
+<details>
+<summary>Authentication</summary>
+<img src="docs/features/authentication.png">
+</details>
+
+### Sign Up
+
+Sign Up is a feature of xPress, it allows users to create an account and get involved in the site and use its features. 
+
+<details>
+<summary>SignUp</summary>
+<img src="docs/features/signup.png">
+</details>
+
+### Log In
+
+Log in is a feature of xPress,it allows users to log in and view content relevant to their profiles, this feature also controls security and rights of the site by requiring authentication.
+
+<details>
+<summary>LogIn</summary>
+<img src="docs/features/login.png">
+</details>
+
+### Log Out
+
+Log Out is a feature of xPress, it allows users the ability to log out of their profile providing a level of security if using the same device as others.
+
+<details>
+<summary>LogOut</summary>
+<img src="docs/features/logout.png">
+</details>
+
+### Home page
+
+Home page is a feature of xPress, it will allow any user to view a list of posts.
+
+<details>
+<summary>HomePage</summary>
+<img src="docs/features/homepage.png">
+</details>
+
+### Nav Bar
+
+Nav Bar is a feature of the xPress, it allows users to navigate the site with ease while also reflecting the users logged-in status.
+
+<details>
+<summary>NavBar</summary>
+<img src="docs/features/navbar_loggedout.png">
+<img src="docs/features/navbar_loggedin.png">
+</details>
+
+### Feed
+
+Feed is a feature of the xPress, it allows users to view all posts by profiles they have followed.
+
+<details>
+<summary>Feed</summary>
+<img src="docs/features/feed.png">
+</details>
+
+### Liked
+
+Feed is a feature of the xPress, it allows users to view all posts by profiles they have followed.
+
+<details>
+<summary>Liked</summary>
+<img src="docs/features/liked.png">
+</details>
