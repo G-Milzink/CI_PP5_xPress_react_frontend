@@ -1,6 +1,6 @@
 import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
-import styles from "../styles/MoreDropDown.module.css";
+import styles from "../styles/DropDown.module.css";
 import { useHistory } from "react-router-dom";
 
 // The forwardRef is important!!
@@ -16,7 +16,7 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
     />
 ));
 
-export const MoreDropDown = ({ handleEdit, handleDelete }) => {
+export const DropDown = ({ handleEdit, handleDelete }) => {
     return (
         <Dropdown className="ml-auto" drop="left">
             <Dropdown.Toggle as={ThreeDots}/>

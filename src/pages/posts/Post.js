@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom/cjs/react-router-dom';
 import Avatar from '../../components/Avatar';
 import AudioComponent from '../../components/AudioComponent';
 import { axiosRes } from '../../api/axiosDefaults';
-import { MoreDropDown } from '../../components/MoreDropDown';
+import { DropDown } from '../../components/DropDown';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import audioStyles from '../../styles/AudioComponent.module.css';
 import btnStyles from "../../styles/Button.module.css";
@@ -148,7 +148,7 @@ const Post = (props) => {
                                 updated: {updated_on}
                             </p>
                         </span>
-                        {is_owner && postPage && <MoreDropDown handleEdit={handleEdit} handleDelete={handleDelete} />}
+                        {is_owner && postPage && <DropDown handleEdit={handleEdit} handleDelete={handleDelete} />}
                     </div>
                 </Media>
             </Card.Body>

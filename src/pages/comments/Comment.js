@@ -4,7 +4,7 @@ import { Media } from 'react-bootstrap';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import Avatar from '../../components/Avatar';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import { MoreDropDown } from '../../components/MoreDropDown';
+import { DropDown } from '../../components/DropDown';
 import { axiosRes } from '../../api/axiosDefaults';
 import CommentEditForm from "./CommentEditForm";
 
@@ -65,7 +65,7 @@ const Comment = (props) => {
                     )}
                 </Media.Body>
                 {is_owner && !showEditForm && (
-                    <MoreDropDown
+                    <DropDown
                         handleEdit={() => setShowEditForm(true)}
                         handleDelete={handleDelete}
                     />
