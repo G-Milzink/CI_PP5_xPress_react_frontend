@@ -1,11 +1,11 @@
 import React from 'react';
 import NoResults from '../assets/NoResults.png';
-import styles from '../styles/NotFound.module.css';
+import styles from '../styles/PageNotFound.module.css';
 import Asset from './Asset';
 
-const NotFound = () => {
+const PageNotFound = () => {
   return (
-    <div className={styles.NotFound}>
+    <div className={styles.PageNotFound}>
         <Asset
             src={NoResults}
             message="Sorry, this page does not exist!"
@@ -14,4 +14,4 @@ const NotFound = () => {
   )
 }
 
-export default NotFound
+export default PageNotFound
