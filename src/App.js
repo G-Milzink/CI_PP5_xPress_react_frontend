@@ -11,8 +11,8 @@ import PostsPage from './pages/posts/PostsPage';
 import { useCurrentUser } from './contexts/CurrentUserContext';
 import PostEditForm from './pages/posts/PostEditForm';
 import ProfilePage from './pages/profiles/ProfilePage';
-import UsernameForm from "./pages/profiles/UsernameForm";
-import UserPasswordForm from "./pages/profiles/UserPasswordForm";
+import ChangeUsernameForm from "./pages/profiles/ChangeUsernameForm";
+import ChangeUserPasswordForm from "./pages/profiles/ChangeUserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import PageNotFound from './components/PageNotFound';
 
@@ -57,12 +57,12 @@ function App() {
           <Route
             exact
             path="/profiles/:id/edit/username"
-            render={() => <UsernameForm />}
+            render={() => <ChangeUsernameForm />}
           />
           <Route
             exact
             path="/profiles/:id/edit/password"
-            render={() => <UserPasswordForm />}
+            render={() => <ChangeUserPasswordForm />}
           />
           <Route
             exact

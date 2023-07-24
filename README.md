@@ -248,9 +248,35 @@ A loading spinner, image with source and alt attribute or a paragraph containing
 with options specific to the user's logged-in status, and rights regarding the viewed content.
 (example: Users will only see the dropdown menu to edit or delete a post if they are the posts owner.)
 - `<NavBar />` - resuable component, used for easy navigation of the site. Conditionally render Icons based on the users logged-in status thus reflecting wether the user is logged in or not, the full range of app functionality becomes available only after logging in.
-- `<PageNotFound />` - Specific component, used to display a 404 page made up of an image file, a message and a return home button for when the page does not exist.
+- `<PageNotFound />` - Specific component, used to display a 404 page made up of an image file, a message and a link to the homepage button when the user tries to acces a non existing page.
 
 Various pages were created and used in this application
+
+- auth - The auth page group consists of the following files:
+	- LoginForm.js - This file handles the Login form.
+	- SignUpForm.js - This file handles the Sign up form.
+
+- comments - The comments page group consists of the following files:
+	- Comment.js - This file returns the comments.
+    - CommentCreateForm.js - This file handles the create comment form.
+	- CommentEditForm.js - This file handles the Comment Edit form.
+
+- posts - The posts page group consists of the following files:
+    - Post.js - This file returns the posts.
+    - PostCreateForm.js - This file handles the create post form.
+    - PostEditForm.js - This file handles the post edit form.
+    - PostPage.js - This file displays a post and all it's details and content.
+    (except 'excerpt' wich is only shown on PostsPage)
+    - PostsPage.js - This file displays a list of post and all their details and content.
+    (except 'text' wich is only shown on PostsPage, 'excerpt' is shown here instead.)
+
+- profiles - The profiles page group consists of the following files:
+    - Profile.js - This file returns the profiles.
+    - ProfileEditForm.js - This file handles the profile edit form.
+    - ProfilePage.js - This file displays a profile, all it's details and a list of posts associated with the profile.
+    - PopularProfiles.js - Displays a list of the ten most popular profiles, ordred by number of followers in ascending order.
+    - ChangeUserPasswordForm.js - This file handles the change user-password form.
+    - ChangeUsernameForm.js - This file handles the change username form.
 
 ### Django REST Framework
 
