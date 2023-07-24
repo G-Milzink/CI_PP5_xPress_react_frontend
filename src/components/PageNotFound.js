@@ -13,7 +13,7 @@ const PageNotFound = () => {
             message="Sorry, this page does not exist!"
         />
       <Link to="/">
-        <button className={`${btnStyles.Button} ${btnStyles.Orange} ${styles.HomeButton} `}>Back Home</button>
+        <button className={`${btnStyles.Button} ${btnStyles.Orange} ${styles.HomeButton} `}>Home</button>
       </Link>
     </div>
   )
