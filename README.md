@@ -240,6 +240,16 @@ React was used for the following reasons:
 
 Various components were created and reused across the application:
 
+- `<Asset />` - Multi purpose component, used to display a range of items due to being passed props:
+A loading spinner, image with source and alt attribute or a paragraph containing a message.
+- `<AudioComponent />` - Reusable component, used to display an audio player and play back the audio component of a post.
+- `<Avatar />` - Resuable component, used to display the relevant user profile picture. This component uses props which can specify the source of the image and also its size. This allows for different sized avatars to be displayed in different sections of the app.
+- `<DropDown />` - Reusable component, used to conditionally render the three dots option button containing a dropdown menu
+with options specific to the user's logged-in status, and rights regarding the viewed content.
+(example: Users will only see the dropdown menu to edit or delete a post if they are the posts owner.)
+- `<NavBar />` - resuable component, used for easy navigation of the site. Conditionally render Icons based on the users logged-in status thus reflecting wether the user is logged in or not, the full range of app functionality becomes available only after logging in.
+- `<PageNotFound />` - Specific component, used to display a 404 page made up of an image file, a message and a return home button for when the page does not exist.
+
 Various pages were created and used in this application
 
 ### Django REST Framework
