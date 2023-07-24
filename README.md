@@ -246,3 +246,5 @@ Various pages were created and used in this application
 
 The API for this Front-End application was built with the Django REST Framework. 
 The repository with a README file for the DRF Back-End can be found [here](https://github.com/G-Milzink/CI_PP5_xPress_DRF_API).
+
+##### Back to [table of contents](#table-of-contents)
