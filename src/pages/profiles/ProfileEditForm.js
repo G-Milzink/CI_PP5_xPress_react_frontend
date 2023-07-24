@@ -27,10 +27,10 @@ const ProfileEditForm = () => {
 
     const [profileData, setProfileData] = useState({
         name: "",
-        content: "",
-        image: "",
+        bio: "",
+        avatar: "",
     });
-    const { name, content, image } = profileData;
+    const { name, bio, avatar } = profileData;
 
     const [errors, setErrors] = useState({});
 
@@ -39,8 +39,9 @@ const ProfileEditForm = () => {
             if (currentUser?.profile_id?.toString() === id) {
                 try {
                     const { data } = await axiosReq.get(`/profiles/${id}/`);
-                    const { name, content, image } = data;
-                    setProfileData({ name, content, image });
+                    console.log(data)
+                    const { name, bio, avatar } = data;
+                    setProfileData({ name, bio, avatar });
                 } catch (err) {
                     console.log(err);
                     history.push("/");
@@ -64,17 +65,17 @@ const ProfileEditForm = () => {
         event.preventDefault();
         const formData = new FormData();
         formData.append("name", name);
-        formData.append("content", content);
+        formData.append("bio", bio);
 
         if (imageFile?.current?.files[0]) {
-            formData.append("image", imageFile?.current?.files[0]);
+            formData.append("avatar", imageFile?.current?.files[0]);
         }
 
         try {
             const { data } = await axiosReq.put(`/profiles/${id}/`, formData);
             setCurrentUser((currentUser) => ({
                 ...currentUser,
-                profile_image: data.image,
+                profile_image: data.avatar,
             }));
             history.goBack();
         } catch (err) {
@@ -89,9 +90,9 @@ const ProfileEditForm = () => {
                 <Form.Label>Bio</Form.Label>
                 <Form.Control
                     as="textarea"
-                    value={content}
+                    value={bio}
                     onChange={handleChange}
-                    name="content"
+                    name="bio"
                     rows={7}
                 />
             </Form.Group>
@@ -119,9 +120,9 @@ const ProfileEditForm = () => {
                 <Col className="py-2 p-0 p-md-2 text-center" md={7} lg={6}>
                     <Container className={appStyles.Content}>
                         <Form.Group>
-                            {image && (
+                            {avatar && (
                                 <figure>
-                                    <Image src={image} fluid />
+                                    <Image src={avatar} fluid />
                                 </figure>
                             )}
                             {errors?.image?.map((message, idx) => (
@@ -138,6 +139,7 @@ const ProfileEditForm = () => {
                                 </Form.Label>
                             </div>
                             <Form.File
+                                hidden
                                 id="image-upload"
                                 ref={imageFile}
                                 accept="image/*"
