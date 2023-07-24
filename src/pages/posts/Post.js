@@ -20,7 +20,7 @@ const Post = (props) => {
         include_text, excerpt, text,
         include_image, image, image_description,
         include_audio, audio, audio_description,
-        publish, updated_on,
+        updated_on,
         postPage,
         postsPage,
         profilePage,
@@ -95,11 +95,14 @@ const Post = (props) => {
         }
     };
 
-    // Check if publish is false, return null (nothing will be rendered)
+    // Check if isPublished is false AND user is currently on postsPage
+    // => return null (nothing will be rendered)
     if (postsPage && !isPublished) {
         return null;
     }
 
+    // Check if isPublished is false AND user is currently on profilePage AND is not the owner
+    // => return null (nothing will be rendered)
     if (profilePage && !isPublished && !is_owner) {
         return null;
     }
