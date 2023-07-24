@@ -14,6 +14,12 @@ Developer: Gustaaf Milzink
     1.  [Target Audience](#target-audience)
     2.  [User Requirements and Expectations](#user-requirements-and-expectations)
     3.  [User Stories](#user-stories)
+4. [Technical Design](#technical-design)
+      1. [Agile Design](#agile-design)
+      2. [CRUD Functionality](#crud-functionality)
+      3. [Colours](#colours)
+      4. [Fonts](#fonts)
+      5. [Wireframes](#wireframes)
 
 ## About
 
@@ -91,4 +97,39 @@ Profile View:
 33. See unpublished: As a logged in user I can easily see wether a post is published or not so that know what content i have (not yet) shared with others.
 34. quick publish: As a logged in user I can easily publish a draft post so that easily manage my unpublished content.
 
-##### Back to [table of contents](#about)
+##### Back to [table of contents](#table-of-contents)
+
+## Technical Design
+
+### Agile Design
+
+An Agile approach to creating this app has been applied. GitHub's projects was used to track user stories and implement ideas based on their level of importance for allowing use of the app with no loss of functionality or user experience. Three categories were created indicating their level of importance, those were:
+- MUST HAVE
+- SHOULD HAVE
+- COULD HAVE
+
+Github Issues and Milestones were used to define EPICS and keep track of seperate user stories contained therein giving an overview of the projects current state.
+
+Project milestones can be found [here](https://github.com/G-Milzink/ci_pp5_xpress_react_frontend/milestones)
+
+### CRUD Functionality
+
+The xPress app handles data with full CRUD Functionality:
+<br>
+- Create -  Users can create, an account, profile, posts, comments, likes, and follow profiles.
+- Read - Users can view posts, comments, likes of other users and also the profiles of these users.
+- Update - Users can update their profile, password, posts, comments, likes and 'follows' through button and interactive forms.
+- Delete - Users can delete posts, comments, likes and 'follows' through interactive buttons.
+
+### Colours
+
+The colour scheme for this application was kept minimal  to not take atention away from use content. 
+
+<details>
+<summary>Colours</summary>
+<img src=(docs/readme/colours.png)>
+</details>
+
+### Fonts
+
+A Google Font was implemented on the website. 'Shippori Antique B1' with a back up of sans-serif was chosen for use across the entire site.
