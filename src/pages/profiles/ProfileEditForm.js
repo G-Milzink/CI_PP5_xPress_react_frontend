@@ -39,7 +39,6 @@ const ProfileEditForm = () => {
             if (currentUser?.profile_id?.toString() === id) {
                 try {
                     const { data } = await axiosReq.get(`/profiles/${id}/`);
-                    console.log(data)
                     const { name, bio, avatar } = data;
                     setProfileData({ name, bio, avatar });
                 } catch (err) {

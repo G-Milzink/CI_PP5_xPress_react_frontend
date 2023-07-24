@@ -107,10 +107,6 @@ const Post = (props) => {
     return (
         < Card className={styles.Post} >
             <Card.Body>
-                {
-
-                    console.log(currentUser?.username, owner, is_owner, isPublished)
-                }
                 {(!isPublished && is_owner && profilePage) && (
                     <div>
                         <span>
