@@ -223,3 +223,26 @@ Balsamiq was used to create wireframes of the sites pages
 |web-vitals | 1.1.2 |
 
 ##### Back to [table of contents](#table-of-contents)
+
+## Front-End
+
+### React
+
+The React.js framework is an open-source JavaScript framework and library developed for building interactive user interfaces and web applications quickly and efficiently with significantly less code than you would with vanilla JavaScript.  
+
+React was used for the following reasons:
+
+ - Flexibility – Due to having a modular structure React code is easier to maintain compared to other front-end frameworks.
+ - Speed – Creating sites/apps with React significantly increases the page loading speed as the entire page does not require to refresh and reload all components. Components are updated dynamically thus reducing the wait and load times, which affects user experience.
+ - React Bootstrap - When used for styling and responsiveness React Bootstrap is a great choice as it comes with ready-to-use React built components thus taking away alot of need to create commonly used code from scratch.
+- It is the most widely used library for developing social networking and media content applications. (eg. Meta, Instagram, Netflix, AirBnB)
+- Component reusability – Components can be created and re used throughout the app with no need to re write code for the same features.
+
+Various components were created and reused across the application:
+
+Various pages were created and used in this application
+
+### Django REST Framework
+
+The API for this Front-End application was built with the Django REST Framework. 
+The repository with a README file for the DRF Back-End can be found [here](https://github.com/G-Milzink/CI_PP5_xPress_DRF_API).
