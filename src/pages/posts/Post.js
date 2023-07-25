@@ -160,7 +160,15 @@ const Post = (props) => {
                 include_image &&
                 <Card.Body>
                     <Link to={`/posts/${id}`}>
-                        <Card.Img src={image} alt={image_description} />
+                        <Card.Img
+                            src={image}
+                            alt={
+                                image_description ?
+                                    image_description :
+                                    "User uploaded image"
+                            }
+                        />
+
                     </Link>
                     {image_description && <Card.Text className='text-center'>{image_description}</Card.Text>}
                 </Card.Body>
@@ -199,7 +207,8 @@ const Post = (props) => {
                     )}
                     {likes_count}
                     <Link to={`/posts/${id}`}>
-                        <i className='fa-regular fa-comments' />
+                        <i className='fa-regular fa-comments'></i>
+                        <span className={styles.Invisible}>comments</span>
                     </Link>
                     {comments_count}
                 </div>

@@ -107,7 +107,7 @@ function LogInForm() {
                 </Container>
                 <Container className={`mt-3 ${appStyles.Content}`}>
                     <Link className={styles.Link} to="/signup">
-                        Don't have an account? <span>Sign up now!</span>
+                        Don't have an account? Sign up now!
                     </Link>
                 </Container>
             </Col>
@@ -118,6 +118,7 @@ function LogInForm() {
                 <Image
                     className={`${appStyles.FormImage}`}
                     src={LogInImage}
+                    alt="Welcome! Log in and express yourself!"
                 />
             </Col>
         </Row>

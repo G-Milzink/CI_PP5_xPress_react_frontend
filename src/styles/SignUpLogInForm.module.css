@@ -20,7 +20,7 @@
     text-align: center;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #FB8122;
+    color: #1d2228;
 }
 
 .Link {
@@ -28,6 +28,7 @@
     text-align: center;
     display: block;
     margin: auto;
+    font-weight: bold;
 }
 
 .Link span {
