@@ -299,6 +299,16 @@ Authentication is a feature of xPress, users will have to be authenticated whils
 <img src="docs/features/authentication.png">
 </details>
 
+### Nav Bar
+
+Nav Bar is a feature of xPress, it allows users to navigate the site with ease while also reflecting the users logged-in status.
+
+<details>
+<summary>NavBar</summary>
+<img src="docs/features/navbar_loggedout.png">
+<img src="docs/features/navbar_loggedin.png">
+</details>
+
 ### Sign Up
 
 Sign Up is a feature of xPress, it allows users to create an account and get involved in the site and use its features.
@@ -342,16 +352,6 @@ Home page is a feature of xPress, it will allow any user to view a list of posts
 <details>
 <summary>HomePage</summary>
 <img src="docs/features/homepage.png">
-</details>
-
-### Nav Bar
-
-Nav Bar is a feature of xPress, it allows users to navigate the site with ease while also reflecting the users logged-in status.
-
-<details>
-<summary>NavBar</summary>
-<img src="docs/features/navbar_loggedout.png">
-<img src="docs/features/navbar_loggedin.png">
 </details>
 
 ### Feed
@@ -406,10 +406,69 @@ Change Username is a feature of xPress, it allows users change their username.
 <img src="docs/features/profile_change_username.png">
 </details>
 
+### Change Password
+
 Change Password is a feature of xPress, it allows users change their password.
 
 <details>
 <summary>Change Password</summary>
 <img src="docs/features/profile_change_password_dropdown.png">
 <img src="docs/features/profile_change_password.png">
+</details>
+
+### Comment
+
+Comment is a feature of xPress, it allows logged-in users to comment on posts.
+
+<details>
+<summary>Comment</summary>
+<img src="docs/features/comment.png">
+</details>
+
+### Edit Comment
+
+Edit Comment is a feature of xPress, it allows logged-in users to edit their comments.
+
+<details>
+<summary>Edit Comment</summary>
+<img src="docs/features/comment_edit.png">
+<img src="docs/features/comment_edit_form.png">
+</details>
+
+### Delete Comment
+
+Delete Comment is a feature of xPress, it allows logged-in users to delete their comments.
+
+<details>
+<summary>Delete Comment</summary>
+<img src="docs/features/comment_delete.png">
+</details>
+
+### Like
+
+Like is a feature of xPress, it allows logged-in users to like/unlike a post.
+
+<details>
+<summary>Like</summary>
+<img src="docs/features/like_unlike.png">
+</details>
+
+### Follow
+
+Follow is a feature of xPress, it allows logged-in users to follow/unfollow a profile.
+
+<details>
+<summary>Follow</summary>
+<img src="docs/features/follow_unfollow.png">
+</details>
+
+### Search
+
+Search is a feature of xPress, it allows users to search a list of posts by keyword.
+Search is available for the 'Home', 'Feed' and 'Liked' pages.
+
+
+<details>
+<summary>Search</summary>
+<img src="docs/features/search.png">
 </details>
