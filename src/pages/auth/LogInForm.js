@@ -93,7 +93,7 @@ function LogInForm() {
                         </Form.Group>
                         <Button
                             type="submit"
-                            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
+                            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Orange}`}
                         >
                             Log In!
                         </Button>

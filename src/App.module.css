@@ -13,7 +13,7 @@
     background-color: #E1E2E2;
     padding: 10px;
     border-radius: 2px;
-    border: 1px solid black;
+    border: 1px solid #1D2228;
 }
 
 .FormImage {
@@ -48,7 +48,7 @@ a:hover i {
 }
 
 i {
-    color: #626262;
+    color: #484848;
     font-size: 2rem;
     padding: 7px;
     vertical-align: middle;

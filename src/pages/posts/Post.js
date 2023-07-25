@@ -155,7 +155,7 @@ const Post = (props) => {
             <Link to={`/posts/${id}`}>
                 {title && <Card.Title className={styles.Title} >{title}</Card.Title>}
             </Link>
-            <hr/>
+            <hr />
             {
                 include_image &&
                 <Card.Body>
@@ -174,7 +174,10 @@ const Post = (props) => {
                 </Card.Body>
             }
             <Card.Body>
-                {include_text && excerpt && !postPage && <Card.Text>{excerpt}</Card.Text>}
+                {include_text && excerpt && !postPage &&
+                    <Link to={`/posts/${id}`}>
+                        <Card.Text>{excerpt}</Card.Text>
+                    </Link>}
                 {include_text && text && postPage && <Card.Text>{text}</Card.Text>}
                 <div className={styles.PostBar}>
                     {is_owner ? (

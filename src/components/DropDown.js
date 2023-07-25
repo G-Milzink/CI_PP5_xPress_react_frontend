@@ -52,12 +52,14 @@ export function ProfileEditDropdown({ id }) {
             <Dropdown.Toggle as={ThreeDots} />
             <Dropdown.Menu>
                 <Dropdown.Item
+                    className={styles.DropdownItemProfile}
                     onClick={() => history.push(`/profiles/${id}/edit`)}
                     aria-label="edit-profile"
                 >
                     <i className="fas fa-edit" /> edit profile
                 </Dropdown.Item>
                 <Dropdown.Item
+                    className={styles.DropdownItemProfile}
                     onClick={() => history.push(`/profiles/${id}/edit/username`)}
                     aria-label="edit-username"
                 >
@@ -65,6 +67,7 @@ export function ProfileEditDropdown({ id }) {
                     change username
                 </Dropdown.Item>
                 <Dropdown.Item
+                    className={styles.DropdownItemProfile}
                     onClick={() => history.push(`/profiles/${id}/edit/password`)}
                     aria-label="edit-password"
                 >

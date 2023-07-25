@@ -1,7 +1,20 @@
 .DropdownItem {
     display: inline-block;
-    max-width: 50%;
+    max-width: 40%;
     padding: 0px;
+    border-radius: 5px;
+}
+
+.DropdownItemProfile {
+    display: inline-block;
+    max-width: 100%;
+    padding: 0px;
+    border-radius: 5px;
+}
+
+.DropdownItem:focus,
+.DropdownItemProfile:focus {
+    background-color: #1D2228;
 }
 
 .Absolute {

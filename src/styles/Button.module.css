@@ -7,6 +7,8 @@
     margin-left: 2px;
     margin-right: 2px;
     min-width: 75px;
+    outline: none !important;
+        box-shadow: none !important;
 }
 
 .Button:hover {
@@ -32,42 +34,16 @@
     width: 100%;
 }
 
-.Orange,
-.OrangeOutline:hover,
-.Bright:hover {
-    /* border: 1px solid #FB8122; */
+.Orange {
     background-color: #1D2228;
     color: #FB8122;
 }
 
-.OrangeOutline,
 .Orange:hover {
-
-    /* border: 2px solid #1D2228; */
-    background-color: #FB8122;
-    color: #1D2228;
-}
-
-.Black,
-.BlackOutline:hover {
-    /* background-color: #242a3d;
-  color: white; */
+border: 2px solid #FB8122;
     background-color: #1D2228;
     color: #FB8122;
-}
-
-.Black:hover,
-.BlackOutline {
-    /* background-color: #dadadf;
-  color: #242a3d;
-  border-color: #242a3d; */
-    background-color: whitesmoke;
-    color: #1D2228;
-}
-
-.Bright {
-    background-color: #FB8122;
-    color: #1D2228;
+    font-weight: bold;
 }
 
 .Publish {
@@ -79,7 +55,7 @@
 
 .Publish:hover {
     color: red;
-        background-color: #1D2228;
-        font-weight: bolder;
-        border: 2px solid red;
+    background-color: #1D2228;
+    font-weight: bolder;
+    border: 2px solid red;
 }
