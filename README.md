@@ -29,6 +29,13 @@ Developer: Gustaaf Milzink
 7.  [Back-End API](#back-end-api)
     1.  [Django REST Framework](#django-rest-framework)
 8.  [Features](#features)
+9.  [Future features / improvements](#future-features--improvements)
+10. [Validation](#validation)
+      1. [HTML](#html-validation)
+      2. [CSS](#css-validation)
+      3. [ESLint JavaScript JSX Validation](#eslint-javascript-jsx-validation)
+      4. [Chrome Dev Tools Lighthouse](#chrome-dev-tools-lighthouse-validation)
+      5. [WAVE Validation](#wave-validation)
 
 ## About
 
@@ -474,9 +481,82 @@ Search is available for the 'Home', 'Feed' and 'Liked' pages.
 
 ### Input Validation
 
-Input Validation is a feature of the Tick It used throughout the site for form inputs. 
+Input Validation is a feature of the Tick It used throughout the site for form inputs.
 
 <details>
 <summary>Input Validation image</summary>
 <img src="docs/features/validation.png">
+</details>
+
+## Future features / improvements
+
+Due to time constraints there is still room for refactoring of code and additional functionality / features to implement to the site.
+
+*   Password recovery
+    *   Forgotten password option to recover access to the account using a one time link via email
+*   Account creation via socials
+    *   Allow user authentication with already existing accounts, e.g. LinkedIn, Google, etc.
+
+##### Back to [table of contents](#table-of-contents)
+
+## Validation 
+
+### HTML Validation
+
+The W3C Markup Validation Service was used to validate the HTML of the website. No errors were identified. 
+
+<details><summary>Home(not logged in)</summary> 
+<img src="docs/validation/html/homepage_loggedout.png"> 
+</details>
+
+<details><summary>Home(logged in)</summary> 
+<img src="docs/validation/html/homepage_loggedin.png"> 
+</details>
+
+<details><summary>Signup</summary> 
+<img src="docs/validation/html/signup.png"> 
+</details>
+
+<details><summary>Login</summary> 
+<img src="docs/validation/html/login.png"> 
+</details>
+
+<details><summary>New Post</summary> 
+<img src="docs/validation/html/newpost.png"> 
+</details>
+
+<details><summary>Edit Post</summary> 
+<img src="docs/validation/html/editpost.png"> 
+</details>
+
+<details><summary>Feed</summary> 
+<img src="docs/validation/html/feed.png"> 
+</details>
+
+<details><summary>Liked</summary> 
+<img src="docs/validation/html/liked.png"> 
+</details>
+
+<details><summary>Profile</summary> 
+<img src="docs/validation/html/profile.png"> 
+</details>
+
+<details><summary>Edit Profile</summary> 
+<img src="docs/validation/html/profile_edit.png"> 
+</details>
+
+<details><summary>Post</summary> 
+<img src="docs/validation/html/post.png"> 
+</details>
+
+<details><summary>Edit Post</summary> 
+<img src="docs/validation/html/post_edit.png"> 
+</details>
+
+<details><summary>Change Password</summary> 
+<img src="docs/validation/html/change_password.png"> 
+</details>
+
+<details><summary>Change Username</summary> 
+<img src="docs/validation/html/change_username.png"> 
 </details>
