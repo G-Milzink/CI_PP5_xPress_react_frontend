@@ -28,7 +28,7 @@ Developer: Gustaaf Milzink
     1.  [React](#react)
 7.  [Back-End API](#back-end-api)
     1.  [Django REST Framework](#django-rest-framework)
-8. [Features](#features)
+8.  [Features](#features)
 
 ## About
 
@@ -229,61 +229,60 @@ Balsamiq was used to create wireframes of the sites pages
 
 ### React
 
-The React.js framework is an open-source JavaScript framework and library developed for building interactive user interfaces and web applications quickly and efficiently with significantly less code than you would with vanilla JavaScript.  
+The React.js framework is an open-source JavaScript framework and library developed for building interactive user interfaces and web applications quickly and efficiently with significantly less code than you would with vanilla JavaScript.
 
 React was used for the following reasons:
 
- - Flexibility – Due to having a modular structure React code is easier to maintain compared to other front-end frameworks.
- - Speed – Creating sites/apps with React significantly increases the page loading speed as the entire page does not require to refresh and reload all components. Components are updated dynamically thus reducing the wait and load times, which affects user experience.
- - React Bootstrap - When used for styling and responsiveness React Bootstrap is a great choice as it comes with ready-to-use React built components thus taking away alot of need to create commonly used code from scratch.
-- It is the most widely used library for developing social networking and media content applications. (eg. Meta, Instagram, Netflix, AirBnB)
-- Component reusability – Components can be created and re used throughout the app with no need to re write code for the same features.
+*   Flexibility – Due to having a modular structure React code is easier to maintain compared to other front-end frameworks.
+*   Speed – Creating sites/apps with React significantly increases the page loading speed as the entire page does not require to refresh and reload all components. Components are updated dynamically thus reducing the wait and load times, which affects user experience.
+*   React Bootstrap - When used for styling and responsiveness React Bootstrap is a great choice as it comes with ready-to-use React built components thus taking away alot of need to create commonly used code from scratch.
+*   It is the most widely used library for developing social networking and media content applications. (eg. Meta, Instagram, Netflix, AirBnB)
+*   Component reusability – Components can be created and re used throughout the app with no need to re write code for the same features.
 
 Various components were created and reused across the application:
 
-- `<Asset />` - Multi purpose component, used to display a range of items due to being passed props:
-A loading spinner, image with source and alt attribute or a paragraph containing a message.
-- `<AudioComponent />` - Reusable component, used to display an audio player and play back the audio component of a post.
-- `<Avatar />` - Resuable component, used to display the relevant user profile picture. This component uses props which can specify the source of the image and also its size. This allows for different sized avatars to be displayed in different sections of the app.
-- `<DropDown />` - Reusable component, used to conditionally render the three dots option button containing a dropdown menu
-with options specific to the user's logged-in status, and rights regarding the viewed content.
-(example: Users will only see the dropdown menu to edit or delete a post if they are the posts owner.)
-- `<NavBar />` - resuable component, used for easy navigation of the site. Conditionally render Icons based on the users logged-in status thus reflecting wether the user is logged in or not, the full range of app functionality becomes available only after logging in.
-- `<PageNotFound />` - Specific component, used to display a 404 page made up of an image file, a message and a link to the homepage button when the user tries to acces a non existing page.
+*   `<Asset />` - Multi purpose component, used to display a range of items due to being passed props:
+    A loading spinner, image with source and alt attribute or a paragraph containing a message.
+*   `<AudioComponent />` - Reusable component, used to display an audio player and play back the audio component of a post.
+*   `<Avatar />` - Resuable component, used to display the relevant user profile picture. This component uses props which can specify the source of the image and also its size. This allows for different sized avatars to be displayed in different sections of the app.
+*   `<DropDown />` - Reusable component, used to conditionally render the three dots option button containing a dropdown menu
+    with options specific to the user's logged-in status, and rights regarding the viewed content.
+    (example: Users will only see the dropdown menu to edit or delete a post if they are the posts owner.)
+*   `<NavBar />` - resuable component, used for easy navigation of the site. Conditionally render Icons based on the users logged-in status thus reflecting wether the user is logged in or not, the full range of app functionality becomes available only after logging in.
+*   `<PageNotFound />` - Specific component, used to display a 404 page made up of an image file, a message and a link to the homepage button when the user tries to acces a non existing page.
 
 Various pages were created and used in this application
 
-- auth - The auth page group consists of the following files:
-	- LoginForm.js - This file handles the Login form.
-	- SignUpForm.js - This file handles the Sign up form.
+*   auth - The auth page group consists of the following files:
+    *   LoginForm.js - This file handles the Login form.
+    *   SignUpForm.js - This file handles the Sign up form.
 
-- comments - The comments page group consists of the following files:
-	- Comment.js - This file returns the comments.
-    - CommentCreateForm.js - This file handles the create comment form.
-	- CommentEditForm.js - This file handles the Comment Edit form.
+*   comments - The comments page group consists of the following files:
+    *   Comment.js - This file returns the comments.
+    *   CommentCreateForm.js - This file handles the create comment form.
+    *   CommentEditForm.js - This file handles the Comment Edit form.
 
-- posts - The posts page group consists of the following files:
-    - Post.js - This file returns the posts.
-    - PostCreateForm.js - This file handles the create post form.
-    - PostEditForm.js - This file handles the post edit form.
-    - PostPage.js - This file displays a post and all it's details and content.
-    (except 'excerpt' wich is only shown on PostsPage)
-    - PostsPage.js - This file displays a list of post and all their details and content.
-    (except 'text' wich is only shown on PostsPage, 'excerpt' is shown here instead.)
+*   posts - The posts page group consists of the following files:
+    *   Post.js - This file returns the posts.
+    *   PostCreateForm.js - This file handles the create post form.
+    *   PostEditForm.js - This file handles the post edit form.
+    *   PostPage.js - This file displays a post and all it's details and content.
+        (except 'excerpt' wich is only shown on PostsPage)
+    *   PostsPage.js - This file displays a list of post and all their details and content.
+        (except 'text' wich is only shown on PostsPage, 'excerpt' is shown here instead.)
 
-- profiles - The profiles page group consists of the following files:
-    - Profile.js - This file returns the profiles.
-    - ProfileEditForm.js - This file handles the profile edit form.
-    - ProfilePage.js - This file displays a profile, all it's details and a list of posts associated with the profile.
-    - PopularProfiles.js - Displays a list of the ten most popular profiles, orderd by number of followers in descending order.
-    - ChangeUserPasswordForm.js - This file handles the change user-password form.
-    - ChangeUsernameForm.js - This file handles the change username form.
+*   profiles - The profiles page group consists of the following files:
+    *   Profile.js - This file returns the profiles.
+    *   ProfileEditForm.js - This file handles the profile edit form.
+    *   ProfilePage.js - This file displays a profile, all it's details and a list of posts associated with the profile.
+    *   PopularProfiles.js - Displays a list of the ten most popular profiles, orderd by number of followers in descending order.
+    *   ChangeUserPasswordForm.js - This file handles the change user-password form.
+    *   ChangeUsernameForm.js - This file handles the change username form.
 
 ### Django REST Framework
 
-The API for this Front-End application was built with the Django REST Framework. 
+The API for this Front-End application was built with the Django REST Framework.
 The repository with a README file for the DRF Back-End can be found <a href="https://github.com/G-Milzink/CI_PP5_xPress_DRF_API" target="_blank">here</a>.
-
 
 ##### Back to [table of contents](#table-of-contents)
 
@@ -302,7 +301,7 @@ Authentication is a feature of xPress, users will have to be authenticated whils
 
 ### Sign Up
 
-Sign Up is a feature of xPress, it allows users to create an account and get involved in the site and use its features. 
+Sign Up is a feature of xPress, it allows users to create an account and get involved in the site and use its features.
 
 <details>
 <summary>SignUp</summary>
@@ -366,7 +365,7 @@ Feed is a feature of xPress, it allows users to view all posts by profiles they 
 
 ### Liked
 
-Liked is a feature of xPress, it allows users to view all posts by profiles they have followed.
+Liked is a feature of xPress, it allows users to view all posts by  they have liked.
 
 <details>
 <summary>Liked</summary>
@@ -389,9 +388,28 @@ When logged in and viewing a user's own profile a dropdown menu is displayed pro
 
 ### Edit Profile
 
-Liked is a feature of xPress, it allows users to view all posts by profiles they have followed.
+Edit Profile is a feature of xPress, it allows users change their avatar and edit their bio.
 
 <details>
-<summary>Liked</summary>
-<img src="docs/features/liked.png">
+<summary>Edit Profile</summary>
+<img src="docs/features/profile_edit_dropdown.png">
+<img src="docs/features/profile_edit.png">
+</details>
+
+### Change Username
+
+Change Username is a feature of xPress, it allows users change their username.
+
+<details>
+<summary>Change Username</summary>
+<img src="docs/features/profile_change_username_dropdown.png">
+<img src="docs/features/profile_change_username.png">
+</details>
+
+Change Password is a feature of xPress, it allows users change their password.
+
+<details>
+<summary>Change Password</summary>
+<img src="docs/features/profile_change_password_dropdown.png">
+<img src="docs/features/profile_change_password.png">
 </details>
