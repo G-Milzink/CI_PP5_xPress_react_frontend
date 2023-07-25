@@ -560,3 +560,81 @@ The W3C Markup Validation Service was used to validate the HTML of the website. 
 <details><summary>Change Username</summary> 
 <img src="docs/validation/html/change_username.png"> 
 </details>
+
+### CSS Validation
+
+The W3C Jigsaw CSS Validation Service was used to validate the CSS of the website. 
+All CSS modules pass the validation with no errors.
+
+<details><summary>Index.css</summary> 
+<img src="docs/validation/css/index_css.png"> 
+</details> 
+
+<details><summary>App.module.css</summary> 
+<img src="docs/validation/css/app_module_css.png"> 
+</details>
+
+<details><summary>Asset.module.css</summary> 
+<img src="docs/validation/css/asset_module_css.png"> 
+</details>
+
+<details><summary>AudioComponent.module.css</summary> 
+<img src="docs/validation/css/audiocomponent_module_css.png"> 
+</details>
+
+<details><summary>Avatar.module.css</summary> 
+<img src="docs/validation/css/avatar_module_css.png"> 
+</details>
+
+<details><summary>Button.module.css</summary> 
+<img src="docs/validation/css/button_module_css.png"> 
+</details>
+
+<details><summary>Comment.module.css</summary> 
+<img src="docs/validation/css/comment_module_css.png"> 
+</details>
+
+<details><summary>CommentCreateEditForm.module.css</summary> 
+<img src="docs/validation/css/commentcreateeditform_module_css.png"> 
+</details>
+
+<details><summary>Dropdown.module.css</summary> 
+<img src="docs/validation/css/dropdown_module_css.png"> 
+</details>
+
+<details><summary>NavBar.module.css</summary> 
+<img src="docs/validation/css/navbar_module_css.png"> 
+</details>
+
+<details><summary>PageNotFound.module.css</summary> 
+<img src="docs/validation/css/pagenotfound_module_css.png"> 
+</details>
+
+<details><summary>Post.module.css</summary> 
+<img src="docs/validation/css/post_module_css.png"> 
+</details>
+
+<details><summary>PostCreateEditForm.module.css</summary> 
+<img src="docs/validation/css/postcreateeditform_module_css.png"> 
+</details>
+
+<details><summary>PostPage.module.css</summary> 
+<img src="docs/validation/css/postpage_module_css.png"> 
+</details>
+
+<details><summary>Profile.module.css</summary> 
+<img src="docs/validation/css/profile_module_css.png"> 
+</details>
+
+<details><summary>ProfilePage.module.css</summary> 
+<img src="docs/validation/css/profilepage_module_css.png"> 
+</details>
+
+<details><summary>SignUpLogInForm.module.css</summary> 
+<img src="docs/validation/css/signuploginform_module_css.png"> 
+</details>
+
+### ESLint JavaScript JSX Validation 
+
+All JavaScript files were validated using ESLint JavaScript validator. 
+All files passed without warings or errors.
