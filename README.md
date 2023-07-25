@@ -347,7 +347,7 @@ Home page is a feature of xPress, it will allow any user to view a list of posts
 
 ### Nav Bar
 
-Nav Bar is a feature of the xPress, it allows users to navigate the site with ease while also reflecting the users logged-in status.
+Nav Bar is a feature of xPress, it allows users to navigate the site with ease while also reflecting the users logged-in status.
 
 <details>
 <summary>NavBar</summary>
@@ -357,7 +357,7 @@ Nav Bar is a feature of the xPress, it allows users to navigate the site with ea
 
 ### Feed
 
-Feed is a feature of the xPress, it allows users to view all posts by profiles they have followed.
+Feed is a feature of xPress, it allows users to view all posts by profiles they have followed.
 
 <details>
 <summary>Feed</summary>
@@ -366,7 +366,7 @@ Feed is a feature of the xPress, it allows users to view all posts by profiles t
 
 ### Liked
 
-Liked is a feature of the xPress, it allows users to view all posts by profiles they have followed.
+Liked is a feature of xPress, it allows users to view all posts by profiles they have followed.
 
 <details>
 <summary>Liked</summary>
@@ -375,7 +375,7 @@ Liked is a feature of the xPress, it allows users to view all posts by profiles 
 
 ### Profile
 
-Profile is a feature of the xPress, it allows users to a profile and all it's details and (un)published posts.
+Profile is a feature of xPress, it allows users to a profile and all it's details and (un)published posts.
 When logged out the plain profile is displayed.
 When logged in and viewing another user's profile a follow/unfollow button is displayed.
 When logged in and viewing a user's own profile a dropdown menu is displayed providing acces to edit/delete functionality.
@@ -389,7 +389,7 @@ When logged in and viewing a user's own profile a dropdown menu is displayed pro
 
 ### Edit Profile
 
-Liked is a feature of the xPress, it allows users to view all posts by profiles they have followed.
+Liked is a feature of xPress, it allows users to view all posts by profiles they have followed.
 
 <details>
 <summary>Liked</summary>
