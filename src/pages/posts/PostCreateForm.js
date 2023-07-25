@@ -130,8 +130,9 @@ function PostCreateForm() {
     const textFields = (
         <div className="text-center">
             <Form.Group>
-                <Form.Label>Title:</Form.Label>
+                <Form.Label htmlFor="postTitle" >Title:</Form.Label>
                 <Form.Control
+                    id="postTitle"
                     type="text"
                     name="title"
                     value={title}
@@ -145,8 +146,9 @@ function PostCreateForm() {
             </Form.Group>
 
             <Form.Group>
-                <Form.Label>Text:</Form.Label>
+                <Form.Label htmlFor="postText" >Text:</Form.Label>
                 <Form.Control
+                    id="postText"
                     as="textarea"
                     name="text"
                     rows={6}
@@ -158,8 +160,9 @@ function PostCreateForm() {
                         {message}
                     </Alert>
                 ))}
-                <Form.Label>Excerpt:</Form.Label>
+                <Form.Label htmlFor="postExcerpt">Excerpt:</Form.Label>
                 <Form.Control
+                    id="postExcerpt"
                     as="textarea"
                     name="excerpt"
                     rows={3}
@@ -173,10 +176,11 @@ function PostCreateForm() {
                 ))}
                 <div className="text-left">
                     {<hr />}
-                    <Form.Label>Please select which components to include:</Form.Label>
+                    <div>Please select which components to include:</div>
                     <Form.Check
                         type="checkbox"
                         label="Include Text/Excerpt"
+                        id="Include Text/Excerpt"
                         name="include_text"
                         checked={include_text}
                         onChange={handleChange}
@@ -189,6 +193,7 @@ function PostCreateForm() {
                     <Form.Check
                         type="checkbox"
                         label="Include Image"
+                        id="Include Image"
                         name="include_image"
                         checked={include_image}
                         onChange={handleChange}
@@ -201,6 +206,7 @@ function PostCreateForm() {
                     <Form.Check
                         type="checkbox"
                         label="Include Audio"
+                        id="Include Audio"
                         name="include_audio"
                         checked={include_audio}
                         onChange={handleChange}
@@ -210,11 +216,12 @@ function PostCreateForm() {
                             {message}
                         </Alert>
                     ))}
-                    {<hr/>}
-                    <Form.Label>Don't forget to publish your post:</Form.Label>
+                    {<hr />}
+                    <div>Don't forget to publish your post:</div>
                     <Form.Check
                         type="checkbox"
                         label="Publish Post"
+                        id="Publish Post"
                         name="publish"
                         checked={publish}
                         onChange={handleChange}
@@ -282,9 +289,10 @@ function PostCreateForm() {
                                 ref={imageInput}
                                 hidden
                             />
-                            <Form.Label>Image Description:</Form.Label>
+                            <Form.Label htmlFor="image_description">Image Description:</Form.Label>
                             <Form.Control
                                 type="text"
+                                id="image_description"
                                 name="image_description"
                                 value={image_description}
                                 onChange={handleChange}
@@ -335,9 +343,10 @@ function PostCreateForm() {
                                 ref={audioInput}
                                 hidden
                             />
-                            <Form.Label>Audio Description:</Form.Label>
+                            <Form.Label htmlFor="audio_description">Audio Description:</Form.Label>
                             <Form.Control
                                 type="text"
+                                id="audio_description"
                                 name="audio_description"
                                 value={audio_description}
                                 onChange={handleChange}
