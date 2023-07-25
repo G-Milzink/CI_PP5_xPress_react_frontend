@@ -37,9 +37,9 @@ Developer: Gustaaf Milzink
     4.  [Chrome Dev Tools Lighthouse](#chrome-dev-tools-lighthouse-validation)
     5.  [WAVE Validation](#wave-validation)
 11. [Testing](#testing)
-      1. [Device Testing](#device-testing)
-      2. [Browser Compatibility](#browser-compatibility)
-      3. [Manual Testing](#manual-testing)
+    1.  [Device Testing](#device-testing)
+    2.  [Browser Compatibility](#browser-compatibility)
+    3.  [Manual Testing](#manual-testing)
 
 ## About
 
@@ -81,16 +81,16 @@ Key aspects:
 1.  Navigation: As a user I can view a navbar from every page, so that I can easily navigate the site.
 2.  Navigation: Conditional Rendering, As a logged out user I can see sign-up/sign-in options so that I can sign in/up.
 3.  Authentication: As a user I can create a new acccount so I can acces the features for signed up users.
-4.  Authentication: As a user I can sign in to the app so I can acces features for signed in users.
+4.  Authentication: As a user I can login in to the app so I can acces features for signed in users.
 5.  Authentication: Log out of my account As a user, I can log out of my account, so that I know my account is safe.
 6.  Authentication: Status, As a user I can tell wether I am logged in or not so I can log in if I need to.
 7.  Authentication: Refresh Acces Tokens, As a user I can maintain my logged in status so that my user experience is not compromised.
 8.  Routing: As a user I can navigate through pages quickly so I can view content without refreshing the page,
 9.  Avatar: As a user I can view a user's avatar so can easily identify different users.
-Adding/Liking Posts:
+    Adding/Liking Posts:
 10. Create: As a user I can create posts so that I can share my content with others.
 11. Create: As a user I can post Text, Images or Audio.
-12.  Create: As a post creator I can decide wether to show all or some of the posts content so that add content to a post that I want to keep, but not yet share with the public
+12. Create: As a post creator I can decide wether to show all or some of the posts content so that add content to a post that I want to keep, but not yet share with the public
 13. As a logged inuser I can decide wether a post is published so that create a draft post and revise it before publishing.
 14. View: As a user I can view the details of a single post so I can learn more about it.
 15. Like: As a user I can like a post so I can show support for content that interests me.
@@ -115,7 +115,7 @@ Adding/Liking Posts:
 31. Follow/Unfollow: As a logged in user I can follow/unfollow other users so i can see posts by specific users in my post feed.
 32. View all posts by a specific user: As a user I can view all the posts by a specific user so that I can catch up on their latest posts, or decide I want to follow them
 33. Edit profile: As a logged in user I can edit my profile so that I can change my profile picture and bio
-34. Update username and password: As a logged in user I can update my username and password so that I can change my display name and keep my profile secure 
+34. Update username and password: As a logged in user I can update my username and password so that I can change my display name and keep my profile secure
 35. See unpublished: As a logged in user I can easily see wether a post is published or not so that know what content i have (not yet) shared with others.
 36. quick publish: As a logged in user I can easily publish a draft post so that easily manage my unpublished content.
 
@@ -679,19 +679,146 @@ Add WebAim results here.....
 
 This site was tested on the following devices:
 
-- Windows PC with 27" monitor.
-- Samsung Galaxy A01.
-- Chrome Dev Tools were used to test for a range of screen sizes.
+*   Windows PC with 27" monitor.
+*   Samsung Galaxy A01.
+*   Chrome Dev Tools were used to test for a range of screen sizes.
 
 ### Browser compatibility
 
 The website was tested on the following web browsers:
-- Google Chrome
-- FireFox
-- Microsoft Edge
+
+*   Google Chrome
+*   FireFox
+*   Microsoft Edge
 
 ### Manual testing
 
 <summary>See Testing User Stories</summary>
 
 #### Testing User Stories - Users
+
+1.  Navigation: As a user I can view a navbar from every page, so that I can easily navigate the site.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Navbar | Locate Navbar at top of page, Click apropriate link | Direct user to selected page | Works as expected |
+| Burger Menu | Visit site on mobile, Find burger menu with links | Direct user to selected page | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/1a.png">
+<img src="docs/user_stories/1b.png">
+<img src="docs/user_stories/1c.png">
+</details>
+
+2.  Navigation: Conditional Rendering, As a logged out user I can see sign-up/sign-in options so that I can sign in/up
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+|NavBar | Locate navbar | Find Signup/Login links | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/2a.png">
+</details>
+
+3.  Authentication: As a user I can create a new acccount so I can acces the features for signed up users.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Signup Page | Click Signup link | Find SignUp form | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/3a.png">
+</details>
+
+4.  Authentication: As a user I can login in to the app so I can acces features for logged in users.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Login Page | Click Login link | Find Login form | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/4a.png">
+</details>
+
+5.  Authentication: As a user, I can log out of my account, so that I know my account is safe.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Navbar | Click Logout link | User is logged out | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/5a.png">
+</details>
+
+6.  Authentication: Status, As a user I can tell wether I am logged in or not so I can log in if I need to.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Navbar | Locate navbar | See logged in/out status reflected in icons | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/6a.png">
+<img src="docs/user_stories/6b.png">
+</details>
+
+7.  Authentication: Refresh Acces Tokens, As a user I can maintain my logged in status so that my user experience is not compromised.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| JWT  | Return to site within 24h without loggin out | Logged in status is maintained | Works as expected |
+
+8.  Routing: As a user I can navigate through pages quickly so I can view content without refreshing the page.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Site navigation | Visit several pages on site | Content loads without page refresh | Works as expected |
+
+9.  Avatar: As a user I can view a user's avatar so can easily identify different users.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Avatar | View user's content | Find avatar | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/9a.png">
+</details>
+
+10. Create: As a user I can create posts so that I can share my content with others.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Navbar | click 'new xPression link' | Find post creation form | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/10a.png">
+</details>
+
+11. Create: As a user I can post Text, Images or Audio.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Create Post Form | Visit post creation form | Find options for content types | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/11a.png">
+</details>
+
+12.  Create: As a post creator I can decide wether to show all or some of the posts content so that add content to a post that I want to keep, but not yet share with the public
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Create Post Form | Visit post creation form | Find options for content inclusion | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/12a.png">
+</details>
