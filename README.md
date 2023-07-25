@@ -36,6 +36,10 @@ Developer: Gustaaf Milzink
     3.  [ESLint JavaScript JSX Validation](#eslint-javascript-jsx-validation)
     4.  [Chrome Dev Tools Lighthouse](#chrome-dev-tools-lighthouse-validation)
     5.  [WAVE Validation](#wave-validation)
+11. [Testing](#testing)
+      1. [Device Testing](#device-testing)
+      2. [Browser Compatibility](#browser-compatibility)
+      3. [Manual Testing](#manual-testing)
 
 ## About
 
@@ -666,3 +670,26 @@ Add WebAim results here.....
 </details>
 
 ##### Back to [table of contents](#table-of-contents)
+
+## Testing
+
+### Device Testing
+
+This site was tested on the following devices:
+
+- Windows PC with 27" monitor.
+- Samsung Galaxy A01.
+- Chrome Dev Tools were used to test for a range of screen sizes.
+
+### Browser compatibility
+
+The website was tested on the following web browsers:
+- Google Chrome
+- FireFox
+- Microsoft Edge
+
+### Manual testing
+
+<summary>See Testing User Stories</summary>
+
+#### Testing User Stories - Users
