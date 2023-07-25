@@ -5,3 +5,7 @@
     align-items: center;
     min-height: 120px;
 }
+
+.SpinnerMargin {
+    margin: 0 5px 0 5px;
+}

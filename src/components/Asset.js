@@ -29,9 +29,9 @@ const Asset = ({ spinner, src, message }) => {
     return (
         <div className={`${styles.Asset} p-4`}>
             <div>
-                {spinner && <Spinner animation="grow" variant="dark" />}
-                {showSecondSpinner && <Spinner animation="grow" variant="dark" />}
-                {showThirdSpinner && <Spinner animation="grow" variant="dark" />}
+                {spinner && <Spinner className={styles.SpinnerMargin} animation="grow" variant="dark" />}
+                {showSecondSpinner && <Spinner className={styles.SpinnerMargin} animation="grow" variant="dark" />}
+                {showThirdSpinner && <Spinner className={styles.SpinnerMargin} animation="grow" variant="dark" />}
             </div>
             {src && <img src={src} alt={message} />}
             {message && <p className="mt-4">{message}</p>}
