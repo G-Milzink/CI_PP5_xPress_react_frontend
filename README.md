@@ -467,8 +467,16 @@ Follow is a feature of xPress, it allows logged-in users to follow/unfollow a pr
 Search is a feature of xPress, it allows users to search a list of posts by keyword.
 Search is available for the 'Home', 'Feed' and 'Liked' pages.
 
-
 <details>
 <summary>Search</summary>
 <img src="docs/features/search.png">
+</details>
+
+### Input Validation
+
+Input Validation is a feature of the Tick It used throughout the site for form inputs. 
+
+<details>
+<summary>Input Validation image</summary>
+<img src="docs/features/validation.png">
 </details>
