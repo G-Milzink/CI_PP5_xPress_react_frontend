@@ -130,7 +130,7 @@ function PostCreateForm() {
     const textFields = (
         <div className="text-center">
             <Form.Group>
-                <Form.Label htmlFor="postTitle" >Title:</Form.Label>
+                <Form.Label htmlFor="postTitle">Title:</Form.Label>
                 <Form.Control
                     id="postTitle"
                     type="text"
@@ -274,7 +274,7 @@ function PostCreateForm() {
                             ) : (
                                 <Form.Label
                                     className="d-flex justify-content-center"
-                                    htmlFor="image-upload"
+                                    htmlFor="image_upload"
                                 >
                                     <Asset
                                         src={UploadImage}
@@ -283,7 +283,7 @@ function PostCreateForm() {
                                 </Form.Label>
                             )}
                             <Form.File
-                                id="image-upload"
+                                id="image_upload"
                                 accept="image/*"
                                 onChange={handleChangeImage}
                                 ref={imageInput}
