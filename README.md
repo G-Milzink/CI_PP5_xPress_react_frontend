@@ -812,7 +812,7 @@ The website was tested on the following web browsers:
 <img src="docs/user_stories/11a.png">
 </details>
 
-12.  Create: As a post creator I can decide wether to show all or some of the posts content so that add content to a post that I want to keep, but not yet share with the public
+12. Create: As a post creator I can decide wether to show all or some of the posts content so that add content to a post that I want to keep, but not yet share with the public
 
 | Feature       | Action        | Expected Result  | Actual Result |
 | ------------- | ------------- | -------------    | ------------- |
@@ -821,4 +821,284 @@ The website was tested on the following web browsers:
 <details>
 <summary>Screenshots</summary>
 <img src="docs/user_stories/12a.png">
+</details>
+
+13. Create: As a logged inuser I can decide wether a post is published so that create a draft post and revise it before publishing.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Create Post Form | Visit post creation form | Find option for post publication | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/13a.png">
+</details>
+
+14. View: As a user I can view the details of a single post so I can learn more about it.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Post page | Click a post | User is redirected to post Detail page | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/14a.png">
+<img src="docs/user_stories/14b.png">
+</details>
+
+15. Like: As a user I can like a post so I can show support for content that interests me.
+    Posts Listing
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Post | Click like icon | post is liked/unliked | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/15a.png">
+<img src="docs/user_stories/15b.png">
+</details>
+
+16. View recent posts: As a user I can view the most recent posts orderd by creation/update date so I can easily stay up to date with new content.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| HomePage | Visit Site | Find ordered list of posts | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/16a.png">
+</details>
+
+17. Search: As a user I can search for posts with keywords so I can find the posts that interest me.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Search bar | Type keywords | See filtered list of posts | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/17a.png">
+</details>
+
+18. View liked posts: As a logged in user I can view the posts I liked so I can easily find them again.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Liked page | Visit liked page | view list of liked posts | Broken |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/18a.png">
+</details>
+
+19. View posts by followed: As a logged in user I can view content filtered by users I follow so i can keep up to date with their content.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Feed page | Visit feed page | view list of posts by followed users | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/19a.png">
+</details>
+
+20. Infinite scroll: As a user I can keep scrolling through the posts on the site without having to click to go to the next page.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Infinite scroll | scroll to bottom of postlist | more ccontent is loaded | Works as expected |
+
+21. Post Page: As a user I can view a post page so I can read comments about the post.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+|Post page | Visit specific post | Find comment section | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/21a.png">
+</details>
+
+22. Edit Post: As a post owner I can edit a posts content so I can update after the original posting.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+|Edit post form | Clickc edit post link | Find post edit form | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/22a.png">
+<img src="docs/user_stories/22b.png">
+</details>
+
+23. Create Comment: As a logged in user I can add comments to a post so that I can share my thoughts on the content.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+|Comment | Visit comment section | Find create comment form | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/23a.png">
+</details>
+
+24. Comment Date: As a user I can see how long ago a comment was made so I know how old it is.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+|Post page | Visit specific post | Find comment section | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/25a.png">
+</details>
+
+25. View Comments: As a user I can read comments on a post so I can find out what others user think about the content.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+|Comment | Visit specific post | Find comment section | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/25a.png">
+</details>
+
+26. Delete comments: As a comments owner I can delete my comment so I can control if my comment remains available online.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+|Comment | view owned comment | Find dropdown menu, select delete | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/26a.png">
+<img src="docs/user_stories/26b.png">
+</details>
+
+27. Edit Comment: As a comments owner I can edit my comment so I can update existing comments.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+|Comment | view owned comment | Find dropdown menu, select edit | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/27a.png">
+<img src="docs/user_stories/27b.png">
+<img src="docs/user_stories/27c.png">
+</details>
+
+28. Profile View: As a user I can view other users profiles so I can see their posts and learn more about them.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+|Profile page | Click other users avatar | Find other users profile page | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/28a.png">
+<img src="docs/user_stories/28b.png">
+</details>
+
+29. Most followed profiles: As a user I can see a list of the most followed profiles so that I can see wich profiles are most popular.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Popular Profiles List | Visit any page | Find list of poular profiles| Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/29a.png">
+</details>
+
+30. User Profile- user stats: As a user I can view statistics about  a specific user so i can learn more apout them.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+|Profile page | Visit user's profile page | Find profile statisticcs and bio | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/30a.png">
+</details>
+
+
+31. Follow/Unfollow: As a logged in user I can follow/unfollow other users so i can see posts by specific users in my post feed.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Follow | View other user's profile | Find Follow/UnFollow button| Works as expected |
+|Follow | Viewe popular profiles list | Find Follow/UnFollow button| Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/31a.png">
+</details>
+
+32. View all posts by a specific user: As a user I can view all the posts by a specific user so that I can catch up on their latest posts, or decide I want to follow them
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Profile page | Visit other user's profile | Find other all the user's published posts| Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/32a.png">
+</details>
+
+33. Edit profile: As a logged in user I can edit my profile so that I can change my profile picture and bio
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+|Profile page | View own profile, select edit from dropdown menu | Find Profile edit form | Works as expected |
+|Profile Edit Form | Enter new info/change image and submit | Profile is updated | Broken |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/33a.png">
+<img src="docs/user_stories/33b.png">
+<img src="docs/user_stories/33c.png">
+</details>
+
+34. Update username and password: As a logged in user I can update my username and password so that I can change my display name and keep my profile secure
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+|Profile page | View own profile, select apropriate option from dropdown menu | Find relevant form | Works as expected |
+|Change username | Enter new username and submit | username is updated | Works as expected |
+|Change password | Enter new password and submit | password is updated | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/34a.png">
+<img src="docs/user_stories/34b.png">
+<img src="docs/user_stories/34c.png">
+</details>
+
+35. See unpublished: As a logged in user I can easily see wether a post is published or not so that know what content i have (not yet) shared with others.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Profile page | Visit own profile | See 'unpublished' notification on unpublished posts | Works as expected |
+| Post page | Visit own profile | See 'unpublished' notification on unpublished posts | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/35a.png">
+<img src="docs/user_stories/35b.png">
+</details>
+
+36. quick publish: As a logged in user I can easily publish a draft post so that easily manage my unpublished content.
+
+| Feature       | Action        | Expected Result  | Actual Result |
+| ------------- | ------------- | -------------    | ------------- |
+| Profile page | Visit own profile | See Publish button on unpublished posts | Works as expected |
+| Post page | Visit own profile | See Publish button on unpublished posts | Works as expected |
+
+<details>
+<summary>Screenshots</summary>
+<img src="docs/user_stories/36a.png">
+<img src="docs/user_stories/36b.png">
 </details>

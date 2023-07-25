@@ -116,7 +116,7 @@ const Post = (props) => {
                             <p className={styles.UnPublished}>Unpublished!</p>
                         </span>
                         <Button
-                            className={`${btnStyles.Button} ${btnStyles.Orange}`}
+                            className={`${btnStyles.Button} ${btnStyles.Publish}`}
                             onClick={handlePublish}
                         >
                             publish
