@@ -127,13 +127,11 @@ Key aspects:
 
 An Agile approach to creating this app has been applied. GitHub's projects was used to track user stories and implement ideas based on their level of importance for allowing use of the app with no loss of functionality or user experience. Three categories were created indicating their level of importance, those were:
 
-*   MUST HAVE
-*   SHOULD HAVE
-*   COULD HAVE
+MUST HAVE
+SHOULD HAVE
+COULD HAVE
 
-Github Issues and Milestones were used to define EPICS and keep track of seperate user stories contained therein giving an overview of the projects current state.
-
-Project milestones can be found [here](https://github.com/G-Milzink/ci_pp5_xpress_react_frontend/milestones)
+Github project be found [here](https://github.com/G-Milzink/ci_pp5_xpress_react_frontend/projects?query=is%3Aopen)
 
 ### CRUD Functionality
 
