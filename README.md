@@ -31,11 +31,11 @@ Developer: Gustaaf Milzink
 8.  [Features](#features)
 9.  [Future features / improvements](#future-features--improvements)
 10. [Validation](#validation)
-      1. [HTML](#html-validation)
-      2. [CSS](#css-validation)
-      3. [ESLint JavaScript JSX Validation](#eslint-javascript-jsx-validation)
-      4. [Chrome Dev Tools Lighthouse](#chrome-dev-tools-lighthouse-validation)
-      5. [WAVE Validation](#wave-validation)
+    1.  [HTML](#html-validation)
+    2.  [CSS](#css-validation)
+    3.  [ESLint JavaScript JSX Validation](#eslint-javascript-jsx-validation)
+    4.  [Chrome Dev Tools Lighthouse](#chrome-dev-tools-lighthouse-validation)
+    5.  [WAVE Validation](#wave-validation)
 
 ## About
 
@@ -499,11 +499,11 @@ Due to time constraints there is still room for refactoring of code and addition
 
 ##### Back to [table of contents](#table-of-contents)
 
-## Validation 
+## Validation
 
 ### HTML Validation
 
-The W3C Markup Validation Service was used to validate the HTML of the website. No errors were identified. 
+The W3C Markup Validation Service was used to validate the HTML of the website. No errors were identified.
 
 <details><summary>Home(not logged in)</summary> 
 <img src="docs/validation/html/homepage_loggedout.png"> 
@@ -563,7 +563,7 @@ The W3C Markup Validation Service was used to validate the HTML of the website. 
 
 ### CSS Validation
 
-The W3C Jigsaw CSS Validation Service was used to validate the CSS of the website. 
+The W3C Jigsaw CSS Validation Service was used to validate the CSS of the website.
 All CSS modules pass the validation with no errors.
 
 <details><summary>Index.css</summary> 
@@ -634,7 +634,35 @@ All CSS modules pass the validation with no errors.
 <img src="docs/validation/css/signuploginform_module_css.png"> 
 </details>
 
-### ESLint JavaScript JSX Validation 
+### ESLint JavaScript JSX Validation
 
-All JavaScript files were validated using ESLint JavaScript validator. 
+All JavaScript files were validated using ESLint JavaScript validator.
 All files passed without warings or errors.
+
+<details><summary>JavaScript</summary>
+<img src="docs/validation/js/compiled.png"> 
+<img src="docs/validation/js/noproblems.png">
+</details>
+
+### Chrome Dev Tools Lighthouse Validation
+
+Lighthouse was used to test the performance, accessibility, best practice and SEO of the site.
+The validation was done for  mobile.
+
+<details><summary>Results</summary>
+
+Add lighthouse results here.....
+
+</details>
+
+### Wave Validation
+
+The WAVE WebAIM web accessibility evaluation tool was used to test the websites accessibility.
+
+<details><summary>Results</summary> 
+
+Add WebAim results here.....
+
+</details>
+
+##### Back to [table of contents](#table-of-contents)
