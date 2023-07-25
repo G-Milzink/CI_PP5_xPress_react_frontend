@@ -55,7 +55,9 @@ function PostsPage({message, filter = ""}) {
                 <Form className={styles.SearchBar}
                     onSubmit={(e) => e.preventDefault()}
                 >
+                    <Form.Label htmlFor="searchInput" className="d-none">Search xPressions by keyword</Form.Label>
                     <Form.Control
+                        id="searchInput"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                         type="text"
