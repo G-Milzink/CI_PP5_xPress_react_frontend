@@ -327,6 +327,15 @@ Log Out is a feature of xPress, it allows users the ability to log out of their 
 <img src="docs/features/logout.png">
 </details>
 
+### New xPression
+
+New xPression is a feature of xPress, it will allow any user to create a post via the create post form.
+
+<details>
+<summary>New xPression</summary>
+<img src="docs/features/newpost.png">
+</details>
+
 ### Home page
 
 Home page is a feature of xPress, it will allow any user to view a list of posts.
@@ -357,7 +366,30 @@ Feed is a feature of the xPress, it allows users to view all posts by profiles t
 
 ### Liked
 
-Feed is a feature of the xPress, it allows users to view all posts by profiles they have followed.
+Liked is a feature of the xPress, it allows users to view all posts by profiles they have followed.
+
+<details>
+<summary>Liked</summary>
+<img src="docs/features/liked.png">
+</details>
+
+### Profile
+
+Profile is a feature of the xPress, it allows users to a profile and all it's details and (un)published posts.
+When logged out the plain profile is displayed.
+When logged in and viewing another user's profile a follow/unfollow button is displayed.
+When logged in and viewing a user's own profile a dropdown menu is displayed providing acces to edit/delete functionality.
+
+<details>
+<summary>Profile</summary>
+<img src="docs/features/profile_loggedout.png">
+<img src="docs/features/profile_otheruser.png">
+<img src="docs/features/profile_owner.png">
+</details>
+
+### Edit Profile
+
+Liked is a feature of the xPress, it allows users to view all posts by profiles they have followed.
 
 <details>
 <summary>Liked</summary>
