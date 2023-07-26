@@ -2,7 +2,6 @@
     font-size: 0.8rem;
     align-self: center;
     border-radius: 5px;
-    /* border-color: transparent; */
     padding: 4px 10px;
     margin-left: 2px;
     margin-right: 2px;
@@ -40,7 +39,6 @@
 }
 
 .Orange:hover {
-    /* border: 2px solid #FB8122; */
     background-color: #1D2228;
     color: #FB8122;
 }
