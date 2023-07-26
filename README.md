@@ -161,7 +161,53 @@ Balsamiq was used to create wireframes of the sites pages
 
 <details>
 <summary>Wireframes</summary>
+<details><summary>Home(not logged in)</summary> 
+<img src="docs/wireframes/home_loggedout.png"> 
+</details>
 
+<details><summary>Home(logged in)</summary> 
+<img src="docs/wireframes/home_loggedin.png">
+</details>
+
+<details><summary>Signup</summary> 
+<img src="docs/wireframes/signup.png"> 
+</details>
+
+<details><summary>Login</summary> 
+<img src="docs/wireframes/login.png">  
+</details>
+
+<details><summary>New Post</summary> 
+<img src="docs/wireframes/new_post.png">  
+</details>
+
+<details><summary>Edit Post</summary> 
+<img src="docs/wireframes/edit_post.png">
+</details>
+
+<details><summary>Feed</summary> 
+<img src="docs/wireframes/feed.png"> 
+</details>
+
+<details><summary>Liked</summary> 
+<img src="docs/wireframes/liked.png">
+</details>
+
+<details><summary>Profile</summary> 
+<img src="docs/wireframes/profile.png"> 
+</details>
+
+<details><summary>Edit Profile</summary> 
+<img src="docs/wireframes/edit_profile.png">  
+</details>
+
+<details><summary>Change Password</summary> 
+<img src="docs/wireframes/edit_password.png"> 
+</details>
+
+<details><summary>Change Username</summary> 
+<img src="docs/wireframes/edit_username.png"> 
+</details>
 </details>
 
 ##### Back to [table of contents](#table-of-contents)
