@@ -25,8 +25,9 @@ const ProfileEditForm = () => {
         name: "",
         bio: "",
         avatar: "",
+        owner: "",
     });
-    const { name, bio, avatar } = profileData;
+    const { name, bio, avatar, owner } = profileData;
     const [errors, setErrors] = useState({});
 
     useEffect(() => {
@@ -36,9 +37,9 @@ const ProfileEditForm = () => {
             if (currentUser?.profile_id?.toString() === id) {
                 try {
                     const { data } = await axiosReq.get(`/profiles/${id}/`);
-                    const { name, bio, avatar } = data;
+                    const { name, bio, avatar, owner } = data;
                     if (isMounted) {
-                        setProfileData({ name, bio, avatar });
+                        setProfileData({ name, bio, avatar, owner });
                     }
                 } catch (err) {
                     // console.log(err);
@@ -48,52 +49,25 @@ const ProfileEditForm = () => {
                 history.push("/");
             }
         };
-
         handleMount();
 
         return () => {
             isMounted = false;
         };
     }, [currentUser, history, id]);
-    useEffect(() => {
-        let isMounted = true;
-
-        const handleMount = async () => {
-            if (currentUser?.profile_id?.toString() === id) {
-                try {
-                    const { data } = await axiosReq.get(`/profiles/${id}/`);
-                    const { name, bio, avatar } = data;
-                    if (isMounted) {
-                        setProfileData({ name, bio, avatar });
-                    }
-                } catch (err) {
-                    // console.log(err);
-                    history.push("/");
-                }
-            } else {
-                history.push("/");
-            }
-        };
-
-        handleMount();
-
-        return () => {
-            isMounted = false;
-        };
-    }, [currentUser, history, id]);
-
 
     const handleChange = (event) => {
         setProfileData({
             ...profileData,
             [event.target.name]: event.target.value,
         });
+        console.log(imageFile)
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
-        formData.append("name", name);
+        name.length ? (formData.append("name", name)) : (formData.append("name", owner))
         formData.append("bio", bio);
 
         if (imageFile?.current?.files[0]) {
@@ -174,6 +148,7 @@ const ProfileEditForm = () => {
                                 ref={imageFile}
                                 accept="image/*"
                                 onChange={(e) => {
+                                    console.log("Image selected:", e.target.files[0]);
                                     if (e.target.files.length) {
                                         setProfileData({
                                             ...profileData,
