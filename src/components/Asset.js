@@ -11,6 +11,10 @@ const Asset = ({ spinner, src, message }) => {
     */
 
     useEffect(() => {
+        /*
+            Using setTimeout to create a delay between the three spinners
+            for visual effect.
+        */
         if (spinner) {
             setShowSecondSpinner(false);
             setShowThirdSpinner(false);
