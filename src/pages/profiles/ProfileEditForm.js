@@ -20,7 +20,11 @@ const ProfileEditForm = () => {
     const setCurrentUser = useSetCurrentUser();
     const { id } = useParams();
     const history = useHistory();
-    const imageFile = useRef();
+    // const imageFile = useRef();
+
+    // State to keep track of the selected image file
+    const [selectedImage, setSelectedImage] = useState(null);
+
     const [profileData, setProfileData] = useState({
         name: "",
         bio: "",
@@ -56,22 +60,36 @@ const ProfileEditForm = () => {
         };
     }, [currentUser, history, id]);
 
+    /*
+        handles changing the 'bio' field.
+    */
     const handleChange = (event) => {
         setProfileData({
             ...profileData,
             [event.target.name]: event.target.value,
         });
-        console.log(imageFile)
+    };
+
+    /*  
+        handles changing the image
+    */
+    const handleImageChange = (event) => {
+        const file = event.target.files[0];
+        setSelectedImage(file);
+        setProfileData({
+            ...profileData,
+            avatar: URL.createObjectURL(file),
+        });
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
-        name.length ? (formData.append("name", name)) : (formData.append("name", owner))
+        formData.append("name", name.length ? name : owner);
         formData.append("bio", bio);
 
-        if (imageFile?.current?.files[0]) {
-            formData.append("avatar", imageFile?.current?.files[0]);
+        if (selectedImage) {
+            formData.append("avatar", selectedImage);
         }
 
         try {
@@ -145,17 +163,9 @@ const ProfileEditForm = () => {
                             <Form.File
                                 hidden
                                 id="image-upload"
-                                ref={imageFile}
+                                // ref={imageFile}
                                 accept="image/*"
-                                onChange={(e) => {
-                                    console.log("Image selected:", e.target.files[0]);
-                                    if (e.target.files.length) {
-                                        setProfileData({
-                                            ...profileData,
-                                            avatar: URL.createObjectURL(e.target.files[0]),
-                                        });
-                                    }
-                                }}
+                                onChange={handleImageChange}
                             />
                         </Form.Group>
                         <div className="d-md-none">{textFields}</div>
