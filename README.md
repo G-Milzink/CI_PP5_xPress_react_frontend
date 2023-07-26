@@ -40,6 +40,11 @@ Developer: Gustaaf Milzink
     1.  [Device Testing](#device-testing)
     2.  [Browser Compatibility](#browser-compatibility)
     3.  [Manual Testing](#manual-testing)
+12. [Bugs](#bugs)
+  13. [Deployment](#deployment)
+      1. [Heroku](#heroku)
+      2. [Forking GitHub Repo](#forking-the-github-repository)
+      3. [Clone a GitHub Repo](#clone-a-github-repository)
 
 ## About
 
@@ -542,7 +547,7 @@ Search is available for the 'Home', 'Feed' and 'Liked' pages.
 
 ### Input Validation
 
-Input Validation is a feature of the Tick It used throughout the site for form inputs.
+Input Validation is a feature of the xPress It used throughout the site for form inputs.
 
 <details>
 <summary>Input Validation image</summary>
@@ -1156,3 +1161,97 @@ The website was tested on the following web browsers:
 <img src="docs/user_stories/36a.png">
 <img src="docs/user_stories/36b.png">
 </details>
+
+## Deployment
+
+### Heroku
+
+This project was deployed to [Heroku](https://www.heroku.com) in the project's early stages to allow continual responsive testing. This was achieved via the following steps:
+
+The website was deployed with Heroku by following these steps:
+
+1. Use the "pip freeze -> requiremnts.txt" command in the terminal to save any libraries that need to be installed in the file.
+2. The app uses Cloudinary to host the post images therefore a Cloudinary account will be required. 
+3. Log in to [Cloudinary](https://cloudinary.com/) or create an account for free.
+4. Navigate to the Dashboard on Cloudinary
+<details>
+<summary>Screenshot</summary>
+<img src="docs/deployment/cloudinary_dash.png">
+</details>
+
+5. Copy and store the value of the 'API Environment Variable" beginning at cloudinary:// until the end, this will be used in the Heroku Config Vars. 
+6. The app also uses ElephantSQL to host the database
+7. Log in to [ElephantSQL](https://www.elephantsql.com/) or create an account for free.
+8. Click on Create a new instance
+<details>
+<summary>Screenshot</summary>
+<img src="docs/deployment/elephant_new_instance.png">
+</details>
+
+9. Set up your plan. Give the 'plan' the desired name, select the Tiny Turtle (free) plan and leave tags blank.
+<details>
+<summary>Screenshot</summary>
+<img src="docs/deployment/elephant_select_plan">
+</details>
+
+10. Select the region and choose the nearest data centre to your location.
+<details>
+<summary>Screenshot</summary>
+<img src="docs/deployment/elephant_region.png">
+</details>
+
+11. Click 'review' and if happy with the details presented click on the create instance button.
+<details>
+<summary>Screenshot</summary>
+<img src="docs/deployment/elephant_review_.png">
+</details>
+
+12. From the instances section click on the instance with the name that was just created.
+13. Get the ElephantSQL database URL from the instance details page and copy, this will be used in the Heroku Config Vars
+<details>
+<summary>Screenshot</summary>
+<img src="docs/deployment/elephant_details.png">
+</details>
+
+14. Navigate to https://www.heroku.com/ and login or create an account. 
+15. Click the "new" button in the upper right corner and select "create new app".
+<details>
+<summary>Screenshot</summary>
+<img src="docs/deployment/heroku_new_app.png">
+</details>
+
+16. Choose an app name and your region and click "Create app".
+<details>
+<summary>Screenshot</summary>
+<img src="heroku_new_app_b.png">
+</details>
+
+17. Go to the "deploy" tab and pick GitHub as a deployment method.
+18. Search for a repository to connect to and select the branch you would like to build the app from.
+19. If preferred, enable automatic deploys and then deploy branch.
+20. Wait for the app to build and then click on the "View" link which will redirect you to the deployed link.
+
+### Forking the GitHub Repository
+
+We can make a copy of the original repository on our GitHub account to view or make changes too without affecting the original repository, this is known as forking. Forking in GitHub can be done via the following steps:
+
+1. Navigate to www.github.com and log in.
+2. Once logged in navigate to the desired [GitHub Repository](https://github.com/G-Milzink/ci_pp5_xpress_react_frontend) that you would like to fork.
+3. At the top right corner of the page click on the fork icon.
+4. There should now be a copy of your original repository in your GitHub account.
+
+Please note if you are not a member of an organisation on GitHub then you will not be able to fork your own repository.
+   
+### Clone a GitHub Repository
+
+You can make a local clone of a repository via the following steps: 
+
+1. Navigate to www.github.com and log in.
+2. Once logged in navigate to the desired [GitHub Repository](https://github.com/G-Milzink/ci_pp5_xpress_react_frontend) that you would like to clone.
+3. Locate the code button at the top, above the repository file structure.
+4. Select the preferred clone method from HTTPS. SSH or GitHub CLI then click the copy button to copy the URL to your clipboard.
+5. Open Git Bash
+6. Update the current working direction to the location in which you would like the clone directory to be created.
+7. Type `git clone` and paste the previously copied URL at Step 4.
+8. `$ clone https://github.com/G-Milzink/ci_pp5_xpress_react_frontend`
+9. Now press enter and the local clone will be created at the desired local location
