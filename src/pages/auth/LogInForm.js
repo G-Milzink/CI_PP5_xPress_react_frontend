@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-
 import styles from "../../styles/SignUpLogInForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import LogInImage from "../../assets/LogInImage.png"
-
 import {
     Form,
     Button,
@@ -15,16 +13,15 @@ import {
     Container,
     Alert
 } from "react-bootstrap";
-
 import axios from "axios";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
 import { setTokenTimestamp } from "../../utils/Utils";
 
 
-    /* 
-        Handles submit of login form
-    */
+/* 
+    Handles submit of login form
+*/
 function LogInForm() {
     const setCurrentUser = useSetCurrentUser();
     useRedirect('loggedIn')
