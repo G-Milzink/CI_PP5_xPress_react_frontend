@@ -125,7 +125,7 @@ Key aspects:
 
 ### Agile Design
 
-An Agile approach to creating this app has been applied. GitHub's projects was used to track user stories and implement ideas based on their level of importance for allowing use of the app with no loss of functionality or user experience. Three categories were created indicating their level of importance, those were:
+An Agile approach was used dureing development of this app. GitHub's projects was used to track user stories and implement ideas based on their level of importance for allowing use of the app with no loss of functionality or user experience. Three categories were created indicating their level of importance, those were:
 
 MUST HAVE
 SHOULD HAVE
@@ -144,7 +144,8 @@ The xPress app handles data with full CRUD Functionality: <br>
 
 ### Colours
 
-The colour scheme for this application was kept minimal  to not take atention away from use content.
+The colour scheme for this application was kept minimal  to not take atention away from user content while
+maintaining proper contrast to assure legibility.
 
 <details>
 <summary>Colours</summary>
@@ -300,12 +301,22 @@ Various components were created and reused across the application:
 
 *   `<Asset />` - Multi purpose component, used to display a range of items due to being passed props:
     A loading spinner, image with source and alt attribute or a paragraph containing a message.
+    *   Used in user story: 
+
 *   `<AudioComponent />` - Reusable component, used to display an audio player and play back the audio component of a post.
+    * Used in user story: 10, 11, 12, 14, 22.
+
 *   `<Avatar />` - Resuable component, used to display the relevant user profile picture. This component uses props which can specify the source of the image and also its size. This allows for different sized avatars to be displayed in different sections of the app.
+* Used in user story: 2, 3, 9, 28, 29, 30.
+
 *   `<DropDown />` - Reusable component, used to conditionally render the three dots option button containing a dropdown menu
     with options specific to the user's logged-in status, and rights regarding the viewed content.
     (example: Users will only see the dropdown menu to edit or delete a post if they are the posts owner.)
+    *  Used in user story: 22, 26, 27, 33, 34, 
+
 *   `<NavBar />` - resuable component, used for easy navigation of the site. Conditionally render Icons based on the users logged-in status thus reflecting wether the user is logged in or not, the full range of app functionality becomes available only after logging in.
+    *  Used in user story: 1, 2, 3, 5, 6, 8, , 10
+
 *   `<PageNotFound />` - Specific component, used to display a 404 page made up of an image file, a message and a link to the homepage button when the user tries to acces a non existing page.
 
 Various pages were created and used in this application
@@ -1067,7 +1078,6 @@ The website was tested on the following web browsers:
 <summary>Screenshots</summary>
 <img src="docs/user_stories/30a.png">
 </details>
-
 
 31. Follow/Unfollow: As a logged in user I can follow/unfollow other users so i can see posts by specific users in my post feed.
 
