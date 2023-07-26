@@ -8,13 +8,18 @@ import btnStyles from '../../styles/Button.module.css';
 
 function CommentEditForm(props) {
     const { id, text, setShowEditForm, setComments } = props;
-
     const [formContent, setFormContent] = useState(text);
 
+    /*
+       Handles changes to input field
+    */
     const handleChange = (event) => {
         setFormContent(event.target.value);
     };
 
+    /*
+        Handles form submission 
+    */
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {

@@ -28,6 +28,9 @@ function PostsPage({message, filter = ""}) {
 
     const currentUser = useCurrentUser();
 
+    /*
+        Fetch all posts and filter by search query
+    */
     useEffect(() => {
         const fetchPosts = async () => {
             try {

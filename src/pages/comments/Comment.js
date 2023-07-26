@@ -9,7 +9,6 @@ import { axiosRes } from '../../api/axiosDefaults';
 import CommentEditForm from "./CommentEditForm";
 
 const Comment = (props) => {
-
     const {
         id,
         profile_id,
@@ -20,11 +19,13 @@ const Comment = (props) => {
         setPost,
         setComments,
     } = props;
-
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;
     const [showEditForm, setShowEditForm] = useState(false);
 
+    /*
+        Handle comment delete
+    */
     const handleDelete = async () => {
         try {
             await axiosRes.delete(`/comments/${id}`)

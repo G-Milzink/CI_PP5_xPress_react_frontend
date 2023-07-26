@@ -15,18 +15,18 @@ import Comment from "../comments/Comment";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/Utils";
-
 import PopularProfiles from "../profiles/PopularProfiles";
 
 function PostPage() {
-
     const { id } = useParams();
     const [post, setPost] = useState({ results: [] });
-
     const currentUser = useCurrentUser();
     const profile_image = currentUser?.profile_avatar;
     const [comments, setComments] = useState({ results: [] });
 
+    /*
+        Fetch all data for a post and it's associated comments
+    */
     useEffect(() => {
         const handleMount = async () => {
             try {

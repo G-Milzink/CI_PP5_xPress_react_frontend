@@ -1,11 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -20,6 +18,10 @@ function PostEditForm() {
     const [errors, setErrors] = useState({});
     const { id } = useParams();
 
+    /*
+        Fetches posts from the API
+        Determines if the current logged in user is the owner.
+    */
     useEffect(() => {
         const handleMount = async () => {
             try {
@@ -63,10 +65,12 @@ function PostEditForm() {
         include_audio, audio, audio_description,
         publish,
     } = postData;
-
     const imageInput = useRef(null)
     const audioInput = useRef(null)
 
+    /*
+        Handles changing input fields
+    */
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         // If the input is a checkbox, handle the checked property
@@ -77,6 +81,9 @@ function PostEditForm() {
         });
     };
 
+    /*
+        Handles changing image
+    */
     const handleChangeImage = (e) => {
         if (e.target.files.length) {
             URL.revokeObjectURL(image);
@@ -93,6 +100,9 @@ function PostEditForm() {
         }
     };
 
+    /*
+        Handles changing audio
+    */
     const handleChangeAudio = (e) => {
         if (e.target.files.length) {
             URL.revokeObjectURL(audio);
@@ -109,6 +119,9 @@ function PostEditForm() {
         }
     };
 
+    /*
+        Handles form submission.
+    */
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();

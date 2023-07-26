@@ -2,7 +2,6 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-
 import logo from '../assets/logo.png';
 import styles from '../styles/NavBar.module.css';
 import { NavLink } from 'react-router-dom';
@@ -14,13 +13,14 @@ import { removeTokenTimestamp } from '../utils/Utils';
 
 
 const NavBar = () => {
-
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
-
     const {expanded, setExpanded, ref} = useClickOutsideToggle();
 
     const handleLogout = async () => {
+        /*
+            handles user logout.
+        */
         try {
             await axios.post('dj-rest-auth/logout/');
             setCurrentUser(null);

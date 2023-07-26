@@ -24,7 +24,6 @@ function PostCreateForm() {
     useRedirect('loggedOut')
     const history = useHistory();
     const [errors, setErrors] = useState({});
-
     const [postData, setPostData] = useState({
         title: "",
         include_text: false,
@@ -44,10 +43,12 @@ function PostCreateForm() {
         include_audio, audio, audio_description,
         publish,
     } = postData;
-
     const imageInput = useRef(null)
     const audioInput = useRef(null)
 
+    /*
+        Handles changing input fields
+    */
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         // If the input is a checkbox, handle the checked property
@@ -58,7 +59,9 @@ function PostCreateForm() {
         });
     };
 
-
+    /*
+        Handles changing the image.
+    */
     const handleChangeImage = (e) => {
         if (e.target.files.length) {
             URL.revokeObjectURL(image);
@@ -75,6 +78,9 @@ function PostCreateForm() {
         }
     };
 
+    /*
+        Handles changing the audio.
+    */
     const handleChangeAudio = (e) => {
         if (e.target.files.length) {
             URL.revokeObjectURL(audio);
@@ -91,6 +97,9 @@ function PostCreateForm() {
         }
     };
 
+    /*
+        Handles form submission
+    */
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();

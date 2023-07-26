@@ -13,10 +13,16 @@ function CommentCreateForm(props) {
     const { post, setPost, setComments, profileImage, profile_id } = props;
     const [text, setText] = useState("");
 
+    /*
+       Handle changes to input field
+    */
     const handleChange = (event) => {
         setText(event.target.value);
     };
 
+    /* 
+        Handles form submission 
+    */
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {

@@ -29,11 +29,12 @@ const SignUpForm = () => {
         password2: "",
     });
     const { username, password1, password2 } = signUpData;
-
     const [errors, setErrors] = useState({});
-
     const history = useHistory();
 
+    /*
+       Handle changes to input fields
+   */
     const handleChange = (e) => {
         setSignUpData({
             ...signUpData,
@@ -41,6 +42,9 @@ const SignUpForm = () => {
         });
     };
 
+    /*
+        Handles form submission.
+    */
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {

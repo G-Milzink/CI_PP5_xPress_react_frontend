@@ -15,6 +15,9 @@ export const CurrentUserProvider = ({ children }) => {
 
     const history = useHistory();
 
+    /*
+        Make API request to get current user data
+    */
     const handleMount = async () => {
         try {
             const { data } = await axiosRes.get("dj-rest-auth/user/");
@@ -28,6 +31,11 @@ export const CurrentUserProvider = ({ children }) => {
         handleMount();
     }, []);
 
+
+    /*
+        Handles access tokens
+        Redirects to login page if token refresh fails.
+    */
     useMemo(() => {
         axiosReq.interceptors.request.use(
             async (config) => {

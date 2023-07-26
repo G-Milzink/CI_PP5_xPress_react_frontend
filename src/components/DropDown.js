@@ -5,6 +5,12 @@ import { useHistory } from "react-router-dom";
 
 // The forwardRef is important!!
 // Dropdown needs access to the DOM node in order to position the Menu
+
+/*
+    Component used to display a dropdown menu that conditionally renders
+    'edit' and 'delete' options for profiles, posts and comments when apropriate.
+*/ 
+
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
     <i
         className="fa-solid fa-ellipsis-vertical"

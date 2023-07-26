@@ -6,6 +6,10 @@ const Asset = ({ spinner, src, message }) => {
     const [showSecondSpinner, setShowSecondSpinner] = useState(false);
     const [showThirdSpinner, setShowThirdSpinner] = useState(false);
 
+    /*
+        Multipurpose component,mainly used to display a spinner.
+    */
+
     useEffect(() => {
         if (spinner) {
             setShowSecondSpinner(false);

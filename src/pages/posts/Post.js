@@ -12,7 +12,6 @@ import audioStyles from '../../styles/AudioComponent.module.css';
 import btnStyles from "../../styles/Button.module.css";
 
 const Post = (props) => {
-
     const {
         id, owner, profile_id, profile_image,
         comments_count, likes_count, like_id,
@@ -27,16 +26,21 @@ const Post = (props) => {
         setPosts,
         created_on,
     } = props
-
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;
     const history = useHistory();
     const [isPublished, setIsPublished] = useState(!!props.publish);
 
+    /*
+        Set isPublished to value stored in the post
+    */
     useEffect(() => {
         setIsPublished(!!props.publish);
     }, [props.publish]);
 
+    /*
+        Handles liking a post
+    */
     const handleLike = async () => {
         try {
             const { data } = await axiosRes.post('/likes/', { post: id });
@@ -53,6 +57,9 @@ const Post = (props) => {
         }
     };
 
+    /*
+        Handles unliking a post
+    */
     const handleUnLike = async () => {
         try {
             await axiosRes.delete(`/likes/${like_id}`);
@@ -69,10 +76,16 @@ const Post = (props) => {
         }
     };
 
+    /*
+        Handles editing a post
+    */
     const handleEdit = async () => {
         history.push(`/posts/${id}/edit`)
     }
 
+    /*
+        Handles deleting a post
+    */
     const handleDelete = async () => {
         try {
             await axiosRes.delete(`/posts/${id}`);
@@ -82,6 +95,9 @@ const Post = (props) => {
         }
     }
 
+    /*
+        Handles publishing a post
+    */
     const handlePublish = async () => {
         try {
             await axiosRes.patch(`/posts/${id}`,

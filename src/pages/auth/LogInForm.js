@@ -21,6 +21,10 @@ import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
 import { setTokenTimestamp } from "../../utils/Utils";
 
+
+    /* 
+        Handles submit of login form
+    */
 function LogInForm() {
     const setCurrentUser = useSetCurrentUser();
     useRedirect('loggedIn')
@@ -42,6 +46,9 @@ function LogInForm() {
         });
     }
 
+    /*
+        Handle changes to input fields
+    */
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
