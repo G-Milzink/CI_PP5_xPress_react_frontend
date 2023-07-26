@@ -1162,6 +1162,15 @@ The website was tested on the following web browsers:
 <img src="docs/user_stories/36b.png">
 </details>
 
+##### Back to [table of contents](#table-of-contents)
+
+## Bugs
+
+| **Bug** | **Fix** |
+| ------- | ------- |
+| Liked page will not retreive any posts, due to broken filter functionality | unsolved a.t.m. |
+Edit profile form will not submit | unsolved a.t.m.|
+
 ## Deployment
 
 ### Heroku
@@ -1255,3 +1264,28 @@ You can make a local clone of a repository via the following steps:
 7. Type `git clone` and paste the previously copied URL at Step 4.
 8. `$ clone https://github.com/G-Milzink/ci_pp5_xpress_react_frontend`
 9. Now press enter and the local clone will be created at the desired local location
+
+### Credits
+
+### Images
+
+Graphic elements (other then fontawesome icons) were sourced and adapted from (https://www.iconbolt.com/)
+Logo was created with (https://looka.com/logo-maker/)
+
+
+### Code
+
+Bootstrap navbar and form code snippets were used.
+The project was based of of the Code Institute 'moments' app with added funcionality such as 
+the ability to post audio, create a draft post, exclude specific content types and the quick-publish functionality.
+
+### Acknowledgements
+
+## Acknowledgements
+I would like to take the opportunity to thank:
+- My mentor Mo Shami for his feedback, advice, guidance and support.
+- My partner Geertje van der Zalm for her support, inspiration and patience.
+- My mother Anne Rijsdijk and her husband Mickel Pereira for helping me persue this dream.
+- Anyone who spends time on the internet making tutorials, awnsering questions or otherwise helping others to learn.
+
+##### Back to [table of contents](#table-of-contents)
