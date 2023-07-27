@@ -558,6 +558,9 @@ Input Validation is a feature of the xPress It used throughout the site for form
 
 Due to time constraints there is still room for refactoring of code and additional functionality / features to implement to the site.
 
+*   File transformation on upload/retreival.
+    * Adjust file format for user submitted media (images/audio) automatically on upload to Cloudinary
+    to improve site performance.
 *   Password recovery
     *   Forgotten password option to recover access to the account using a one time link via email
 *   Account creation via socials
@@ -715,10 +718,29 @@ All files passed without warings or errors.
 Lighthouse was used to test the performance, accessibility, best practice and SEO of the site.
 The validation was done for  mobile.
 
+- Currently site performance is sub-optimal as user submitted content
+(images/video) is uploaded to Cloudinary as is. Performace can potentialy be improved by implementing
+file transformation, either in the API code or through CLoudinary settings.
+
 <details><summary>Results</summary>
-
-Add lighthouse results here.....
-
+<details><summary>home</summary> 
+<img src="docs/validation/lighthouse/home.png"> 
+</details>
+<details><summary>feed</summary> 
+<img src="docs/validation/lighthouse/feed.png"> 
+</details>
+<details><summary>liked</summary> 
+<img src="docs/validation/lighthouse/liked.png"> 
+</details>
+<details><summary>profile</summary> 
+<img src="docs/validation/lighthouse/profile.png"> 
+</details>
+<details><summary>create post</summary> 
+<img src="docs/validation/lighthouse/create_post.png"> 
+</details>
+<details><summary>edit post</summary> 
+<img src="docs/validation/lighthouse/edit_post.png"> 
+</details>
 </details>
 
 ### Wave Validation
@@ -979,7 +1001,7 @@ The website was tested on the following web browsers:
 
 | Feature       | Action        | Expected Result  | Actual Result |
 | ------------- | ------------- | -------------    | ------------- |
-| Liked page | Visit liked page | view list of liked posts | Broken |
+| Liked page | Visit liked page | view list of liked posts | Works as expected |
 
 <details>
 <summary>Screenshots</summary>
@@ -1146,7 +1168,7 @@ The website was tested on the following web browsers:
 | Feature       | Action        | Expected Result  | Actual Result |
 | ------------- | ------------- | -------------    | ------------- |
 |Profile page | View own profile, select edit from dropdown menu | Find Profile edit form | Works as expected |
-|Profile Edit Form | Enter new info/change image and submit | Profile is updated | Broken |
+|Profile Edit Form | Enter new info/change image and submit | Profile is updated | Works as expected |
 
 <details>
 <summary>Screenshots</summary>
@@ -1200,10 +1222,10 @@ The website was tested on the following web browsers:
 
 ## Bugs
 
-| **Bug** | **Fix** |
-| ------- | ------- |
-| Liked page will not retreive any posts, due to broken filter functionality | unsolved a.t.m. |
-Edit profile form will not submit | unsolved a.t.m.|
+| **Bug** | **Cause** | **Fix** | **Status** |
+| ------- | ------- | ------- | ------ |
+| Liked page will not retreive any posts| Iconsistency in filter fieldset value and database 'Like' database model |Reviewed API for errors in 'Like' Database Model | resolved |
+| Edit profile form will not submit | Profile model 'name' field is required yet remains empty on profile creation | Automatically populate 'name' key with value from 'owner' key on form submission if 'name' key is empty| resolved |
 
 ## Deployment
 
@@ -1318,8 +1340,9 @@ the ability to post audio, create a draft post, exclude specific content types a
 ## Acknowledgements
 I would like to take the opportunity to thank:
 - My mentor Mo Shami for his feedback, advice, guidance and support.
+- The Tutors at Code Institute without whom this projectwould have taken signifacntly longer to realize.
 - My partner Geertje van der Zalm for her support, inspiration and patience.
-- My mother Anne Rijsdijk and her husband Mickel Pereira for helping me persue this dream.
+- My mother Anne Rijsdijk and her husband Mickel Pereira for helping me pursue this dream.
 - Anyone who spends time on the internet making tutorials, awnsering questions or otherwise helping others to learn.
 
 ##### Back to [table of contents](#table-of-contents)
