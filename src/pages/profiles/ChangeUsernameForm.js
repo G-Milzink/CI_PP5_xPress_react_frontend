@@ -59,8 +59,9 @@ const ChangeUsernameForm = () => {
                 <Container className={appStyles.Content}>
                     <Form onSubmit={handleSubmit} className="my-2">
                         <Form.Group>
-                            <Form.Label>Change username</Form.Label>
+                            <Form.Label htmlFor="changeUsername">Change username</Form.Label>
                             <Form.Control
+                                id="changeUsername"
                                 placeholder="username"
                                 type="text"
                                 value={username}
