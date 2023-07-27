@@ -354,7 +354,7 @@ function PostEditForm() {
                             </Alert>
                         ))}
 
-                        {/* <div className="d-md-none">{textFields}</div> */}
+
                     </Container>
                 </Col>
                 <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
