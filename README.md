@@ -724,11 +724,45 @@ Add lighthouse results here.....
 ### Wave Validation
 
 The WAVE WebAIM web accessibility evaluation tool was used to test the websites accessibility.
+All pages passed with 0 errors.
 
 <details><summary>Results</summary> 
-
-Add WebAim results here.....
-
+<details><summary>homepage logged out</summary>
+<img src="docs/validation/wave/homepage_loggedin.png"> 
+</details>
+<details><summary>homepage_logged in</summary>
+<img src="docs/validation/wave/homepage_loggedout.png"> 
+</details>
+<details><summary>signup</summary>
+<img src="docs/validation/wave/signup.png"> 
+</details>
+<details><summary>login</summary>
+<img src="docs/validation/wave/login.png"> 
+</details>
+<details><summary>create post</summary>
+<img src="docs/validation/wave/create_post.png"> 
+</details>
+<details><summary>edit post</summary>
+<img src="docs/validation/wave/edit_post.png"> 
+</details>
+<details><summary>profile</summary>
+<img src="docs/validation/wave/profile.png"> 
+</details>
+<details><summary>edit profile</summary>
+<img src="docs/validation/wave/edit_profile.png"> 
+</details>
+<details><summary>feed</summary>
+<img src="docs/validation/wave/feed.png"> 
+</details>
+<details><summary>liked</summary>
+<img src="docs/validation/wave/liked.png"> 
+</details>
+<details><summary>change password</summary>
+<img src="docs/validation/wave/change_password.png"> 
+</details>
+<details><summary>change username</summary>
+<img src="docs/validation/wave/change_username.png"> 
+</details>
 </details>
 
 ##### Back to [table of contents](#table-of-contents)
