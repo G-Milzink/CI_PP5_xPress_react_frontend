@@ -62,7 +62,7 @@ Key aspects:
 *   User authentication.
 *   User interaction via likes, comments and followers.
 *   User specific profiles containing: Bio, profile Avatar
-*   CRUD functionality for posts, comments and profiles.
+*   CRUD functionality for posts, comments and profiles, likes and followers.
 *   Filtering posts by keywords.
 *   Responsive design ensuring a pleasant user experience across a range of devices.
 
