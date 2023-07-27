@@ -161,8 +161,9 @@ function PostEditForm() {
     const textFields = (
         <div className="text-center">
             <Form.Group>
-                <Form.Label>Title:</Form.Label>
+                <Form.Label htmlFor="postTitle">Title:</Form.Label>
                 <Form.Control
+                    id="postTitle"
                     type="text"
                     name="title"
                     value={title}
@@ -176,8 +177,9 @@ function PostEditForm() {
             </Form.Group>
 
             <Form.Group>
-                <Form.Label>Text:</Form.Label>
+                <Form.Label htmlFor="postText" >Text:</Form.Label>
                 <Form.Control
+                    id="postText"
                     as="textarea"
                     name="text"
                     rows={6}
@@ -189,8 +191,9 @@ function PostEditForm() {
                         {message}
                     </Alert>
                 ))}
-                <Form.Label>Excerpt:</Form.Label>
+                <Form.Label htmlFor="postExcerpt">Excerpt:</Form.Label>
                 <Form.Control
+                    id="postExcerpt"
                     as="textarea"
                     name="excerpt"
                     rows={3}
@@ -204,6 +207,7 @@ function PostEditForm() {
                 ))}
                 <div className="text-left">
                     <Form.Check
+                        id="Include_Text/Excerpt"
                         type="checkbox"
                         label="Include Text/Excerpt"
                         name="include_text"
@@ -218,6 +222,7 @@ function PostEditForm() {
                     <Form.Check
                         type="checkbox"
                         label="Include Image"
+                        id="Include_Image"
                         name="include_image"
                         checked={include_image}
                         onChange={handleChange}
@@ -230,6 +235,7 @@ function PostEditForm() {
                     <Form.Check
                         type="checkbox"
                         label="Include Audio"
+                        id="Include_Audio"
                         name="include_audio"
                         checked={include_audio}
                         onChange={handleChange}
@@ -242,6 +248,7 @@ function PostEditForm() {
                     <Form.Check
                         type="checkbox"
                         label="Publish Post"
+                        id="Publish_Post"
                         name="publish"
                         checked={publish}
                         onChange={handleChange}
@@ -278,27 +285,28 @@ function PostEditForm() {
                         {/* Form Group dealing with images */}
                         <Form.Group className="text-center">
                             <figure>
-                                <Image className={appStyles.Image} src={image} rounded />
+                                <Image className={appStyles.Image} src={image} alt={image_description} rounded />
                             </figure>
                             <div>
                                 <Form.Label
                                     className={`${btnStyles.Button} ${btnStyles.Orange} btn`}
-                                    htmlFor="image-upload"
+                                    htmlFor="image_upload"
                                 >
                                     Change the image
                                 </Form.Label>
                             </div>
 
                             <Form.File
-                                id="image-upload"
+                                id="image_upload"
                                 accept="image/*"
                                 onChange={handleChangeImage}
                                 ref={imageInput}
                                 hidden
                             />
-                            <Form.Label>Image Description:</Form.Label>
+                            <Form.Label htmlFor="image_description">Image Description:</Form.Label>
                             <Form.Control
                                 type="text"
+                                id="image_description"
                                 name="image_description"
                                 value={image_description}
                                 onChange={handleChange}
@@ -335,9 +343,10 @@ function PostEditForm() {
                                 ref={audioInput}
                                 hidden
                             />
-                            <Form.Label>Audio Description:</Form.Label>
+                            <Form.Label htmlFor="audio_description">Audio Description:</Form.Label>
                             <Form.Control
                                 type="text"
+                                id="audio_description"
                                 name="audio_description"
                                 value={audio_description}
                                 onChange={handleChange}

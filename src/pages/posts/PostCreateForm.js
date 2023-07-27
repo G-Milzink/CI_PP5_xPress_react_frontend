@@ -189,7 +189,7 @@ function PostCreateForm() {
                     <Form.Check
                         type="checkbox"
                         label="Include Text/Excerpt"
-                        id="Include Text/Excerpt"
+                        id="Include_Text/Excerpt"
                         name="include_text"
                         checked={include_text}
                         onChange={handleChange}
@@ -202,7 +202,7 @@ function PostCreateForm() {
                     <Form.Check
                         type="checkbox"
                         label="Include Image"
-                        id="Include Image"
+                        id="Include_Image"
                         name="include_image"
                         checked={include_image}
                         onChange={handleChange}
@@ -215,7 +215,7 @@ function PostCreateForm() {
                     <Form.Check
                         type="checkbox"
                         label="Include Audio"
-                        id="Include Audio"
+                        id="Include_Audio"
                         name="include_audio"
                         checked={include_audio}
                         onChange={handleChange}
@@ -230,7 +230,7 @@ function PostCreateForm() {
                     <Form.Check
                         type="checkbox"
                         label="Publish Post"
-                        id="Publish Post"
+                        id="Publish_Post"
                         name="publish"
                         checked={publish}
                         onChange={handleChange}
@@ -274,7 +274,7 @@ function PostCreateForm() {
                                     <div>
                                         <Form.Label
                                             className={`${btnStyles.Button} ${btnStyles.Orange} btn`}
-                                            htmlFor="image-upload"
+                                            htmlFor="image_upload"
                                         >
                                             Change the image
                                         </Form.Label>
