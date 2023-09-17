@@ -21,10 +21,11 @@ import { useRedirect } from "../../hooks/useRedirect";
 function CollageCreateForm() {
     const history = useHistory();
     const [errors, setErrors] = useState({});
+    const default_collage_image = "https://res.cloudinary.com/dz9lnaiig/image/upload/v1694870425/xPress/default_collage_image.png"
     const [collageData, setCollageData] = useState({
         title: "",
         collage_description: "",
-        images: Array(20).fill(""),
+        images: Array(20).fill(default_collage_image),
         publish: false,
     })
     const {
@@ -51,15 +52,29 @@ function CollageCreateForm() {
 
 
     /*
-        Handles changing the image.
+        Handles changing the images.
     */
     const handleChangeImage = (e) => {
         if (e.target.files.length) {
-            URL.revokeObjectURL(collageData.images[0]);
+            const newImages = [...collageData.images];
+
+            for (let i = 0; i < e.target.files.length; i++) {
+                const file = e.target.files[i];
+
+                // Find the next open spot in the images array
+                const nextOpenIndex = newImages.indexOf(default_collage_image);
+
+                if (nextOpenIndex !== -1) {
+                    // If there's an open spot, replace it with the new image URL
+                    newImages[nextOpenIndex] = URL.createObjectURL(file);
+                }
+            }
+
             const updatedCollageData = {
                 ...collageData,
-                images: [URL.createObjectURL(e.target.files[0]), ...collageData.images.slice(1)],
+                images: newImages,
             };
+
             setCollageData(updatedCollageData);
         } else {
             URL.revokeObjectURL(collageData.images[0]);
@@ -70,6 +85,7 @@ function CollageCreateForm() {
             setCollageData(updatedCollageData);
         }
     };
+
 
 
 
@@ -186,6 +202,18 @@ function CollageCreateForm() {
                             </Row>
                         </div>
 
+                        <Form.Group>
+                            <Form.Label htmlFor="image_upload" className="mb-3">
+                                Add More Images:
+                            </Form.Label>
+                            <Form.File
+                                id="image_upload"
+                                accept="image/*"
+                                multiple
+                                onChange={handleChangeImage} // This should trigger the existing handleChangeImage function
+                                ref={imageInput}
+                            />
+                        </Form.Group>
 
 
                         {/* Form Group dealing with images */}
