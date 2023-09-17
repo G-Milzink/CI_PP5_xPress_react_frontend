@@ -99,17 +99,17 @@ function CollageCreateForm() {
         formData.append("title", title);
         formData.append("collage_description", collage_description);
 
-        if (imageInput.current.files.length) {
-            formData.append("images[0]", imageInput.current.files[0]);
+        for (let i = 0; i < imageInput.current.files.length; i++) {
+            formData.append(`images[${i}]`, imageInput.current.files[i]);
         }
 
         formData.append("publish", publish);
 
         try {
-            const { data } = await axiosReq.post('/posts/', formData);
+            const { data } = await axiosReq.post('/collages/', formData);
             history.push(`/posts/${data.id}`);
         } catch (err) {
-            // console.log(err);
+            console.log(err);
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data);
             }
@@ -136,11 +136,11 @@ function CollageCreateForm() {
             </Form.Group>
 
             <Form.Group>
-                <Form.Label htmlFor="collageDescription" >Text:</Form.Label>
+                <Form.Label htmlFor="collageDescription" >Description:</Form.Label>
                 <Form.Control
                     id="collageDescription"
                     as="textarea"
-                    name="text"
+                    name="collage_description"
                     rows={6}
                     value={collage_description}
                     onChange={handleChange}
@@ -152,7 +152,7 @@ function CollageCreateForm() {
                 ))}
                 <div className="text-left">
                     {<hr />}
-                    <div>Don't forget to publish your post:</div>
+                    <div>Don't forget to publish your collage:</div>
                     <Form.Check
                         type="checkbox"
                         label="Publish Post"
