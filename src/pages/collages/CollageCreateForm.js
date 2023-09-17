@@ -100,7 +100,7 @@ function CollageCreateForm() {
         formData.append("collage_description", collage_description);
 
         for (let i = 0; i < imageInput.current.files.length; i++) {
-            formData.append(`images[${i}]`, imageInput.current.files[i]);
+            formData.append(`image${i}`, imageInput.current.files[i]);
         }
 
         formData.append("publish", publish);
