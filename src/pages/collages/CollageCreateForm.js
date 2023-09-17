@@ -87,6 +87,18 @@ function CollageCreateForm() {
     };
 
 
+    /*
+        Reset an individual image to its default state
+    */
+    const resetImageToDefault = (index) => {
+        const newImages = [...collageData.images];
+        newImages[index] = default_collage_image;
+        const updatedCollageData = {
+            ...collageData,
+            images: newImages,
+        };
+        setCollageData(updatedCollageData);
+    };
 
 
     /*
@@ -196,7 +208,14 @@ function CollageCreateForm() {
                             <Row>
                                 {images.map((imageUrl, index) => (
                                     <Col key={index} xs={6} sm={3} className="mb-3">
-                                        <Image src={imageUrl} alt={`Image ${index + 1}`} rounded fluid />
+                                        <Image 
+                                            src={imageUrl}
+                                            alt={`Image ${index + 1}`}
+                                            rounded
+                                            fluid
+                                            onClick={() => resetImageToDefault(index)} // Add click event to reset the image
+                                            style={{ cursor: 'pointer' }} // Add a pointer cursor
+                                        />
                                     </Col>
                                 ))}
                             </Row>
