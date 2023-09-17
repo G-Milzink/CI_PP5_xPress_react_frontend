@@ -167,8 +167,8 @@ function CollageCreateForm() {
                     <div>Don't forget to publish your collage:</div>
                     <Form.Check
                         type="checkbox"
-                        label="Publish Post"
-                        id="Publish_Post"
+                        label="Publish Collage"
+                        id="Publish_Collage"
                         name="publish"
                         checked={publish}
                         onChange={handleChange}
