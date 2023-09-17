@@ -208,14 +208,16 @@ function CollageCreateForm() {
                             <Row>
                                 {images.map((imageUrl, index) => (
                                     <Col key={index} xs={6} sm={3} className="mb-3">
-                                        <Image 
-                                            src={imageUrl}
-                                            alt={`Image ${index + 1}`}
-                                            rounded
-                                            fluid
-                                            onClick={() => resetImageToDefault(index)} // Add click event to reset the image
-                                            style={{ cursor: 'pointer' }} // Add a pointer cursor
-                                        />
+                                        <div className={`${styles.Overlay}`}>
+                                            <Image
+                                                src={imageUrl}
+                                                alt={`Image ${index + 1}`}
+                                                rounded
+                                                fluid
+                                                onClick={() => resetImageToDefault(index)}
+                                                className={`${styles.GridImage}`}
+                                            />
+                                        </div>
                                     </Col>
                                 ))}
                             </Row>

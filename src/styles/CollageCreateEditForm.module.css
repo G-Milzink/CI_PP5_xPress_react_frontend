@@ -1,3 +1,20 @@
 .Container {
     min-height: 343px;
 }
+
+.GridImage {
+        border: 3px solid #1D2228;
+        border-radius: 40px;
+}
+
+.GridImage:hover {
+    border-color: red;
+    opacity: 75%;
+    transition: border-color ease-in-out 0.5s;
+    transition: opacity ease-in-out 0.3s;
+    cursor: pointer;
+}
+
+.Overlay {
+    background-color: red;
+}
