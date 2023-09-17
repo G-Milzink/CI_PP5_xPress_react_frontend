@@ -39,6 +39,15 @@ const NavBar = () => {
             New xPression
         </NavLink>
     )
+    const addCollageIcon = (
+        <NavLink
+            to="/collages/create"
+            className={styles.NavLink}
+            activeClassName={styles.Active}>
+            <i className="fa-solid fa-square-plus"></i>
+            New cOllage
+        </NavLink>
+    )
     const loggedInIcons = <>
         <NavLink
             to="/feed"
@@ -100,6 +109,7 @@ const NavBar = () => {
                     <Navbar.Brand><img src={logo} alt='logo' height={70} /></Navbar.Brand>
                 </NavLink>
                 {currentUser && addPostIcon}
+                {currentUser && addCollageIcon}
                 <Navbar.Toggle
                     aria-controls="basic-navbar-nav"
                     onClick={() => setExpanded(!expanded)}

@@ -13,7 +13,6 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
 import { Alert, Image } from "react-bootstrap";
-import AudioComponent from "../../components/AudioComponent";
 import { useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
@@ -33,6 +32,7 @@ function CollageCreateForm() {
         images,
         publish,
     } = collageData;
+    const imageInput = useRef(null)
 
 
     /*
@@ -43,9 +43,60 @@ function CollageCreateForm() {
         // If the input is a checkbox, handle the checked property
         const newValue = type === "checkbox" ? checked : value;
         setCollageData({
-            ...postData,
+            ...collageData,
             [name]: newValue,
         });
+    };
+
+
+    /*
+        Handles changing the image.
+    */
+    const handleChangeImage = (e) => {
+        if (e.target.files.length) {
+            URL.revokeObjectURL(collageData.images[0]);
+            const updatedCollageData = {
+                ...collageData,
+                images: [URL.createObjectURL(e.target.files[0]), ...collageData.images.slice(1)],
+            };
+            setCollageData(updatedCollageData);
+        } else {
+            URL.revokeObjectURL(collageData.images[0]);
+            const updatedCollageData = {
+                ...collageData,
+                images: ["", ...collageData.images.slice(1)],
+            };
+            setCollageData(updatedCollageData);
+        }
+    };
+
+
+
+    /*
+        Handles form submission
+    */
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+
+        formData.append("title", title);
+        formData.append("collage_description", collage_description);
+
+        if (imageInput.current.files.length) {
+            formData.append("images[0]", imageInput.current.files[0]);
+        }
+
+        formData.append("publish", publish);
+
+        try {
+            const { data } = await axiosReq.post('/posts/', formData);
+            history.push(`/posts/${data.id}`);
+        } catch (err) {
+            // console.log(err);
+            if (err.response?.status !== 401) {
+                setErrors(err.response?.data);
+            }
+        }
     };
 
 
@@ -114,4 +165,67 @@ function CollageCreateForm() {
             </Button>
         </div>
     );
+
+
+    return (
+        <Form onSubmit={handleSubmit}>
+            <Row>
+                <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+                    <Container
+                        className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+                    >
+                        {/* Form Group dealing with images */}
+                        <Form.Group className="text-center">
+                            {images[0] ? (
+                                <>
+                                    <figure>
+                                        <Image className={appStyles.Image} src={images[0]} rounded />
+                                    </figure>
+                                    <div>
+                                        <Form.Label
+                                            className={`${btnStyles.Button} ${btnStyles.Orange} btn`}
+                                            htmlFor="image_upload"
+                                        >
+                                            Change the image
+                                        </Form.Label>
+                                    </div>
+                                </>
+                            ) : (
+                                <Form.Label
+                                    className="d-flex justify-content-center"
+                                    htmlFor="image_upload"
+                                >
+                                    <Asset
+                                        src={UploadImage}
+                                        message="Click or tap to upload an image"
+                                    />
+                                </Form.Label>
+                            )}
+                            <Form.File
+                                id="image_upload"
+                                accept="image/*"
+                                onChange={handleChangeImage}
+                                ref={imageInput}
+                                hidden
+                            />
+                        </Form.Group>
+                        {errors.image?.map((message, idx) => (
+                            <Alert variant="warning" key={idx}>
+                                {message}
+                            </Alert>
+                        ))}
+
+                        
+
+
+                    </Container>
+                </Col>
+                <Col md={5} lg={4} className="p-0 p-md-2">
+                    <Container className={appStyles.Content}>{textFields}</Container>
+                </Col>
+            </Row>
+        </Form >
+    );
 }
+
+export default CollageCreateForm;
