@@ -202,6 +202,7 @@ function CollageCreateForm() {
                             </Row>
                         </div>
 
+                        {/* Multi-image select */}
                         <Form.Group>
                             <Form.Label htmlFor="image_upload" className="mb-3">
                                 Add More Images:
@@ -210,55 +211,10 @@ function CollageCreateForm() {
                                 id="image_upload"
                                 accept="image/*"
                                 multiple
-                                onChange={handleChangeImage} // This should trigger the existing handleChangeImage function
-                                ref={imageInput}
-                            />
-                        </Form.Group>
-
-
-                        {/* Form Group dealing with images */}
-                        <Form.Group className="text-center">
-                            {images[0] ? (
-                                <>
-                                    <figure>
-                                        <Image className={appStyles.Image} src={images[0]} rounded />
-                                    </figure>
-                                    <div>
-                                        <Form.Label
-                                            className={`${btnStyles.Button} ${btnStyles.Orange} btn`}
-                                            htmlFor="image_upload"
-                                        >
-                                            Change the image
-                                        </Form.Label>
-                                    </div>
-                                </>
-                            ) : (
-                                <Form.Label
-                                    className="d-flex justify-content-center"
-                                    htmlFor="image_upload"
-                                >
-                                    <Asset
-                                        src={UploadImage}
-                                        message="Click or tap to upload an image"
-                                    />
-                                </Form.Label>
-                            )}
-                            <Form.File
-                                id="image_upload"
-                                accept="image/*"
                                 onChange={handleChangeImage}
                                 ref={imageInput}
-                                hidden
                             />
                         </Form.Group>
-                        {errors.image?.map((message, idx) => (
-                            <Alert variant="warning" key={idx}>
-                                {message}
-                            </Alert>
-                        ))}
-
-                        
-
 
                     </Container>
                 </Col>
