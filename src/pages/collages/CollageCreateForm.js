@@ -107,7 +107,7 @@ function CollageCreateForm() {
 
         try {
             const { data } = await axiosReq.post('/collages/', formData);
-            history.push(`/posts/${data.id}`);
+            history.push(`/`);
         } catch (err) {
             console.log(err);
             if (err.response?.status !== 401) {
