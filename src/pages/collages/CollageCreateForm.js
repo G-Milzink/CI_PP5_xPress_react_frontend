@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 
+
 import UploadImage from "../../assets/UploadImage.png";
 
 import styles from "../../styles/CollageCreateEditForm.module.css";
@@ -174,6 +175,19 @@ function CollageCreateForm() {
                     <Container
                         className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
                     >
+                        {/* image grid */}
+                        <div className="mb-4">
+                            <Row>
+                                {images.map((imageUrl, index) => (
+                                    <Col key={index} xs={6} sm={3} className="mb-3">
+                                        <Image src={imageUrl} alt={`Image ${index + 1}`} rounded fluid />
+                                    </Col>
+                                ))}
+                            </Row>
+                        </div>
+
+
+
                         {/* Form Group dealing with images */}
                         <Form.Group className="text-center">
                             {images[0] ? (
