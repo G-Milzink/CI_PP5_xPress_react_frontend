@@ -66,6 +66,13 @@ const NavBar = () => {
             Feed
         </NavLink>
         <NavLink
+            to="/collages"
+            className={styles.NavLink}
+            activeClassName={styles.Active}>
+            <i class="fa-solid fa-table-cells"></i>
+            Collages
+        </NavLink>
+        <NavLink
             to="/liked"
             className={styles.NavLink}
             activeClassName={styles.Active}>

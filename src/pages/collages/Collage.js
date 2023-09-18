@@ -17,7 +17,7 @@ const Collage = (props) => {
         collage_description,
         updated_on,
         CollagePage,
-        // collagesPage,
+        CollagesPage,
         profilePage,
         setCollages,
         created_on,
@@ -117,9 +117,9 @@ const Collage = (props) => {
 
     // Check if isPublished is false AND user is currently on postsPage
     // => return null (nothing will be rendered)
-    // if (collagesPage && !isPublished) {
-    //     return null;
-    // }
+    if (CollagesPage && !isPublished) {
+        return null;
+    }
 
     // Check if isPublished is false AND user is currently on profilePage AND is not the owner
     // => return null (nothing will be rendered)
@@ -218,7 +218,7 @@ const Collage = (props) => {
                         </OverlayTrigger>
                     )}
                     {likes_count}
-                    <Link to={`/posts/${id}`}>
+                    <Link to={`/collages/${id}`}>
                         <i className='fa-regular fa-comments'></i>
                         <span className={styles.Invisible}>comments</span>
                     </Link>

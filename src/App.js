@@ -18,6 +18,7 @@ import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import PageNotFound from './components/PageNotFound';
 import CollagePage from './pages/collages/CollagePage';
 import CollageEditForm from './pages/collages/CollageEditForm';
+import CollagesPage from './pages/collages/CollagesPage';
 
 function App() {
 
@@ -39,6 +40,14 @@ function App() {
             exact
             path="/feed"
             render={() => <PostsPage
+              message="No results...Try using a different keyword or start following a profile."
+              filter={`owner__followed__owner__profile=${profile_id}&`}
+            />}
+          />
+          <Route
+            exact
+            path="/collages"
+            render={() => <CollagesPage
               message="No results...Try using a different keyword or start following a profile."
               filter={`owner__followed__owner__profile=${profile_id}&`}
             />}
