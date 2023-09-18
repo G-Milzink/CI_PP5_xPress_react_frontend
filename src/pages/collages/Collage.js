@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from '../../styles/Post.module.css';
+import styles from '../../styles/Collage.module.css';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { Button, Card, Media, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
@@ -170,25 +170,28 @@ const Collage = (props) => {
                         {is_owner && collagePage && <DropDown handleEdit={handleEdit} handleDelete={handleDelete} />}
                     </div>
                 </Media>
-            </Card.Body>
-            <Link to={`/collages/${id}`}>
-                {title && <Card.Title className={styles.Title} >{title}</Card.Title>}
-            </Link>
-            <hr />
-            <Card.Body>
+            </Card.Body >
+            
+            <Card.Body className={styles.CollageCardBody}>
                 <Link to={`/collages/${id}`}>
-                    {/* Iterate over the images array and render images */}
-                    {filteredImages.map((image, index) => (
-                        <Card.Img
-                            key={index}
-                            src={image}
-                            alt={
-                                collage_description ?
-                                    collage_description :
-                                    "User uploaded image"
-                            }
-                        />
-                    ))}
+                    {title && <Card.Title className={styles.Title} >{title}</Card.Title>}
+                </Link>
+                <hr />
+                <Link to={`/collages/${id}`}>
+                    <div className={styles.CollageGrid}>
+                        {filteredImages.map((image, index) => (
+                            <div key={index} className={styles.CollageItem}>
+                                <Card.Img
+                                    src={image}
+                                    alt={
+                                        collage_description ?
+                                            collage_description :
+                                            "User uploaded image"
+                                    }
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </Link>
                 {collage_description && <Card.Text className='text-center'>{collage_description}</Card.Text>}
             </Card.Body>

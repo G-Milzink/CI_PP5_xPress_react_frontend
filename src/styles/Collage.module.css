@@ -1,0 +1,40 @@
+.CollageCardBody {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.CollageGrid {
+    column-count: 3;
+    column-gap: 10px;
+    background-color: #1D2228;
+    border: 10px solid #1D2228;
+    border-radius: 5px;
+}
+
+.CollageItem {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+    page-break-inside: avoid;
+}
+
+/* Scale down images wider than 768px */
+.CollageItem img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+
+/* Apply specific grid-column styles */
+.CollageItem:nth-child(3n + 1),
+.CollageItem:nth-child(3n + 2) {
+    grid-column: span 2;
+}
+
+.Title {
+    font-size: x-large;
+    font-weight: bold;
+}
