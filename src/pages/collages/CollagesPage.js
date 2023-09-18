@@ -34,7 +34,14 @@ function CollagesPage({ message, filter = "" }) {
     useEffect(() => {
         const fetchCollages = async () => {
             try {
-                const { data } = await axiosReq.get(`/collages/?${filter}search=${query}`);
+                let endpoint = "/collages/"; // API endpoint for fetching all collages
+
+                if (filter) {
+                    // Add filter for search query if it exists
+                    endpoint += `?search=${query}`;
+                }
+
+                const { data } = await axiosReq.get(endpoint);
                 setCollages(data);
                 setHasLoaded(true);
             } catch (err) {
