@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/Collage.module.css';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import { Button, Card, Media, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Button, Card, Media } from 'react-bootstrap';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import Avatar from '../../components/Avatar';
 import { axiosRes } from '../../api/axiosDefaults';
@@ -12,14 +12,12 @@ import btnStyles from "../../styles/Button.module.css";
 const Collage = (props) => {
     const {
         id, owner, profile_id, profile_image,
-        comments_count, likes_count, like_id,
         title,
         collage_description,
         updated_on,
         CollagePage,
         CollagesPage,
         profilePage,
-        setCollages,
         created_on,
     } = props
 
@@ -42,43 +40,7 @@ const Collage = (props) => {
         setIsPublished(!!props.publish);
     }, [props.publish]);
 
-    /*
-        Handles liking a collage
-    */
-    const handleLike = async () => {
-        try {
-            const { data } = await axiosRes.post('/likes/', { collage: id });
-            setCollages((prefCollages) => ({
-                ...prefCollages,
-                results: prefCollages.results.map((collage) => {
-                    return collage.id === id
-                        ? { ...collage, likes_count: collage.likes_count + 1, like_id: data.id }
-                        : collage;
-                })
-            }));
-        } catch (err) {
-            // console.log(err)
-        }
-    };
-
-    /*
-        Handles unliking a collage
-    */
-    const handleUnLike = async () => {
-        try {
-            await axiosRes.delete(`/likes/${like_id}`);
-            setCollages((prefCollages) => ({
-                ...prefCollages,
-                results: prefCollages.results.map((collage) => {
-                    return collage.id === id
-                        ? { ...collage, likes_count: collage.likes_count - 1, like_id: null }
-                        : collage;
-                })
-            }));
-        } catch (err) {
-            // console.log(err)
-        }
-    };
+    
 
     /*
         Handles editing a collage
@@ -196,34 +158,6 @@ const Collage = (props) => {
                     </div>
                 </Link>
                 {collage_description && <Card.Text className='text-center'>{collage_description}</Card.Text>}
-            </Card.Body>
-
-            <Card.Body>
-                <div className={styles.PostBar}>
-                    {is_owner ? (
-                        <OverlayTrigger placement='top' overlay={<Tooltip>You can not like your own xPression!</Tooltip>}>
-                            <i className="fa-regular fa-thumbs-up"></i>
-                        </OverlayTrigger>
-                    ) : like_id ? (
-                        <span onClick={handleUnLike}>
-                            <i className={`fa-solid fa-thumbs-up ${styles.ThumbSolid}`}></i>
-                        </span>
-                    ) : currentUser ? (
-                        <span onClick={handleLike}>
-                            <i className={`fa-regular fa-thumbs-up ${styles.Thumb}`}></i>
-                        </span>
-                    ) : (
-                        <OverlayTrigger placement='top' overlay={<Tooltip>Log in to like an xPression!</Tooltip>}>
-                            <i className="fa-regular fa-thumbs-up"></i>
-                        </OverlayTrigger>
-                    )}
-                    {likes_count}
-                    <Link to={`/collages/${id}`}>
-                        <i className='fa-regular fa-comments'></i>
-                        <span className={styles.Invisible}>comments</span>
-                    </Link>
-                    {comments_count}
-                </div>
             </Card.Body>
         </Card >
     )
