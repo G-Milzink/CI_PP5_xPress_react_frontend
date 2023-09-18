@@ -27,7 +27,8 @@ const Collage = (props) => {
     for (let i = 1; i <= 20; i++) {
         images.push(props[`image${i}`]);
     }
-    const filteredImages = images.filter(image => image !== null);
+    const filteredImages = images.filter(image => image !== null && image !== "");
+
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;

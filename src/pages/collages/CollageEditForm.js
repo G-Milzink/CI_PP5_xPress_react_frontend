@@ -16,20 +16,21 @@ function CollageEditForm() {
     const history = useHistory();
     const [errors, setErrors] = useState({});
     const { id } = useParams();
-    const default_collage_image = "https://res.cloudinary.com/dz9lnaiig/image/upload/v1694870425/xPress/default_collage_image.png"
+    const default_collage_image =
+        "https://res.cloudinary.com/dz9lnaiig/image/upload/v1694870425/xPress/default_collage_image.png";
     const [collageData, setCollageData] = useState({
         title: "",
         collage_description: "",
         publish: true,
-        images: [], // Initialize as an empty array
+        images: Array(20).fill(default_collage_image),
     });
 
     const { title, collage_description, publish, images } = collageData;
     const imageInput = useRef(null);
 
     /*
-        Fetches posts from the API
-        Determines if the current logged in user is the owner.
+      Fetches posts from the API
+      Determines if the current logged in user is the owner.
     */
     useEffect(() => {
         const handleMount = async () => {
@@ -42,6 +43,8 @@ function CollageEditForm() {
                 for (let i = 1; i <= 20; i++) {
                     if (data[`image${i}`]) {
                         apiImages.push(data[`image${i}`]);
+                    } else {
+                        apiImages.push(default_collage_image); // Push default image for empty slots
                     }
                 }
 
@@ -50,18 +53,18 @@ function CollageEditForm() {
                         title,
                         collage_description,
                         publish,
-                        images: apiImages, // Set 'images' to the URLs from the API
+                        images: apiImages, // Initialize 'images' array with image URLs from the API
                     })
-                    : history.push('/');
+                    : history.push("/");
             } catch (err) {
                 // console.log(err)
             }
-        }
+        };
         handleMount();
-    }, [id, history])
+    }, [id, history]);
 
     /*
-        Handles changing input fields
+      Handles changing input fields
     */
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -74,7 +77,7 @@ function CollageEditForm() {
     };
 
     /*
-        Handles changing the images.
+      Handles changing the images.
     */
     const handleChangeImage = (e) => {
         if (e.target.files.length) {
@@ -84,7 +87,9 @@ function CollageEditForm() {
                 const file = e.target.files[i];
 
                 // Find the next open spot in the images array
-                const nextOpenIndex = newImages.indexOf(default_collage_image);
+                const nextOpenIndex = newImages.findIndex(
+                    (image) => image === default_collage_image
+                );
 
                 if (nextOpenIndex !== -1) {
                     // If there's an open spot, replace it with the new image URL
@@ -99,17 +104,18 @@ function CollageEditForm() {
 
             setCollageData(updatedCollageData);
         } else {
-            URL.revokeObjectURL(collageData.images[0]);
+            // Handle image deletion
+            // Remove the image at the specified index by setting it to the default image
             const updatedCollageData = {
                 ...collageData,
-                images: ["", ...collageData.images.slice(1)],
+                images: [default_collage_image, ...collageData.images.slice(1)],
             };
             setCollageData(updatedCollageData);
         }
     };
 
     /*
-        Reset an individual image to its default state
+      Reset an individual image to its default state
     */
     const resetImageToDefault = (index) => {
         const newImages = [...collageData.images];
@@ -122,7 +128,7 @@ function CollageEditForm() {
     };
 
     /*
-        Handles form submission
+      Handles form submission
     */
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -139,9 +145,8 @@ function CollageEditForm() {
                 const blob = await (await fetch(imageUrl)).blob();
                 formData.append(`image${index + 1}`, blob, `image${index + 1}.jpg`);
             } else {
-                // Append the default_collage_image as Blob (assuming it's a URL)
-                const defaultBlob = await (await fetch(default_collage_image)).blob();
-                formData.append(`image${index + 1}`, defaultBlob, `image${index + 1}.jpg`);
+                // Set image field to null for deleted or empty images
+                formData.append(`image${index + 1}`, "");
             }
         }
 
@@ -157,10 +162,6 @@ function CollageEditForm() {
             }
         }
     };
-
-
-
-
 
     const textFields = (
         <div className="text-center">
@@ -181,7 +182,7 @@ function CollageEditForm() {
             </Form.Group>
 
             <Form.Group>
-                <Form.Label htmlFor="collageDescription" >Description:</Form.Label>
+                <Form.Label htmlFor="collageDescription">Description:</Form.Label>
                 <Form.Control
                     id="collageDescription"
                     as="textarea"
@@ -213,8 +214,6 @@ function CollageEditForm() {
                     ))}
                 </div>
             </Form.Group>
-
-
 
             <Button
                 className={`${btnStyles.Button} ${btnStyles.Orange}`}
@@ -268,14 +267,13 @@ function CollageEditForm() {
                                 ref={imageInput}
                             />
                         </Form.Group>
-
                     </Container>
                 </Col>
                 <Col md={5} lg={4} className="p-0 p-md-2">
                     <Container className={appStyles.Content}>{textFields}</Container>
                 </Col>
             </Row>
-        </Form >
+        </Form>
     );
 }
 
