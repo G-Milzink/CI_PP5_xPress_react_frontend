@@ -17,7 +17,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 const NavBar = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
-    const {expanded, setExpanded, ref} = useClickOutsideToggle();
+    const { expanded, setExpanded, ref } = useClickOutsideToggle();
     const [newItemsDropdownOpen, setNewItemsDropdownOpen] = useState(false);
     const handleLogout = async () => {
         /*
@@ -32,36 +32,23 @@ const NavBar = () => {
         }
     }
 
-    const newItemsDropdown = (
-        <NavDropdown 
-            title="Create"
-            id="new-dropdown"
-            drop="left"
-            className={styles.NavDropDown}
-            show={newItemsDropdownOpen} // Control visibility using the state
-            onClick={() => setNewItemsDropdownOpen(!newItemsDropdownOpen)} // Toggle open state on click
-        >    
-            <NavDropdown.Item>
-                <NavLink
-                    to="/posts/create"
-                    className={styles.NavLink}
-                    activeClassName={styles.Active}
-                >
-                    <i className="fa-solid fa-square-plus"></i>
-                    New xPression
-                </NavLink>
-            </NavDropdown.Item>
-            <NavDropdown.Item>
-                <NavLink
-                    to="/collages/create"
-                    className={styles.NavLink}
-                    activeClassName={styles.Active}
-                >
-                    <i className="fa-solid fa-square-plus"></i>
-                    New cOllage
-                </NavLink>
-            </NavDropdown.Item>
-        </NavDropdown>
+    const newItems = (
+        <div>
+            <NavLink
+                to="/posts/create"
+                className={styles.NavLink}
+                activeClassName={styles.Active}
+            >
+                <i className="fa-solid fa-square-plus"> xPression</i>
+            </NavLink>
+            <NavLink
+                to="/collages/create"
+                className={styles.NavLink}
+                activeClassName={styles.Active}
+            >
+                <i className={"fa-solid fa-square-plus"}> cOllage</i>
+            </NavLink>
+        </div>
     );
 
     const loggedInIcons = <>
@@ -148,7 +135,7 @@ const NavBar = () => {
                         </NavLink>
                         {currentUser ? loggedInIcons : loggedOutIcons}
                         <div onClick={(e) => e.stopPropagation()}>
-                            {currentUser && newItemsDropdown}
+                            {currentUser && newItems}
                         </div>
                     </Nav>
                 </Navbar.Collapse>
