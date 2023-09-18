@@ -6,19 +6,16 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 
-
-import UploadImage from "../../assets/UploadImage.png";
-
 import styles from "../../styles/CollageCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import Asset from "../../components/Asset";
 import { Alert, Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 
 function CollageCreateForm() {
+    useRedirect('loggedOut')
     const history = useHistory();
     const [errors, setErrors] = useState({});
     const default_collage_image = "https://res.cloudinary.com/dz9lnaiig/image/upload/v1694870425/xPress/default_collage_image.png"
@@ -119,7 +116,7 @@ function CollageCreateForm() {
 
         try {
             const { data } = await axiosReq.post('/collages/', formData);
-            history.push(`/`);
+            history.push(`/posts/${data.id}`);
         } catch (err) {
             console.log(err);
             if (err.response?.status !== 401) {
