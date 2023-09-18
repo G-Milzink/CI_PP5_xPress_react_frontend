@@ -131,9 +131,18 @@ function CollageEditForm() {
         formData.append("title", title);
         formData.append("collage_description", collage_description);
 
-        // Append image files only if they exist
-        for (let i = 0; i < imageInput.current.files.length; i++) {
-            formData.append(`image${i}`, imageInput.current.files[i]);
+        // Append image URLs as files (converted back from data URLs)
+        for (let index = 0; index < images.length; index++) {
+            const imageUrl = images[index];
+            if (imageUrl !== default_collage_image) {
+                // Convert data URL back to Blob
+                const blob = await (await fetch(imageUrl)).blob();
+                formData.append(`image${index + 1}`, blob, `image${index + 1}.jpg`);
+            } else {
+                // Append the default_collage_image as Blob (assuming it's a URL)
+                const defaultBlob = await (await fetch(default_collage_image)).blob();
+                formData.append(`image${index + 1}`, defaultBlob, `image${index + 1}.jpg`);
+            }
         }
 
         formData.append("publish", publish);
@@ -148,6 +157,9 @@ function CollageEditForm() {
             }
         }
     };
+
+
+
 
 
     const textFields = (
