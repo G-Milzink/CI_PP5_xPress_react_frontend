@@ -1,38 +1,64 @@
-import React, { useRef, useState } from "react";
-
+import React, { useEffect, useRef, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-
-import styles from "../../styles/CollageCreateEditForm.module.css";
+import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { Alert, Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
-import { useRedirect } from "../../hooks/useRedirect";
+import { useParams } from "react-router-dom/cjs/react-router-dom";
 
-function CollageCreateForm() {
-    useRedirect('loggedOut')
+function CollageEditForm() {
     const history = useHistory();
     const [errors, setErrors] = useState({});
+    const { id } = useParams();
     const default_collage_image = "https://res.cloudinary.com/dz9lnaiig/image/upload/v1694870425/xPress/default_collage_image.png"
     const [collageData, setCollageData] = useState({
         title: "",
         collage_description: "",
-        images: Array(20).fill(default_collage_image),
-        publish: false,
-    })
-    const {
-        title,
-        collage_description,
-        images,
-        publish,
-    } = collageData;
-    const imageInput = useRef(null)
+        publish: true,
+        images: [], // Initialize as an empty array
+    });
 
+    const { title, collage_description, publish, images } = collageData;
+    const imageInput = useRef(null);
+
+    /*
+        Fetches posts from the API
+        Determines if the current logged in user is the owner.
+    */
+    useEffect(() => {
+        const handleMount = async () => {
+            try {
+                const { data } = await axiosReq(`/collages/${id}`);
+                const { title, collage_description, publish, is_owner } = data;
+                const apiImages = [];
+
+                // Loop through 'image1' to 'image20' and push them to the 'apiImages' array
+                for (let i = 1; i <= 20; i++) {
+                    if (data[`image${i}`]) {
+                        apiImages.push(data[`image${i}`]);
+                    }
+                }
+
+                is_owner
+                    ? setCollageData({
+                        title,
+                        collage_description,
+                        publish,
+                        images: apiImages, // Set 'images' to the URLs from the API
+                    })
+                    : history.push('/');
+            } catch (err) {
+                // console.log(err)
+            }
+        }
+        handleMount();
+    }, [id, history])
 
     /*
         Handles changing input fields
@@ -46,7 +72,6 @@ function CollageCreateForm() {
             [name]: newValue,
         });
     };
-
 
     /*
         Handles changing the images.
@@ -83,7 +108,6 @@ function CollageCreateForm() {
         }
     };
 
-
     /*
         Reset an individual image to its default state
     */
@@ -97,7 +121,6 @@ function CollageCreateForm() {
         setCollageData(updatedCollageData);
     };
 
-
     /*
         Handles form submission
     */
@@ -108,6 +131,7 @@ function CollageCreateForm() {
         formData.append("title", title);
         formData.append("collage_description", collage_description);
 
+        // Append image files only if they exist
         for (let i = 0; i < imageInput.current.files.length; i++) {
             formData.append(`image${i}`, imageInput.current.files[i]);
         }
@@ -115,7 +139,7 @@ function CollageCreateForm() {
         formData.append("publish", publish);
 
         try {
-            const { data } = await axiosReq.post('/collages/', formData);
+            const { data } = await axiosReq.put(`/collages/${id}`, formData);
             history.push(`/collages/${data.id}`);
         } catch (err) {
             console.log(err);
@@ -192,7 +216,6 @@ function CollageCreateForm() {
         </div>
     );
 
-
     return (
         <Form onSubmit={handleSubmit}>
             <Row>
@@ -244,4 +267,4 @@ function CollageCreateForm() {
     );
 }
 
-export default CollageCreateForm;
+export default CollageEditForm;
