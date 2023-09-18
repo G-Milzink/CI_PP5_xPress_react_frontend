@@ -10,6 +10,8 @@ import Avatar from './Avatar';
 import axios from 'axios';
 import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
 import { removeTokenTimestamp } from '../utils/Utils';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
 
 
 const NavBar = () => {
@@ -30,24 +32,31 @@ const NavBar = () => {
         }
     }
 
-    const addPostIcon = (
-        <NavLink
-            to="/posts/create"
-            className={styles.NavLink}
-            activeClassName={styles.Active}>
-            <i className="fa-solid fa-square-plus"></i>
-            New xPression
-        </NavLink>
-    )
-    const addCollageIcon = (
-        <NavLink
-            to="/collages/create"
-            className={styles.NavLink}
-            activeClassName={styles.Active}>
-            <i className="fa-solid fa-square-plus"></i>
-            New cOllage
-        </NavLink>
-    )
+    const newItemsDropdown = (
+        <NavDropdown title="Create" id="new-dropdown" drop="left">
+            <NavDropdown.Item>
+                <NavLink
+                    to="/posts/create"
+                    className={styles.NavLink}
+                    activeClassName={styles.Active}
+                >
+                    <i className="fa-solid fa-square-plus"></i>
+                    New xPression
+                </NavLink>
+            </NavDropdown.Item>
+            <NavDropdown.Item>
+                <NavLink
+                    to="/collages/create"
+                    className={styles.NavLink}
+                    activeClassName={styles.Active}
+                >
+                    <i className="fa-solid fa-square-plus"></i>
+                    New cOllage
+                </NavLink>
+            </NavDropdown.Item>
+        </NavDropdown>
+    );
+
     const loggedInIcons = <>
         <NavLink
             to="/feed"
@@ -108,8 +117,6 @@ const NavBar = () => {
                 <NavLink to='/'>
                     <Navbar.Brand><img src={logo} alt='logo' height={70} /></Navbar.Brand>
                 </NavLink>
-                {currentUser && addPostIcon}
-                {currentUser && addCollageIcon}
                 <Navbar.Toggle
                     aria-controls="basic-navbar-nav"
                     onClick={() => setExpanded(!expanded)}
@@ -126,6 +133,7 @@ const NavBar = () => {
                             Home
                         </NavLink>
                         {currentUser ? loggedInIcons : loggedOutIcons}
+                        {currentUser && newItemsDropdown}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
