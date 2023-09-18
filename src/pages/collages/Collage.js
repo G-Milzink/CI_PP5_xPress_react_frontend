@@ -15,11 +15,6 @@ const Collage = (props) => {
         comments_count, likes_count, like_id,
         title,
         collage_description,
-        image1, image2, image3, image4,
-        image5, image6, image7, image8,
-        image9, image10, image11, image12,
-        image13, image14, image15, image16,
-        image17, image18, image19, image20,
         updated_on,
         collagePage,
         // collagesPage,
@@ -27,7 +22,13 @@ const Collage = (props) => {
         setCollages,
         created_on,
     } = props
+
     const images = [];
+    for (let i = 1; i <= 20; i++) {
+        images.push(props[`image${i}`]);
+    }
+    const filteredImages = images.filter(image => image !== null);
+
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;
     const history = useHistory();
@@ -176,15 +177,18 @@ const Collage = (props) => {
             <hr />
             <Card.Body>
                 <Link to={`/collages/${id}`}>
-                    <Card.Img
-                        src={image1}
-                        alt={
-                            collage_description ?
-                                collage_description :
-                                "User uploaded image"
-                        }
-                    />
-
+                    {/* Iterate over the images array and render images */}
+                    {filteredImages.map((image, index) => (
+                        <Card.Img
+                            key={index}
+                            src={image}
+                            alt={
+                                collage_description ?
+                                    collage_description :
+                                    "User uploaded image"
+                            }
+                        />
+                    ))}
                 </Link>
                 {collage_description && <Card.Text className='text-center'>{collage_description}</Card.Text>}
             </Card.Body>
