@@ -69,7 +69,7 @@ const NavBar = () => {
             to="/collages"
             className={styles.NavLink}
             activeClassName={styles.Active}>
-            <i class="fa-solid fa-table-cells"></i>
+            <i className="fa-solid fa-table-cells"></i>
             Collages
         </NavLink>
         <NavLink
