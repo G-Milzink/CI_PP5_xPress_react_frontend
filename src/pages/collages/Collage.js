@@ -16,7 +16,7 @@ const Collage = (props) => {
         title,
         collage_description,
         updated_on,
-        collagePage,
+        CollagePage,
         // collagesPage,
         profilePage,
         setCollages,
@@ -87,7 +87,7 @@ const Collage = (props) => {
     }
 
     /*
-        Handles deleting a post
+        Handles deleting a collage
     */
     const handleDelete = async () => {
         try {
@@ -142,7 +142,7 @@ const Collage = (props) => {
                         </Button>
                     </div>
                 )}
-                {(!isPublished && is_owner && collagePage) && (
+                {(!isPublished && is_owner && CollagePage) && (
                     <div>
                         <span>
                             <p className={styles.UnPublished}>Unpublished!</p>
@@ -167,7 +167,8 @@ const Collage = (props) => {
                                 updated: {updated_on}
                             </p>
                         </span>
-                        {is_owner && collagePage && <DropDown handleEdit={handleEdit} handleDelete={handleDelete} />}
+                        {console.log(CollagePage)}
+                        {is_owner && CollagePage && <DropDown handleEdit={handleEdit} handleDelete={handleDelete} />}
                     </div>
                 </Media>
             </Card.Body >
