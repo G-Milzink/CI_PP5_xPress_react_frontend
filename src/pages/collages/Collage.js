@@ -115,7 +115,7 @@ const Collage = (props) => {
         }
     };
 
-    // Check if isPublished is false AND user is currently on postsPage
+    // Check if isPublished is false AND user is currently on CollagesPage
     // => return null (nothing will be rendered)
     if (CollagesPage && !isPublished) {
         return null;

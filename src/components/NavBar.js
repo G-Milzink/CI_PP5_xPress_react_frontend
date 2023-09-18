@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -18,7 +18,7 @@ const NavBar = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
     const {expanded, setExpanded, ref} = useClickOutsideToggle();
-
+    const [newItemsDropdownOpen, setNewItemsDropdownOpen] = useState(false);
     const handleLogout = async () => {
         /*
             handles user logout.
@@ -33,7 +33,14 @@ const NavBar = () => {
     }
 
     const newItemsDropdown = (
-        <NavDropdown title="Create" id="new-dropdown" drop="left">
+        <NavDropdown 
+            title="Create"
+            id="new-dropdown"
+            drop="left"
+            className={styles.NavDropDown}
+            show={newItemsDropdownOpen} // Control visibility using the state
+            onClick={() => setNewItemsDropdownOpen(!newItemsDropdownOpen)} // Toggle open state on click
+        >    
             <NavDropdown.Item>
                 <NavLink
                     to="/posts/create"
@@ -140,7 +147,9 @@ const NavBar = () => {
                             Home
                         </NavLink>
                         {currentUser ? loggedInIcons : loggedOutIcons}
-                        {currentUser && newItemsDropdown}
+                        <div onClick={(e) => e.stopPropagation()}>
+                            {currentUser && newItemsDropdown}
+                        </div>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

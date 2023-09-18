@@ -162,6 +162,7 @@ function CollageCreateForm() {
                 <div className="text-left">
                     {<hr />}
                     <div>Don't forget to publish your collage:</div>
+                    <div>This may take some time....Please be patient!</div>
                     <Form.Check
                         type="checkbox"
                         label="Publish Collage"
@@ -194,7 +195,7 @@ function CollageCreateForm() {
 
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} className={`${styles.FormPadding}`}>
             <Row>
                 <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
                     <Container

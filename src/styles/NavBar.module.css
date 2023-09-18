@@ -10,6 +10,13 @@
     border-radius: 5px;
 }
 
+.NavDropDown {
+    margin-top: 2px;
+    padding-left: 1px;
+    padding-right: 6px;
+    border-radius: 5px;
+}
+
 .Active {
     color: #FB8122;
     background-color: #1D2228;
