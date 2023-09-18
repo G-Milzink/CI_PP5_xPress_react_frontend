@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import styles from "../../styles/PostCreateEditForm.module.css";
+import styles from "../../styles/CollageCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { Alert, Image } from "react-bootstrap";
@@ -199,6 +199,7 @@ function CollageEditForm() {
                 <div className="text-left">
                     {<hr />}
                     <div>Don't forget to publish your collage:</div>
+                    <div>This may take a minute...Please be patient!</div>
                     <Form.Check
                         type="checkbox"
                         label="Publish Collage"
