@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -10,15 +10,12 @@ import Avatar from './Avatar';
 import axios from 'axios';
 import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
 import { removeTokenTimestamp } from '../utils/Utils';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-
 
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
     const { expanded, setExpanded, ref } = useClickOutsideToggle();
-    const [newItemsDropdownOpen, setNewItemsDropdownOpen] = useState(false);
     const handleLogout = async () => {
         /*
             handles user logout.
