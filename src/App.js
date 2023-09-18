@@ -16,6 +16,7 @@ import ChangeUsernameForm from "./pages/profiles/ChangeUsernameForm";
 import ChangeUserPasswordForm from "./pages/profiles/ChangeUserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import PageNotFound from './components/PageNotFound';
+import CollagePage from './pages/collages/CollagePage';
 
 function App() {
 
@@ -55,6 +56,7 @@ function App() {
           <Route exact path="/posts/:id" render={() => <PostPage />} />
           <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
           <Route exact path="/collages/create" render={() => <CollageCreateForm />} />
+          <Route exact path="/collages/:id" render={() => <CollagePage />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           <Route
             exact

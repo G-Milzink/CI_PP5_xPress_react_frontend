@@ -47,13 +47,13 @@ function CollagePage() {
         <Row className="h-100">
             <Col className="py-2 p-0 p-lg-2" lg={8}>
                 <PopularProfiles mobile />
-                <Post {...post.results[0]} setCollages={setCollage} CollagePage />
+                <Collage {...collage.results[0]} setCollages={setCollage} CollagePage />
                 <Container className={appStyles.Content}>
                     {currentUser ? (
                         <CommentCreateForm
                             profile_id={currentUser.profile_id}
                             profileImage={profile_image}
-                            post={id}
+                            collage={id}
                             setCollage={setCollage}
                             setComments={setComments}
                         />
@@ -78,7 +78,7 @@ function CollagePage() {
                             next={() => fetchMoreData(comments, setComments)}
                         />
                     ) : currentUser ? (
-                        <span>"No comments yet...Be the first to comment on this post!"</span>
+                        <span>"No comments yet...Be the first to comment on this collage!"</span>
                     ) : (
                         <span>"No comments yet...Sign up/Log in to leave a comment."</span>
                     )}

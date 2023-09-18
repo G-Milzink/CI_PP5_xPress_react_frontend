@@ -4,14 +4,12 @@ import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { Button, Card, Media, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom/cjs/react-router-dom';
 import Avatar from '../../components/Avatar';
-import AudioComponent from '../../components/AudioComponent';
 import { axiosRes } from '../../api/axiosDefaults';
 import { DropDown } from '../../components/DropDown';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import audioStyles from '../../styles/AudioComponent.module.css';
 import btnStyles from "../../styles/Button.module.css";
 
-const Post = (props) => {
+const Collage = (props) => {
     const {
         id, owner, profile_id, profile_image,
         comments_count, likes_count, like_id,
@@ -24,11 +22,12 @@ const Post = (props) => {
         image17, image18, image19, image20,
         updated_on,
         collagePage,
-        // postsPage,
+        // collagesPage,
         profilePage,
         setCollages,
         created_on,
     } = props
+    const images = [];
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner;
     const history = useHistory();
@@ -49,10 +48,10 @@ const Post = (props) => {
             const { data } = await axiosRes.post('/likes/', { collage: id });
             setCollages((prefCollages) => ({
                 ...prefCollages,
-                results: prefCollages.results.map((post) => {
-                    return post.id === id
-                        ? { ...post, likes_count: post.likes_count + 1, like_id: data.id }
-                        : post;
+                results: prefCollages.results.map((collage) => {
+                    return collage.id === id
+                        ? { ...collage, likes_count: collage.likes_count + 1, like_id: data.id }
+                        : collage;
                 })
             }));
         } catch (err) {
@@ -61,17 +60,17 @@ const Post = (props) => {
     };
 
     /*
-        Handles unliking a post
+        Handles unliking a collage
     */
     const handleUnLike = async () => {
         try {
             await axiosRes.delete(`/likes/${like_id}`);
             setCollages((prefCollages) => ({
                 ...prefCollages,
-                results: prefCollages.results.map((post) => {
-                    return post.id === id
-                        ? { ...post, likes_count: post.likes_count - 1, like_id: null }
-                        : post;
+                results: prefCollages.results.map((collage) => {
+                    return collage.id === id
+                        ? { ...collage, likes_count: collage.likes_count - 1, like_id: null }
+                        : collage;
                 })
             }));
         } catch (err) {
@@ -99,7 +98,7 @@ const Post = (props) => {
     }
 
     /*
-        Handles publishing a post
+        Handles publishing a collage
     */
     const handlePublish = async () => {
         try {
@@ -116,9 +115,9 @@ const Post = (props) => {
 
     // Check if isPublished is false AND user is currently on postsPage
     // => return null (nothing will be rendered)
-    if (collagePage && !isPublished) {
-        return null;
-    }
+    // if (collagesPage && !isPublished) {
+    //     return null;
+    // }
 
     // Check if isPublished is false AND user is currently on profilePage AND is not the owner
     // => return null (nothing will be rendered)
@@ -142,7 +141,7 @@ const Post = (props) => {
                         </Button>
                     </div>
                 )}
-                {(!isPublished && is_owner && postPage) && (
+                {(!isPublished && is_owner && collagePage) && (
                     <div>
                         <span>
                             <p className={styles.UnPublished}>Unpublished!</p>
@@ -176,12 +175,12 @@ const Post = (props) => {
             </Link>
             <hr />
             <Card.Body>
-                <Link to={`/posts/${id}`}>
+                <Link to={`/collages/${id}`}>
                     <Card.Img
                         src={image1}
                         alt={
-                            image_description ?
-                                image_description :
+                            collage_description ?
+                                collage_description :
                                 "User uploaded image"
                         }
                     />
@@ -190,19 +189,7 @@ const Post = (props) => {
                 {collage_description && <Card.Text className='text-center'>{collage_description}</Card.Text>}
             </Card.Body>
 
-            {
-                include_audio &&
-                <Card.Body>
-                    <AudioComponent className={audioStyles.Player} src={audio} />
-                    {audio_description && <Card.Text className='text-center'>{audio_description}</Card.Text>}
-                </Card.Body>
-            }
             <Card.Body>
-                {include_text && excerpt && !postPage &&
-                    <Link to={`/posts/${id}`}>
-                        <Card.Text>{excerpt}</Card.Text>
-                    </Link>}
-                {include_text && text && postPage && <Card.Text>{text}</Card.Text>}
                 <div className={styles.PostBar}>
                     {is_owner ? (
                         <OverlayTrigger placement='top' overlay={<Tooltip>You can not like your own xPression!</Tooltip>}>
@@ -233,4 +220,4 @@ const Post = (props) => {
     )
 }
 
-export default Post
+export default Collage
