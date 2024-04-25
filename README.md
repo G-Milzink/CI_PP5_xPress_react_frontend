@@ -4,7 +4,7 @@ Developer: Gustaaf Milzink
 
 ![Mockup image](docs/readme/amiresponsive.png)
 
-[View live website](https://xpress-react-frontend-611bb46bac21.herokuapp.com/) (coming soon)
+[View live website](https://xpress-frontend-3ec97631f67e.herokuapp.com/)
 
 ## Table of Contents
 
